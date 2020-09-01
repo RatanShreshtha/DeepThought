@@ -51,7 +51,7 @@ google = "<your_gtag>"
 [extra.commenting]
 hyvor = "<your_website_id>"
 
-$ To enable mapbox maps
+# To enable mapbox maps
 [extra.mapbox]
 access_token = "<your_access_token>"
 ```
