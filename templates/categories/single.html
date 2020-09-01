@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block header %}
+<header class="hero">
+	<div class="hero-body">
+		<div class="container">
+			<h1 class="title has-text-centered">
+				<span class="icon"><i class="fas fa-folder"></i></span> {{ term.name }}
+			</h1>
+		</div>
+	</div>
+</header>
+{% endblock %}
+
+{% block main %}
+<main class="section pt-0">
+	<div class="container">
+		<div class="columns">
+			<div class="column  is-6 is-offset-3">
+				{% if paginator %}
+				{% set pages = paginator.pages %}
+				{% else %}
+				{% set pages = term.pages %}
+				{% endif %}
+				{% for page in pages %}
+				<article>
+					<h1 class="title is-4">
+						<a class="link" href="{{ page.permalink }}">
+							{{ page.title }}
+						</a>
+					</h1>
+
+					<p>{{ macros::page_publish_metadata(page=page) }}</p>
+
+					<a class="read-more" href="{{ page.permalink }}">
+						Read More
+					</a>
+				</article>
+				{% if not loop.last %}
+				<hr />{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+		{% if paginator.previous or paginator.next %}
+		<nav class="level">
+			{% if paginator.previous %}
+			<div class="level-item has-text-centered">
+				<a href="{{ paginator.previous }}" class="button is-black is-outlined">
+					<span class="icon mr-2"><i class="fas fa-arrow-circle-left"></i></span> Previous Page
+				</a>
+			</div>
+			{% endif %}
+			{% if paginator.next %}
+			<div class="level-item has-text-centered">
+				<a href="{{ paginator.next }}" class="button is-black is-outlined">
+					Next Page <span class="icon ml-2"><i class="fas fa-arrow-circle-right"></i></span>
+				</a>
+			</div>
+			{% endif %}
+		</nav>
+		{% endif %}
+	</div>
+</main>
+{% endblock main %}

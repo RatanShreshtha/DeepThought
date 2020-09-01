@@ -1,0 +1,63 @@
+base_url = "https://ratanshreshtha.github.io"
+title = "RatanShreshtha"
+default_language = "en"
+highlight_code = true
+highlight_theme = "one-dark"
+generate_feed = true
+feed_filename = "rss.xml"
+taxonomies = [
+	{ name = "categories", feed = true, paginate_by = 10 },
+	{ name = "tags", fees = true, paginate_by = 10 },
+]
+languages = []
+compile_sass = false
+build_search_index = true
+ignored_content = []
+extra_syntaxes = []
+
+[link_checker]
+skip_prefixes = ["http://[2001:db8::]/"]
+skip_anchor_prefixes = ["https://caniuse.com/"]
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+[translations]
+
+[extra]
+navbar_items = [
+	{ url = "$BASE_URL/", name = "Home" },
+	{ url = "$BASE_URL/posts", name = "Posts" },
+	{ url = "$BASE_URL/tags", name = "Tags" },
+	{ url = "$BASE_URL/categories", name = "Categories" },
+]
+
+[extra.favicon]
+favicon_16x16 = "/icons/favicon-16x16.png"
+favicon_32x32 = "/icons/favicon-32x32.png"
+apple_touch_icon = "/icons/apple-touch-icon.png"
+safari_pinned_tab = "/icons/safari-pinned-tab.svg"
+webmanifest = "/icons/site.webmanifest"
+
+[extra.author]
+name = "Ratan Kulshreshtha"
+avatar = "/images/avatar.png"
+
+[extra.social]
+facebook = "RatanShreshtha"
+github = "RatanShreshtha"
+keybase = "RatanShreshtha"
+linkedin = "RatanShreshtha"
+stackoverflow = "3728911"
+twitter = "RatanShreshtha"
+
+[extra.analytics]
+google = "UA-99004679-1"
+
+[extra.commenting]
+hyvor = "1791"
+
+[extra.mapbox]
+access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tlY3pqcWE5MDcxdTJ2bWw4YmY5cXVudyJ9.vFrVFcOZwvi8-dd8088Tqg"

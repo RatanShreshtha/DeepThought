@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block main %}
+<main class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-three-fifths is-offset-one-fifth">
+                    <figure class="image center mb-2">
+                        <img class="is-rounded card" src="{{config.extra.author.avatar}}" style="max-width: 150px">
+                    </figure>
+                    <div class="has-text-centered">
+                        <h1 class="title">
+                            HTTP 404
+                        </h1>
+                        <h2 class="subtitle">
+                            It seems you are looking for something that I don't have.
+                        </h2>
+                        <p class="is-size-4">
+                            {{ macros:: social_links( social_config=config.extra.social) }}
+                        </p>
+                    </div>
+                    <hr />
+                    <p class="has-text-centered">
+                        <a class="link" href="{{ config.base_url }}">
+                            Home
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block header %}
+<header class="hero">
+	<div class="hero-body">
+		<div class="container">
+			<div class="has-text-centered">
+				<h1 class="title">{{ section.title }}</h1>
+				<h2 class="subtitle">{{ section.description }}</h2>
+			</div>
+		</div>
+	</div>
+</header>
+{% endblock %}
+
+{% block main %}
+<main class="section pt-0">
+	<div class="container">
+		<div class="columns">
+			<div class="column  is-8 is-offset-2">
+				{% if paginator %}
+				{% set pages = paginator.pages %}
+				{% else %}
+				{% set pages = section.pages %}
+				{% endif %}
+				{% for page in pages %}
+				<article class="box">
+					<h1 class="title is-4">
+						<a class="link" class="link" href="{{ page.permalink }}">
+							{{ page.title }}
+						</a>
+					</h1>
+					<h2 class="subtitle is-6">{{ page.description }}</h2>
+					<p>{{ macros::page_publish_metadata(page=page) }}</p>
+					<div class="content mt-2">
+						{{ page.summary | safe }}
+						<a class="read-more" href="{{ page.permalink }}">
+							Read More
+						</a>
+					</div>
+
+					{% if page.taxonomies.categories %}
+					<p>{{ macros::render_categories(categories=page.taxonomies.categories) }}</p>
+					{% endif %}
+					{% if page.taxonomies.tags %}
+					<p>{{ macros::render_tags(tags=page.taxonomies.tags) }}</p>
+					{% endif %}
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+		{% if paginator.previous or paginator.next %}
+		<nav class="level">
+			{% if paginator.previous %}
+			<div class="level-item has-text-centered">
+				<a href="{{ paginator.previous }}" class="button is-black is-outlined">
+					<span class="icon mr-2"><i class="fas fa-arrow-circle-left"></i></span> Previous Page
+				</a>
+			</div>
+			{% endif %}
+			{% if paginator.next %}
+			<div class="level-item has-text-centered">
+				<a href="{{ paginator.next }}" class="button is-black is-outlined">
+					Next Page <span class="icon ml-2"><i class="fas fa-arrow-circle-right"></i></span>
+				</a>
+			</div>
+			{% endif %}
+		</nav>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block main %}
+<main class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-three-fifths is-offset-one-fifth">
+				<article>
+					<h1 class="title">{{ page.title }}</h1>
+					<h2 class="subtitle">{{ page.description }}</h2>
+
+					<p>{{ macros::page_content_metadata(page=page) }}</p>
+					<p>{{ macros::page_publish_metadata(page=page) }}</p>
+
+					{% if page.taxonomies.categories %}
+					<p>{{ macros::render_categories(categories=page.taxonomies.categories) }}</p>
+					{% endif %}
+					{% if page.taxonomies.tags %}
+					<p>{{ macros::render_tags(tags=page.taxonomies.tags) }}</p>
+					{% endif %}
+
+					{% if page.extra.toc %}
+					<hr />
+					<div class="content">
+						<p class="has-text-weight-bold">Table of Contents</p>
+						<ul>
+							{% for h1 in page.toc %}
+							<li>
+								<a href="{{h1.permalink | safe}}">{{ h1.title }}</a>
+								{% if h1.children %}
+								<ul>
+									{% for h2 in h1.children %}
+									<li>
+										<a href="{{h2.permalink | safe}}">{{ h2.title }}</a>
+									</li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+					<hr />
+
+					<div class="content has-text-justified">
+						{{ page.content | safe }}
+					</div>
+				</article>
+				<hr />
+				{% if page.earlier or page.later or page.lighter or page.heavier %}
+				<nav class="level mt-2">
+					{% if page.later %}
+					<div class="level-item has-text-centered">
+						<a href="{{ page.later.permalink }}" class="button is-black is-outlined">
+							<span class="icon mr-2"><i
+									class="fas fa-arrow-circle-left"></i></span>{{ page.later.title }}
+						</a>
+					</div>
+					{% endif %}
+					{% if page.earlier %}
+					<div class="level-item has-text-centered">
+						<a href="{{ page.earlier.permalink }}" class="button is-black is-outlined">
+							{{ page.earlier.title }}<span class="icon ml-2"><i
+									class="fas fa-arrow-circle-right"></i></span>
+						</a>
+					</div>
+					{% endif %}
+
+					{% if page.heavier %}
+					<div class="level-item has-text-centered">
+						<a href="{{ page.heavier.permalink }}" class="button is-black is-outlined">
+							<span class="icon mr-2"><i
+									class="fas fa-arrow-circle-left"></i></span>{{ page.heavier.title }}
+						</a>
+					</div>
+					{% endif %}
+
+					{% if page.lighter %}
+					<div class="level-item has-text-centered">
+						<a href="{{ page.lighter.permalink }}" class="button is-black is-outlined">
+							{{ page.lighter.title }}<span class="icon ml-2"><i
+									class="fas fa-arrow-circle-right"></i></span>
+						</a>
+					</div>
+					{% endif %}
+
+
+				</nav>
+				{% endif %}
+				{% if page.extra.comments and config.extra.commenting.hyvor %}
+				<hr />
+				{{ macros::hyvor_talk(id=config.extra.commenting.hyvor) }}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock main %}
