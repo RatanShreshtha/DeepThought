@@ -1,7 +1,7 @@
 +++
 title = "Extended Shortcodes"
-description = "Few more shortcodes provided by deep-thought."
-date = 2020-08-30
+description = "Few more shortcodes provided by Deep Thought."
+date = 2020-08-29
 
 [taxonomies]
 categories = ["Documentation"]
@@ -9,9 +9,10 @@ tags = ["theme", "zola"]
 
 [extra]
 toc = true
+comment = true
 +++
 
-deep-thought theme provides multiple shortcodes on top of built-in ones in Zola.
+Deep Thought theme provides multiple shortcodes on top of built-in ones in Zola.
 
 <!-- more -->
 

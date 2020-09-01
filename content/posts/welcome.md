@@ -7,7 +7,7 @@ categories = ["Documentation"]
 tags = ["theme", "zola"]
 +++
 
-This is a small example post of stuff you can do with the `deep-thought` theme.
+This is a small example post of stuff you can do with the `Deep Thought` theme.
 We'll try to represent all possible markdown and shortcode combinations here
 so you can develop easily.
 

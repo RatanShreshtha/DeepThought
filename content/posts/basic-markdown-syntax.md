@@ -1,6 +1,6 @@
 +++
 title="Basic Markdown Syntax"
-date=2019-06-29
+date=2020-08-28
 
 [taxonomies]
 categories = ["Markdown"]
