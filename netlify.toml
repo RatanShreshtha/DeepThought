@@ -1,9 +1,9 @@
 [build]
 publish = "public"
-command = "zola build"
+command = "zola build --base-url https://zen-austin-0c80be.netlify.app"
 
 [build.environment]
 ZOLA_VERSION = "0.11.0"
 
 [context.deploy-preview]
-command = "zola build --base-url $DEPLOY_PRIME_URL"
+command = "zola build --base-url https://zen-austin-0c80be.netlify.app"
