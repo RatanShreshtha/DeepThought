@@ -16,6 +16,8 @@ Deep Thought theme provides some config option like option to add favicon to you
 
 <!-- more -->
 
+# Site Configurations
+
 ## Author Details
 
 You can configure author details in `[extra.author]` of `config.toml` file.
@@ -24,10 +26,7 @@ You can configure author details in `[extra.author]` of `config.toml` file.
 [extra.author]
 name = "<your_name>"
 avatar = "<path_to_avatar>"
-
 ```
-
-# Site Configurations
 
 ## Favicon Setup
 
