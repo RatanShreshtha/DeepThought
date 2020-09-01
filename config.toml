@@ -1,5 +1,5 @@
-base_url = "https://ratanshreshtha.github.io"
-title = "RatanShreshtha"
+base_url = "https://zen-austin-0c80be.netlify.app"
+title = "Deep Thought"
 default_language = "en"
 highlight_code = true
 highlight_theme = "one-dark"
@@ -42,19 +42,19 @@ safari_pinned_tab = "/icons/safari-pinned-tab.svg"
 webmanifest = "/icons/site.webmanifest"
 
 [extra.author]
-name = "Ratan Kulshreshtha"
+name = "Deep Thought"
 avatar = "/images/avatar.png"
 
 [extra.social]
 facebook = "RatanShreshtha"
 github = "RatanShreshtha"
 keybase = "RatanShreshtha"
-linkedin = "RatanShreshtha"
+linkedin = "ratanshreshtha"
 stackoverflow = "3728911"
 twitter = "RatanShreshtha"
 
 [extra.analytics]
-google = "UA-99004679-1"
+google = "UA-177008806-1"
 
 [extra.commenting]
 hyvor = "1791"
