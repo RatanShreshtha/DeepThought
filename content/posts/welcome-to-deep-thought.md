@@ -1,5 +1,5 @@
 +++
-title = "Welcome to Deep Thought."
+title = "Welcome to DeepThought"
 description = "A simple blog theme focused on writing powered by Bulma and Zola"
 date = 2020-08-31
 [taxonomies]
@@ -7,10 +7,10 @@ categories = ["Documentation"]
 tags = ["theme", "zola"]
 
 [extra]
-comments = true
+comments = false
 +++
 
-This is a small example post of stuff you can do with the `Deep Thought` theme.
+This is a small example post of stuff you can do with the `DeepThought` theme.
 We'll try to represent all possible markdown and shortcode combinations here
 so you can develop easily.
 

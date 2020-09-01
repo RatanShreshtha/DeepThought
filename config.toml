@@ -1,5 +1,5 @@
 base_url = "https://zen-austin-0c80be.netlify.app"
-title = "Deep Thought"
+title = "DeepThought"
 default_language = "en"
 highlight_code = true
 highlight_theme = "one-dark"
@@ -42,7 +42,7 @@ safari_pinned_tab = "/icons/safari-pinned-tab.svg"
 webmanifest = "/icons/site.webmanifest"
 
 [extra.author]
-name = "Deep Thought"
+name = "DeepThought"
 avatar = "/images/avatar.png"
 
 [extra.social]
@@ -54,10 +54,10 @@ stackoverflow = "3728911"
 twitter = "RatanShreshtha"
 
 [extra.analytics]
-google = "UA-177008806-1"
+google = "<your_gtag>"
 
 [extra.commenting]
-hyvor = "1791"
+hyvor = "<your_website_id>"
 
 [extra.mapbox]
-access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tlY3pqcWE5MDcxdTJ2bWw4YmY5cXVudyJ9.vFrVFcOZwvi8-dd8088Tqg"
+access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tla2s2NmM3MDd0ZzJzbXFtc3Y2YmU0NyJ9.0RhUnJPKbxHWw3xGPnnBlA"

@@ -1,6 +1,6 @@
 +++
 title = "Config Options"
-description = "Few config options provides by Deep Thought theme."
+description = "Few config options provides by DeepThought theme."
 date = 2020-08-30
 
 [taxonomies]
@@ -9,10 +9,10 @@ tags = ["theme", "zola"]
 
 [extra]
 toc = true
-comments = true
+comments = false
 +++
 
-Deep Thought theme provides some config option like option to add favicon to your site, add avatar for profile, setup social links for the profile etc
+DeepThought theme provides some config option like option to add favicon to your site, add avatar for profile, setup social links for the profile etc
 
 <!-- more -->
 
@@ -57,7 +57,7 @@ twitter = "<twitter_username>"
 
 ## Google Analytics Setup
 
-**Deep Thought** support google analytics out of the box. You can configure favicon in `[extra.analytics]` of `config.toml` file. 
+**DeepThought** support google analytics out of the box. You can configure favicon in `[extra.analytics]` of `config.toml` file. 
 
 ```toml
 [extra.analytics]
@@ -66,7 +66,7 @@ google = "<your_gtag>"
 
 ## Hyvor Comments Setup
 
-**Deep Thought** support hyvor commenting out of the box. You can configure favicon in `[extra.commenting]` of `config.toml` file. 
+**DeepThought** support hyvor commenting out of the box. You can configure favicon in `[extra.commenting]` of `config.toml` file. 
 
 ```toml
 [extra.commenting]
@@ -75,7 +75,7 @@ hyvor = "<your_website_id>"
 
 ## Mapbox Setup
 
-**Deep Thought** support mapbox out of the box to add maps in your posts. You can configure favicon in `[extra.mapbox]` of `config.toml` file. 
+**DeepThought** support mapbox out of the box to add maps in your posts. You can configure favicon in `[extra.mapbox]` of `config.toml` file. 
 
 ```toml
 [extra.mapbox]

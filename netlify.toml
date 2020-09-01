@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "zola build --base-url https://zen-austin-0c80be.netlify.app"
+command = "zola build"
 
 [build.environment]
 ZOLA_VERSION = "0.11.0"

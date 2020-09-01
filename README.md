@@ -1,13 +1,13 @@
-# Deep Thought
+# DeepThought
 > A simple blog theme focused on writing powered by Bulma and Zola.
 
-![Deep Thought](./screenshot.png)
+![DeepThought](./screenshot.png)
 
 # [Live Demo](https://zen-austin-0c80be.netlify.app/)
 
 ## Installation
 Get [Zola](https://www.getzola.org/) and/or follow their guide on [installing a theme](https://www.getzola.org/documentation/themes/installing-and-using-themes/).
-Make sure to add `theme = "Deep Thought"` to your `config.toml`
+Make sure to add `theme = "DeepThought"` to your `config.toml`
 
 #### Check zola version (only 0.9.0+)
 Just to double-check to make sure you have the right version. It is not supported to use this theme with a version under 0.9.0.
@@ -30,7 +30,7 @@ webmanifest = "/icons/site.webmanifest"
 
 # Author details
 [extra.author]
-name = "Deep Thought"
+name = "DeepThought"
 avatar = "/images/avatar.png"
 
 # Social link setup
