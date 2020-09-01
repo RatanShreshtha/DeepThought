@@ -9,7 +9,7 @@ tags = ["theme", "zola"]
 
 [extra]
 toc = true
-comment = true
+comments = true
 +++
 
 Deep Thought theme provides some config option like option to add favicon to your site, add avatar for profile, setup social links for the profile etc

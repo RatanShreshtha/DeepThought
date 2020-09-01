@@ -5,6 +5,9 @@ date = 2020-08-31
 [taxonomies]
 categories = ["Documentation"]
 tags = ["theme", "zola"]
+
+[extra]
+comments = true
 +++
 
 This is a small example post of stuff you can do with the `Deep Thought` theme.

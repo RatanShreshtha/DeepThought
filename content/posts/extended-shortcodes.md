@@ -9,7 +9,7 @@ tags = ["theme", "zola"]
 
 [extra]
 toc = true
-comment = true
+comments = true
 +++
 
 Deep Thought theme provides multiple shortcodes on top of built-in ones in Zola.
