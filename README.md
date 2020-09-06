@@ -57,12 +57,12 @@ access_token = "<your_access_token>"
 ```
 
 ## Features
-  - [x] Pagination
-  - [x] Search
-  - [x] Charts
-  - [x] Maps
-  - [x] Diagrams
-  - [x] Analytics
-  - [x] Comments
-  - [x] Categories
-  - [ ] Social Links
+- [x] Pagination
+- [x] Search
+- [x] Charts
+- [x] Maps
+- [x] Diagrams
+- [x] Analytics
+- [x] Comments
+- [x] Categories
+- [x] Social Links

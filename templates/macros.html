@@ -1,89 +1,96 @@
 {% macro social_links(social_config) %}
 {% if social_config.facebook %}
-<a class="link" href="https://facebook.com/{{social_config.facebook}}" target="_blank">
-	<i class="fab fa-facebook"></i>
+<a class="link" href='https://facebook.com/{{social_config.facebook}}' target='_blank'>
+	<span class='icon'>
+		<i class='fab fa-facebook'></i>
+	</span>
 </a>
 {% endif %}
 {% if social_config.twitter %}
-<a class="link" href="https://twitter.com/{{social_config.twitter}}" target="_blank">
-	<i class="fab fa-twitter"></i>
+<a class="link" href='https://twitter.com/{{social_config.twitter}}' target='_blank'>
+	<span class='icon'>
+		<i class='fab fa-twitter'></i>
+	</span>
 </a>
 {% endif %}
 {% if social_config.linkedin %}
-<a class="link" href="https://www.linkedin.com/in/{{social_config.linkedin}}" target="_blank"><i
-		class="fab fa-linkedin"></i></i></a>
+<a class="link" href='https://www.linkedin.com/in/{{social_config.linkedin}}' target='_blank'>
+	<span class='icon'>
+		<i class='fab fa-linkedin'></i>
+	</span>
+</a>
 {% endif %}
 {% if social_config.github %}
-<a class="link" href="https://github.com/{{social_config.github}}" target="_blank"><i class="fab fa-github"></i></a>
+<a class="link" href='https://github.com/{{social_config.github}}' target='_blank'>
+	<span class='icon'>
+		<i class='fab fa-github'></i>
+	</span>
+</a>
 {% endif %}
 {% if social_config.stackoverflow %}
-<a class="link" href="https://stackoverflow.com/users/{{social_config.stackoverflow}}" target="_blank"><i
-		class="fab fa-stack-overflow"></i></i></a>
+<a class="link" href='https://stackoverflow.com/users/{{social_config.stackoverflow}}' target='_blank'>
+	<span class='icon'>
+		<i class='fab fa-stack-overflow'></i>
+	</span>
+</a>
 {% endif %}
 {% if social_config.keybase %}
-<a class="link" href="https://keybase.io/{{social_config.keybase}}" target="_blank"><i class="fab fa-keybase"></i></a>
+<a class="link" href='https://keybase.io/{{social_config.keybase}}' target='_blank'>
+	<span class='icon'>
+		<i class='fab fa-keybase'></i>
+	</span>
+</a>
 {% endif %}
 {% endmacro %}
 
 
 {% macro  page_publish_metadata(page) %}
-<p class="has-text-grey">
-	<i class="fas fa-user"></i>
+<p class='has-text-grey'>
+	<span class='icon'>
+		<i class='fas fa-user'></i>
+	</span>
 	{{ config.extra.author.name }}
 	published on
-	<i class="far fa-calendar-alt"></i>
-	<time datetime="{{page.date}}">{{ page.date | date(format="%B %d, %Y") }}</time>
+	<span class='icon'>
+		<i class='far fa-calendar-alt'></i>
+	</span>
+	<time datetime='{{page.date}}'>{{ page.date | date(format='%B %d, %Y') }}</time>
 </p>
 {% endmacro %}
 
 {% macro page_content_metadata(page) %}
-<p class="has-text-grey">
-	<i class="far fa-clock"></i>
+<p class='has-text-grey'>
+	<span class='icon'>
+		<i class='far fa-clock'></i>
+	</span>
 	{{page.reading_time}} min,
-	<i class="fas fa-pencil-alt"></i>
+	<span class='icon'>
+		<i class='fas fa-pencil-alt'></i>
+	</span>
 	{{page.word_count}} words
 </p>
 {% endmacro %}
 
 
 {% macro render_categories(categories) %}
-Categories:
-{% for category in categories %}
-<a class="link" href="{{ get_taxonomy_url(kind="categories", name=category) }}">
-	<span class="icon"><i class="fas fa-folder"></i></span>{{ category }}{% if not loop.last %},{% endif %}
-</a>
-{% endfor %}
+<p>
+	<span class="has-text-black has-text-weight-normal">Categories:</span>
+	{% for category in categories %}
+	<a class='link has-text-weight-light' href='{{ get_taxonomy_url(kind='categories', name=category) }}'>
+		<span class='icon is-small'><i class='fas fa-folder fa-xs'></i></span>{{ category }}
+	</a>
+	{% endfor %}
+</p>
 {% endmacro %}
 
 
 {% macro render_tags(tags) %}
-Tags:
-{% for tag in tags %}
-<a class="link" href="{{ get_taxonomy_url(kind="tags", name=tag) }}">
-	<span class="icon"><i class="fas fa-tag"></i></span>{{ tag }}{% if not loop.last %},{% endif %}
-</a>
-{% endfor %}
-{% endmacro %}
-
-{% macro google_analytics(gtag) %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ gtag }}"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() { dataLayer.push(arguments); }
-	gtag('js', new Date());
-
-	gtag('config', '{{ gtag }}');
-</script>
-{% endmacro %}
-
-{% macro hyvor_talk(id) %}
-<div id="hyvor-talk-view"></div>
-<script type="text/javascript">
-	var HYVOR_TALK_WEBSITE = {{ id }}; // DO NOT CHANGE THIS
-	var HYVOR_TALK_CONFIG = {
-		url: window.location.href,
-		id: window.btoa(encodeURIComponent(escape(window.location.href)))
-	};
-</script>
-<script async type="text/javascript" src="//talk.hyvor.com/web-api/embed"></script>
+<p>
+	<span class="has-text-black has-text-weight-normal">Tags:</span>
+	{% for tag in tags %}
+	<a class='link has-text-weight-light' href='{{ get_taxonomy_url(kind='tags', name=tag) }}'>
+		<span class='icon is-small'><i class='fas fa-tag fa-xs'></i></span>{{ tag }}
+	</a>
+	{% endfor %}
+</p>
 {% endmacro %}

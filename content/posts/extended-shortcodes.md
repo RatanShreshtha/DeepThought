@@ -9,29 +9,12 @@ tags = ["theme", "zola"]
 
 [extra]
 toc = true
-comments = false
+comments = true
 +++
 
 DeepThought theme provides multiple shortcodes on top of built-in ones in Zola.
 
 <!-- more -->
-
-# Quote
-
-To put a quote in your post use the below snippet
-**Code**
-
-```markdown
-{%/* quote(author="Winston Churchill") */%}
-Success is not final, failure is not fatal: it is the courage to continue that counts.
-{%/* end */%}
-```
-
-**Output**
-
-{% quote(author="Winston Churchill") %}
-Success is not final, failure is not fatal: it is the courage to continue that counts.
-{% end %}
 
 # Mermaid
 
@@ -40,6 +23,7 @@ Success is not final, failure is not fatal: it is the courage to continue that c
 ## Flowchart
 
 To put a flowchart in your post use below snippet
+
 **Code**
 
 ```
@@ -64,6 +48,7 @@ C-->D;
 ## Sequence Diagram
 
 To put a sequence diagram in your post use below snippet
+
 **Code**
 
 ```
@@ -100,6 +85,7 @@ Bob-->>John: Jolly good!
 ## Gantt diagram
 
 To put a gantt diagram in your post use below snippet
+
 **Code**
 
 ```
@@ -132,8 +118,9 @@ Future task : des3, after des2, 5d
 Future task2 : des4, after des3, 5d
 {% end %}
 
-## Class diagram - exclamation experimental
+## Class diagram - experimental
 To put a class diagram in your post use below snippet
+
 **Code**
 
 ```
@@ -173,8 +160,9 @@ Class01 : int gorilla
 Class08 <--> C2: Cool label
 {% end %}
 
-## Git graph - exclamation experimental
+## Git graph - experimental
 To put a git graph in your post use below snippet
+
 **Code**
 
 ```
@@ -218,7 +206,7 @@ commit
 merge newbranch
 {% end %}
 
-## Entity Relationship Diagram - exclamation experimental
+## Entity Relationship Diagram - experimental
 To put an ER diagram in your post use below snippet
 **Code**
 
@@ -289,17 +277,33 @@ Sit down: 5: Me
 ```markdown
 {%/* chart() */%}
 {
-"type": "bar",
-"data": {
-"labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-"datasets": [{
-"label": "# of Votes",
-"data": [12, 19, 3, 5, 8, 3],
-"backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
-"borderColor": ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
-"borderWidth": 1
-}]
-}
+  "type": "bar",
+  "data": {
+    "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    "datasets": [
+      {
+        "label": "# of Votes",
+        "data": [12, 19, 3, 5, 8, 3],
+        "backgroundColor": [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)"
+        ],
+        "borderColor": [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)"
+        ],
+        "borderWidth": 1
+      }
+    ]
+  }
 }
 {%/* end */%}
 ```
@@ -307,16 +311,32 @@ Sit down: 5: Me
 **Output**
 {% chart() %}
 {
-"type": "bar",
-"data": {
-"labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-"datasets": [{
-"label": "# of Votes",
-"data": [12, 19, 3, 5, 8, 3],
-"backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
-"borderColor": ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
-"borderWidth": 1
-}]
-}
+  "type": "bar",
+  "data": {
+    "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    "datasets": [
+      {
+        "label": "# of Votes",
+        "data": [12, 19, 3, 5, 8, 3],
+        "backgroundColor": [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)"
+        ],
+        "borderColor": [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)"
+        ],
+        "borderWidth": 1
+      }
+    ]
+  }
 }
 {% end %}

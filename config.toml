@@ -10,7 +10,7 @@ taxonomies = [
 	{ name = "tags", fees = true, paginate_by = 10 },
 ]
 languages = []
-compile_sass = false
+compile_sass = true
 build_search_index = true
 ignored_content = []
 extra_syntaxes = []

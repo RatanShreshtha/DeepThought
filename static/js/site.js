@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const $navbarBurgers = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar-burger"),
+    0
+  );
+
+  if ($navbarBurgers.length > 0) {
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener("click", () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        el.classList.toggle("is-active");
+        $target.classList.toggle("is-active");
+      });
+    });
+  }
+});
+
 function debounce(func, wait) {
   var timeout;
 
@@ -24,7 +43,7 @@ function makeTeaser(body, terms) {
   });
   var termFound = false;
   var index = 0;
-  var weighted = []; // contains elements of ["word", weight, index_in_document]
+  var weighted = []; // contains elements of ['word', weight, index_in_document]
 
   // split in sentences, then words
   var sentences = body.toLowerCase().split(". ");
@@ -113,13 +132,13 @@ function makeTeaser(body, terms) {
 
 function formatSearchResultItem(item, terms) {
   return (
-    `<article class="box">` +
-    `<h1 class="title is-4">` +
-    `<a class="link" class="link" href="${item.ref}">${item.doc.title}</a>` +
+    `<article class='box'>` +
+    `<h1 class='title is-4'>` +
+    `<a class='link' class='link' href='${item.ref}'>${item.doc.title}</a>` +
     `</h1>` +
-    `<div class="content mt-2">` +
+    `<div class='content mt-2'>` +
     `${makeTeaser(item.doc.body, terms)}` +
-    `<a class="read-more" href="${item.ref}">` +
+    `<a class='read-more' href='${item.ref}'>` +
     `Read More` +
     `</a>` +
     `</div>` +
@@ -203,7 +222,7 @@ document
         modal.classList.remove("is-active");
         html.classList.remove("is-clipped");
       });
-    
+
     document.querySelector(".delete").addEventListener("click", function (e) {
       e.preventDefault();
       modal.classList.remove("is-active");

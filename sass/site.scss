@@ -1,0 +1,43 @@
+@import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;515;600;700&display=swap";
+
+$font-stack: "Fira Code", monospace;
+
+$link: #363636;
+$link-hover: #2d96bd;
+
+$read-more: #2d96bd;
+$read-more-hover: #ef3982;
+
+body {
+  font: 100% $font-stack;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link {
+  color: $link;
+  &:hover {
+    color: $link-hover;
+  }
+}
+.read-more {
+  color: $read-more;
+  &:hover {
+    color: $read-more-hover;
+  }
+}
+
+$breakpoint-mobile: 768px;
+@media (max-width: $breakpoint-mobile) {
+  body {
+    font: 85% $font-stack;
+  }
+}

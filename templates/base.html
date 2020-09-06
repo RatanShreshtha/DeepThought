@@ -1,56 +1,65 @@
-{% import "macros.html" as macros %}
+{% import 'macros.html' as macros %}
 <!DOCTYPE html>
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
 
-	<meta name="theme-color" content="#ffffff">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<link rel="manifest" href="{{config.extra.favicon.webmanifest}}">
-	<link rel="mask-icon" href="{{config.extra.favicon.safari_pinned_tab}}" color="#5bbad5" />
-	<link rel="icon" type="image/png" sizes="16x16" href="{{config.extra.favicon.favicon_16x16}}" />
-	<link rel="icon" type="image/png" sizes="32x32" href="{{config.extra.favicon.favicon_32x32}}" />
-	<link rel="apple-touch-icon" sizes="180x180" href="{{config.extra.favicon.apple_touch_icon}}" />
+	<meta name='theme-color' content='#ffffff'>
+	<meta name='msapplication-TileColor' content='#da532c'>
+	<link rel='manifest' href='{{config.extra.favicon.webmanifest}}'>
+	<link rel='mask-icon' href='{{config.extra.favicon.safari_pinned_tab}}' color='#5bbad5' />
+	<link rel='icon' type='image/png' sizes='16x16' href='{{config.extra.favicon.favicon_16x16}}' />
+	<link rel='icon' type='image/png' sizes='32x32' href='{{config.extra.favicon.favicon_32x32}}' />
+	<link rel='apple-touch-icon' sizes='180x180' href='{{config.extra.favicon.apple_touch_icon}}' />
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
-	<link rel="stylesheet" href="{{ get_url(path="css/style.min.css") }}" />
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css' />
+	<link rel='stylesheet' href='{{ get_url(path='site.css') }}' />
 
 	<title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
-	{{ macros::google_analytics(gtag=config.extra.analytics.google) }}
+	{% if config.extra.analytics.google %}
+	<script src='https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}' async></script>
+	<script type='text/javascript'>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', '{{ config.extra.analytics.google }}');
+	</script>
+	{% endif %}
 </head>
 
-<body class="site">
+<body class='site'>
 	{% block nav %}
-	<nav class="navbar is-light" role="navigation" aria-label="main navigation">
-		<div class="container">
-			<div class="navbar-brand">
-				<a class="navbar-item has-text-weight-bold" href="/">{{ config.title }}</a>
-				<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-					data-target="navMenu">
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
+	<nav class='navbar is-light' role='navigation' aria-label='main navigation'>
+		<div class='container'>
+			<div class='navbar-brand'>
+				<a class='navbar-item has-text-weight-bold' href='/'>{{ config.title }}</a>
+				<a role='button' class='navbar-burger burger' aria-label='menu' aria-expanded='false'
+					data-target='navMenu'>
+					<span aria-hidden='true'></span>
+					<span aria-hidden='true'></span>
+					<span aria-hidden='true'></span>
 				</a>
 			</div>
 
-			<div id="navMenu" class="navbar-menu">
-				<div class="navbar-end">
+			<div id='navMenu' class='navbar-menu'>
+				<div class='navbar-end'>
 					{% for item in config.extra.navbar_items %}
-					<a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}" class="navbar-item">
+					<a href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}' class='navbar-item'>
 						{{ item.name }}
 					</a>
 					{% endfor %}
-					<div class="navbar-item">
-						<div class="field has-addons">
-							<div class="control">
-								<input id="search-dialog" class="input is-small" type="search" placeholder="Search">
+					<div class='navbar-item'>
+						<div class='field has-addons'>
+							<div class='control'>
+								<input id='search-dialog' class='input is-small' type='search' placeholder='Search'>
 							</div>
-							<div class="control">
-								<a class="button is-small">
-									<span class="icon"><i class="fas fa-search"></i></span>
+							<div class='control'>
+								<a class='button is-small'>
+									<span class='icon'><i class='fas fa-search'></i></span>
 								</a>
 							</div>
 						</div>
@@ -61,30 +70,34 @@
 	</nav>
 	{% endblock %}
 
-	<div class="modal">
-		<div class="modal-background"></div>
-		<div class="modal-card">
-			<header class="modal-card-head">
-				<p class="modal-card-title">Search</p>
-				<button class="delete" aria-label="close"></button>
-			</header>
-			<section class="modal-card-body">
+	<section class="section">
+		<div class="container">
+			<div class='modal'>
+				<div class='modal-background'></div>
+				<div class='modal-card'>
+					<header class='modal-card-head'>
+						<p class='modal-card-title'>Search</p>
+						<button class='delete' aria-label='close'></button>
+					</header>
+					<section class='modal-card-body'>
 
-				<div class="field">
-					<p class="control has-icons-right">
-						<input id="search" class="input" type="search" placeholder="🔎 Search the website">
-						<span class="icon is-small is-right">
-							<i class="fas fa-search"></i>
-						</span>
-					</p>
+						<div class='field'>
+							<p class='control has-icons-right'>
+								<input id='search' class='input' type='search' placeholder='🔎 Search the website'>
+								<span class='icon is-small is-right'>
+									<i class='fas fa-search'></i>
+								</span>
+							</p>
+						</div>
+						<div class='search-results'>
+							<div class='search-results__items'>
+							</div>
+						</div>
+					</section>
 				</div>
-				<div class="search-results">
-					<div class="search-results__items">
-					</div>
-				</div>
-			</section>
+			</div>
 		</div>
-	</div>
+	</section>
 
 	{% block header %}
 	{% endblock %}
@@ -93,51 +106,27 @@
 	{% endblock %}
 
 	{% block footer %}
-	<footer class="footer py-4">
-		<div class="has-text-centered">
+	<footer class='footer py-4'>
+		<div class='has-text-centered'>
 			<p>
-				Built with <span class="icon"><i class="fas fa-code"></i></span> code and <span class="icon">
-					<i class="fas fa-heart"></i></span> love
+				Built with <span class='icon'><i class='fas fa-code'></i></span> code and <span class='icon'>
+					<i class='fas fa-heart'></i></span> love
 				<br />
-				<span class="has-text-weight-bold">
-					Powered By <span class="icon"><i class="fas fa-power-off"></i></span> Zola
+				<span class='has-text-weight-bold'>
+					Powered By <span class='icon'><i class='fas fa-power-off'></i></span> Zola
 				</span>
 			</p>
 		</div>
 	</footer>
 	{% endblock %}
 
-	<script src="https://kit.fontawesome.com/201b8d5e05.js" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="{{ get_url(path="elasticlunr.min.js") }}"></script>
-	<script type="text/javascript" src="{{ get_url(path="search_index.en.js") }}"></script>
-	<script type="text/javascript" src="{{ get_url(path="js/search.js") }}"></script>
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', () => {
+	<script src='https://kit.fontawesome.com/201b8d5e05.js' crossorigin='anonymous'></script>
+	<script type='text/javascript' src='{{ get_url(path='elasticlunr.min.js') }}'></script>
+	<script type='text/javascript' src='{{ get_url(path='search_index.en.js') }}'></script>
+	<script type='text/javascript' src='{{ get_url(path='js/site.js') }}'></script>
 
-			// Get all "navbar-burger" elements
-			const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-			// Check if there are any navbar burgers
-			if ($navbarBurgers.length > 0) {
-
-				// Add a click event on each of them
-				$navbarBurgers.forEach(el => {
-					el.addEventListener('click', () => {
-
-						// Get the target from the "data-target" attribute
-						const target = el.dataset.target;
-						const $target = document.getElementById(target);
-
-						// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-						el.classList.toggle('is-active');
-						$target.classList.toggle('is-active');
-
-					});
-				});
-			}
-
-		});
-	</script>
+	{% block custom_javascript %}
+	{% endblock %}
 </body>
 
 </html>

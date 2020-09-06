@@ -83,10 +83,6 @@ We have them!
 
 ---
 
-## BlockQuotes
-{% quote(author="Noam Chomsky") %}Language is a process of free creation; its laws and principles are fixed, but the manner in which the principles of generation are used is free and infinitely varied. Even the interpretation and use of words involves a process of free creation.
-{% end %}
-
 ## Youtube
 
 with `youtube(id="the_id_here")`
