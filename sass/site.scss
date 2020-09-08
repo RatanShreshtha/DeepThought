@@ -1,12 +1,12 @@
-@import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;515;600;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap";
 
-$font-stack: "Fira Code", monospace;
+$font-stack: "Nunito", sans-serif;
 
-$link: #363636;
-$link-hover: #2d96bd;
+$link: hsl(0, 0%, 21%);
+$link-hover: hsl(204, 71%, 39%);
 
-$read-more: #2d96bd;
-$read-more-hover: #ef3982;
+$read-more: hsl(204, 71%, 39%);
+$read-more-hover: hsl(348, 100%, 61%);
 
 body {
   font: 100% $font-stack;

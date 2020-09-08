@@ -1,45 +1,47 @@
 {% macro social_links(social_config) %}
-{% if social_config.facebook %}
-<a class="link" href='https://facebook.com/{{social_config.facebook}}' target='_blank'>
-	<span class='icon'>
-		<i class='fab fa-facebook'></i>
-	</span>
-</a>
-{% endif %}
-{% if social_config.twitter %}
-<a class="link" href='https://twitter.com/{{social_config.twitter}}' target='_blank'>
-	<span class='icon'>
-		<i class='fab fa-twitter'></i>
-	</span>
-</a>
-{% endif %}
-{% if social_config.linkedin %}
-<a class="link" href='https://www.linkedin.com/in/{{social_config.linkedin}}' target='_blank'>
-	<span class='icon'>
-		<i class='fab fa-linkedin'></i>
-	</span>
-</a>
-{% endif %}
-{% if social_config.github %}
-<a class="link" href='https://github.com/{{social_config.github}}' target='_blank'>
-	<span class='icon'>
-		<i class='fab fa-github'></i>
-	</span>
-</a>
-{% endif %}
-{% if social_config.stackoverflow %}
-<a class="link" href='https://stackoverflow.com/users/{{social_config.stackoverflow}}' target='_blank'>
-	<span class='icon'>
-		<i class='fab fa-stack-overflow'></i>
-	</span>
-</a>
-{% endif %}
-{% if social_config.keybase %}
-<a class="link" href='https://keybase.io/{{social_config.keybase}}' target='_blank'>
-	<span class='icon'>
-		<i class='fab fa-keybase'></i>
-	</span>
-</a>
+<p class='is-size-4'>
+	{% if social_config.facebook %}
+	<a class="link" href='https://facebook.com/{{social_config.facebook}}' target='_blank'>
+		<span class='icon'>
+			<i class='fab fa-facebook'></i>
+		</span>
+	</a>
+	{% endif %}
+	{% if social_config.twitter %}
+	<a class="link" href='https://twitter.com/{{social_config.twitter}}' target='_blank'>
+		<span class='icon'>
+			<i class='fab fa-twitter'></i>
+		</span>
+	</a>
+	{% endif %}
+	{% if social_config.linkedin %}
+	<a class="link" href='https://www.linkedin.com/in/{{social_config.linkedin}}' target='_blank'>
+		<span class='icon'>
+			<i class='fab fa-linkedin'></i>
+		</span>
+	</a>
+	{% endif %}
+	{% if social_config.github %}
+	<a class="link" href='https://github.com/{{social_config.github}}' target='_blank'>
+		<span class='icon'>
+			<i class='fab fa-github'></i>
+		</span>
+	</a>
+	{% endif %}
+	{% if social_config.stackoverflow %}
+	<a class="link" href='https://stackoverflow.com/users/{{social_config.stackoverflow}}' target='_blank'>
+		<span class='icon'>
+			<i class='fab fa-stack-overflow'></i>
+		</span>
+	</a>
+	{% endif %}
+	{% if social_config.keybase %}
+	<a class="link" href='https://keybase.io/{{social_config.keybase}}' target='_blank'>
+		<span class='icon'>
+			<i class='fab fa-keybase'></i>
+		</span>
+	</a>
+</p>
 {% endif %}
 {% endmacro %}
 

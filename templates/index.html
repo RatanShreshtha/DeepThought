@@ -10,11 +10,9 @@
 						<img class='is-rounded card' src='{{config.extra.author.avatar}}' style='max-width: 150px'>
 					</figure>
 					<div class='has-text-centered'>
-						<h1 class='title is-size-4'>{{ section.title }}</h1>
+						<h1 class='title'>{{ section.title }}</h1>
 						<h2 class='subtitle'>{{ section.description }}</h2>
-						<p class='is-size-4'>
-							{{ macros:: social_links( social_config=config.extra.social) }}
-						</p>
+						{{ macros:: social_links( social_config=config.extra.social) }}
 					</div>
 					<hr />
 					<div class='content has-text-justified'>
@@ -22,7 +20,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </main>
