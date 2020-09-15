@@ -1,0 +1,9 @@
+<div class="container is-clipped">
+    <div id="slider">
+        {% for image in images %}
+        <figure class="image is-16by9 mx-0">
+            <img src="{{image}}" alt="{{image}}" />
+        </figure>
+        {% endfor %}
+    </div>
+</div>

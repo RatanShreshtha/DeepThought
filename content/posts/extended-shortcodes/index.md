@@ -300,3 +300,33 @@ journey
   }
 }
 {% end %}
+
+# Carousel
+
+A carousel implemented in using [bulma-carousel](https://demo.creativebulma.net/components/carousel/).
+
+**Code**
+
+```
+{{/* carousel(images=[
+  "alexandre-dinaut-GHxr3O6yZ1c-unsplash.jpg", 
+  "chandler-cruttenden-YYemke7BfuE-unsplash.jpg", 
+  "jung-ho-park-7aZtpsyaWVM-unsplash.jpg", 
+  "kitera-dent-BIj4LObC6es-unsplash.jpg", 
+  "koes-nadi-XkUFF1nnbA8-unsplash.jpg", 
+  "lazyartistgallery-HHaIRbgzcGw-unsplash.jpg", 
+  "saira-nUxdL_19OQw-unsplash.jpg", 
+  "waldemar-brandt-2hAEHCt25eM-unsplash.jpg"]) */}}
+```
+
+**Output**
+
+{{ carousel(images=[
+  "alexandre-dinaut-GHxr3O6yZ1c-unsplash.jpg", 
+  "chandler-cruttenden-YYemke7BfuE-unsplash.jpg", 
+  "jung-ho-park-7aZtpsyaWVM-unsplash.jpg", 
+  "kitera-dent-BIj4LObC6es-unsplash.jpg", 
+  "koes-nadi-XkUFF1nnbA8-unsplash.jpg", 
+  "lazyartistgallery-HHaIRbgzcGw-unsplash.jpg", 
+  "saira-nUxdL_19OQw-unsplash.jpg", 
+  "waldemar-brandt-2hAEHCt25eM-unsplash.jpg"]) }}

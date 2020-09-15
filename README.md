@@ -63,6 +63,7 @@ access_token = "<your_access_token>"
 - [x] Charts
 - [x] Maps
 - [x] Diagrams
+- [x] Carousel
 - [x] Analytics
 - [x] Comments
 - [x] Categories
