@@ -10,19 +10,22 @@
 				<article>
 					<h1 class='title'>{{ page.title }}</h1>
 					<h2 class='subtitle'>{{ page.description }}</h2>
+					<div class='columns mb-0'>
+						<div class='column'>
+							{{ macros::page_publish_metadata(page=page) }}
+						</div>
+						<div class='column has-text-right-desktop'>
+							{{ macros::page_content_metadata(page=page) }}
+						</div>
+					</div>
 
-					{{ macros::page_content_metadata(page=page) }}
-					{{ macros::page_publish_metadata(page=page) }}
-
-					<br />
-
-					<div class='columns'>
+					<div class='columns mb-0'>
 						<div class='column'>
 							{% if page.taxonomies.categories %}
 							{{ macros::render_categories(categories=page.taxonomies.categories) }}
 							{% endif %}
 						</div>
-						<div class='column'>
+						<div class='column has-text-right-desktop'>
 							{% if page.taxonomies.tags %}
 							{{ macros::render_tags(tags=page.taxonomies.tags) }}
 							{% endif %}
@@ -56,7 +59,12 @@
 					<div class='content has-text-justified'>
 						{{ page.content | safe }}
 					</div>
+
+					<div class="container has-text-centered mt-6">
+						{{ macros::page_share_links(page=page) }}
+					</div>
 				</article>
+
 				<hr />
 				{% if page.earlier or page.later or page.lighter or page.heavier %}
 				<nav class='level mt-2'>

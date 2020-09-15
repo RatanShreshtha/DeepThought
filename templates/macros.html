@@ -96,3 +96,45 @@
 	{% endfor %}
 </p>
 {% endmacro %}
+
+{% macro page_share_links(page) %}
+<p class='is-size-5'>
+	Share:
+	<a class="link" title="Share on facebook" href="javascript:void(0);" data-sharer="facebook"
+		data-url='{{ page.permalink }}'>
+		<span class='icon'>
+			<i class='fab fa-facebook-square'></i>
+		</span>
+	</a>
+	<a class="link" title="Share on twitter" href="javascript:void(0);" data-sharer="twitter"
+		data-title='{{ page.title }}' data-url='{{ page.permalink }}'>
+		<span class='icon'>
+			<i class='fab fa-twitter'></i>
+		</span>
+	</a>
+	<a class="link" title="Share on linkedin" href="javascript:void(0);" data-sharer="linkedin"
+		data-url='{{ page.permalink }}'>
+		<span class='icon'>
+			<i class='fab fa-linkedin'></i>
+		</span>
+	</a>
+	<a class="link" title="Share on reddit" href="javascript:void(0);" data-sharer="reddit"
+		data-url='{{ page.permalink }}'>
+		<span class='icon'>
+			<i class='fab fa-reddit'></i>
+		</span>
+	</a>
+	<a class="link" title="Share on hackernews" href="javascript:void(0);" data-sharer="hackernews"
+		data-title="{{ page.title }}" data-url='{{ page.permalink }}'>
+		<span class='icon'>
+			<i class='fab fa-hacker-news'></i>
+		</span>
+	</a>
+	<a class="link" title="Share on whatsapp" href="javascript:void(0);" data-sharer="whatsapp"
+		data-title="{{ page.title }}" data-url='{{ page.permalink }}'>
+		<span class='icon'>
+			<i class="fab fa-whatsapp-square"></i>
+		</span>
+	</a>
+</p>
+{% endmacro %}

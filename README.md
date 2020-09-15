@@ -67,3 +67,4 @@ access_token = "<your_access_token>"
 - [x] Comments
 - [x] Categories
 - [x] Social Links
+- [x] Post Sharing
