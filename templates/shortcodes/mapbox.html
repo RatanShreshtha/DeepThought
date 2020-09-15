@@ -1,22 +1,4 @@
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <div id='map' class="center" style='height: 400px;'></div>
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<script>
-    mapboxgl.accessToken = '{{config.extra.mapbox.access_token}}';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [{{lng}}, {{lat}}],
-        zoom: {{ zoom }}
-    });
-
-    map.addControl(new mapboxgl.NavigationControl());
-
-    var marker = new mapboxgl.Marker()
-            .setLngLat([{{lng}}, {{lat}}])
-            .addTo(map);
-
-    // var marker = new mapboxgl.Marker()
-    //     .setLngLat([{{ lng }}, { { lat } }])
-    //         .addTo(map);
-</script>
+<div id="map-lng" style="display: none">{{lng}}</div>
+<div id="map-lat" style="display: none">{{lat}}</div>
+<div id="map-zoom" style="display: none">{{zoom}}</div>

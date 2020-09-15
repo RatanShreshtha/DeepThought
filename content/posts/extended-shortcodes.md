@@ -54,32 +54,32 @@ To put a sequence diagram in your post use below snippet
 ```
 {%/* mermaid() */%}
 sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
+  participant Alice
+  participant Bob
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+    John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts <br/>prevail!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
 {%/* end */%}
 ```
 
 **Output**
 {% mermaid() %}
 sequenceDiagram
-participant Alice
-participant Bob
-Alice->>John: Hello John, how are you?
-loop Healthcheck
-John->>John: Fight against hypochondria
-end
-Note right of John: Rational thoughts <br/>prevail!
-John-->>Alice: Great!
-John->>Bob: How about you?
-Bob-->>John: Jolly good!
+  participant Alice
+  participant Bob
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+    John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts <br/>prevail!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
 {% end %}
 
 ## Gantt diagram
@@ -91,15 +91,15 @@ To put a gantt diagram in your post use below snippet
 ```
 {%/* mermaid() */%}
 gantt
-dateFormat YYYY-MM-DD
-title Adding GANTT diagram to mermaid
-excludes weekdays 2014-01-10
+  dateFormat YYYY-MM-DD
+  title Adding GANTT diagram to mermaid
+  excludes weekdays 2014-01-10
 
-section A section
-Completed task :done, des1, 2014-01-06,2014-01-08
-Active task :active, des2, 2014-01-09, 3d
-Future task : des3, after des2, 5d
-Future task2 : des4, after des3, 5d
+  section A section
+  Completed task :done, des1, 2014-01-06,2014-01-08
+  Active task :active, des2, 2014-01-09, 3d
+  Future task : des3, after des2, 5d
+  Future task2 : des4, after des3, 5d
 {%/* end */%}
 ```
 
@@ -107,18 +107,19 @@ Future task2 : des4, after des3, 5d
 
 {% mermaid() %}
 gantt
-dateFormat YYYY-MM-DD
-title Adding GANTT diagram to mermaid
-excludes weekdays 2014-01-10
+  dateFormat YYYY-MM-DD
+  title Adding GANTT diagram to mermaid
+  excludes weekdays 2014-01-10
 
-section A section
-Completed task :done, des1, 2014-01-06,2014-01-08
-Active task :active, des2, 2014-01-09, 3d
-Future task : des3, after des2, 5d
-Future task2 : des4, after des3, 5d
+  section A section
+  Completed task :done, des1, 2014-01-06,2014-01-08
+  Active task :active, des2, 2014-01-09, 3d
+  Future task : des3, after des2, 5d
+  Future task2 : des4, after des3, 5d
 {% end %}
 
 ## Class diagram - experimental
+
 To put a class diagram in your post use below snippet
 
 **Code**
@@ -126,136 +127,92 @@ To put a class diagram in your post use below snippet
 ```
 {%/* mermaid() */%}
 classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 _-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --> C2 : Where am i?
-Class09 --_ C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 <--> C2: Cool label
+  Class01 <|-- AveryLongClass : Cool
+  Class03 _-- Class04
+  Class05 o-- Class06
+  Class07 .. Class08
+  Class09 --> C2 : Where am i?
+  Class09 --_ C3
+  Class09 --|> Class07
+  Class07 : equals()
+  Class07 : Object[] elementData
+  Class01 : size()
+  Class01 : int chimp
+  Class01 : int gorilla
+  Class08 <--> C2: Cool label
 {%/* end */%}
 ```
 
 **Output**
 {% mermaid() %}
 classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 _-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --> C2 : Where am i?
-Class09 --_ C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 <--> C2: Cool label
-{% end %}
-
-## Git graph - experimental
-To put a git graph in your post use below snippet
-
-**Code**
-
-```
-{%/* mermaid() */%}
-gitGraph:
-options
-{
-"nodeSpacing": 150,
-"nodeRadius": 10
-}
-end
-commit
-branch newbranch
-checkout newbranch
-commit
-commit
-checkout master
-commit
-commit
-merge newbranch
-{%/* end */%}
-```
-
-**Output**
-{% mermaid() %}
-gitGraph:
-options
-{
-"nodeSpacing": 150,
-"nodeRadius": 10
-}
-end
-commit
-branch newbranch
-checkout newbranch
-commit
-commit
-checkout master
-commit
-commit
-merge newbranch
+  Class01 <|-- AveryLongClass : Cool
+  Class03 _-- Class04
+  Class05 o-- Class06
+  Class07 .. Class08
+  Class09 --> C2 : Where am i?
+  Class09 --_ C3
+  Class09 --|> Class07
+  Class07 : equals()
+  Class07 : Object[] elementData
+  Class01 : size()
+  Class01 : int chimp
+  Class01 : int gorilla
+  Class08 <--> C2: Cool label
 {% end %}
 
 ## Entity Relationship Diagram - experimental
+
 To put an ER diagram in your post use below snippet
 **Code**
 
 ```
 {%/* mermaid() */%}
 erDiagram
-CUSTOMER ||--o{ ORDER : places
-ORDER ||--|{ LINE-ITEM : contains
-CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 {%/* end */%}
 ```
 
 **Output**
 {% mermaid() %}
 erDiagram
-CUSTOMER ||--o{ ORDER : places
-ORDER ||--|{ LINE-ITEM : contains
-CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 {% end %}
 
 ## User Journey Diagram
+
 To put an user journey diagram in your post use below snippet
 **Code**
 
 ```
 {%/* mermaid() */%}
-journey
-title My working day
-section Go to work
-Make tea: 5: Me
-Go upstairs: 3: Me
-Do work: 1: Me, Cat
-section Go home
-Go downstairs: 5: Me
-Sit down: 5: Me
+  journey
+  title My working day
+  section Go to work
+  Make tea: 5: Me
+  Go upstairs: 3: Me
+  Do work: 1: Me, Cat
+  section Go home
+  Go downstairs: 5: Me
+  Sit down: 5: Me
 {%/* end */%}
 ```
 
 **Output**
 {% mermaid () %}
 journey
-title My working day
-section Go to work
-Make tea: 5: Me
-Go upstairs: 3: Me
-Do work: 1: Me, Cat
-section Go home
-Go downstairs: 5: Me
-Sit down: 5: Me
+  title My working day
+  section Go to work
+  Make tea: 5: Me
+  Go upstairs: 3: Me
+  Do work: 1: Me, Cat
+  section Go home
+  Go downstairs: 5: Me
+  Sit down: 5: Me
 {% end %}
 
 # Mapbox
@@ -263,9 +220,11 @@ Sit down: 5: Me
 [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js) is a JavaScript library that uses WebGL to render interactive maps from vector tiles and Mapbox styles.
 
 **Code**
+
 ```
 {{/* mapbox(lng=73.856255, lat=18.516726, zoom=8) */}}
 ```
+
 **Output**
 {{ mapbox(lng=73.856255, lat=18.516726, zoom=8) }}
 
@@ -274,6 +233,7 @@ Sit down: 5: Me
 [Chart.js](https://www.chartjs.org/) is simple yet flexible JavaScript charting for designers & developers
 
 **Code**
+
 ```markdown
 {%/* chart() */%}
 {
