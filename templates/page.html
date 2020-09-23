@@ -2,10 +2,6 @@
 
 {% block title %}{{ config.title }} | {{ page.title }}{% endblock title %}
 
-{% block custom_css %}
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-{% endblock %}
 
 {% block main %}
 <main class='section'>
@@ -59,11 +55,15 @@
 						</ul>
 					</div>
 					{% endif %}
+
+					
 					<hr />
 
 					<div class='content has-text-justified'>
 						{{ page.content | safe }}
 					</div>
+
+					 <div id="mapid"></div>
 
 					<div class="container has-text-centered mt-6">
 						{{ macros::page_share_links(page=page) }}
@@ -120,11 +120,7 @@
 {% endblock main %}
 
 {% block custom_js %}
-<script async type='text/javascript' src='https://talk.hyvor.com/web-api/embed'></script>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+
 
 <script type='text/javascript'>
 	// initialize hyvor comments 
@@ -133,39 +129,5 @@
 		url: window.location.href,
 		id: window.btoa(encodeURIComponent(escape(window.location.href)))
 	};
-
-	bulmaCarousel.attach('#slider', {
-		loop: true,
-		initialSlide: 0,
-		slidesToScroll: 1,
-		slidesToShow: 1
-	});
-
-	// initialize mermaid
-	mermaid.initialize({ startOnLoad: true });
-
-	// initialize chart.js 
-	var chartData = document.getElementById('chart-data').textContent;
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var chart = new Chart(ctx, JSON.parse(chartData));
-
-	// initialize mapbox gl
-	mapboxgl.accessToken = '{{config.extra.mapbox.access_token}}';
-	var lng = document.getElementById('map-lng').textContent;
-	var lat = document.getElementById('map-lat').textContent;
-	var zoom = document.getElementById('map-zoom').textContent;
-
-	var map = new mapboxgl.Map({
-		container: 'map',
-		style: 'mapbox://styles/mapbox/streets-v11',
-		center: [lng, lat],
-		zoom: zoom
-	});
-
-	map.addControl(new mapboxgl.NavigationControl());
-
-	var marker = new mapboxgl.Marker()
-		.setLngLat([lng, lat])
-		.addTo(map);
 </script>
 {% endblock %}

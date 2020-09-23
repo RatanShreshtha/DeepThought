@@ -222,45 +222,95 @@ journey
 **Code**
 
 ```
-{{/* mapbox(lng=73.856255, lat=18.516726, zoom=8) */}}
+{%/* mapbox(zoom=6) */%}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.016667, 27.183333]
+      },
+      "properties": {
+        "title": "Agra",
+        "description": "Agra is a major tourist destination because of its many Mughal-era buildings, most notably the Taj Mahal, Agra Fort and Fatehpur Sikri, all of which are UNESCO World Heritage Sites."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.2, 28.6]
+      },
+      "properties": {
+        "title": "New Delhi",
+        "description": "New Delhi is the capital of India and an administrative district of NCT Delhi."
+      }
+    }
+  ]
+}
+{%/* end */%}
 ```
 
 **Output**
-{{ mapbox(lng=73.856255, lat=18.516726, zoom=8) }}
+{% mapbox(zoom=6) %}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.016667, 27.183333]
+      },
+      "properties": {
+        "title": "Agra",
+        "description": "Agra is a major tourist destination because of its many Mughal-era buildings, most notably the Taj Mahal, Agra Fort and Fatehpur Sikri, all of which are UNESCO World Heritage Sites."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.2, 28.6]
+      },
+      "properties": {
+        "title": "New Delhi",
+        "description": "New Delhi is the capital of India and an administrative district of NCT Delhi."
+      }
+    }
+  ]
+}
+{% end %}
 
 # Chart
 
-[Chart.js](https://www.chartjs.org/) is simple yet flexible JavaScript charting for designers & developers
+[Chart.xkcd](https://timqian.com/chart.xkcd/) is a chart library plots “sketchy”, “cartoony” or “hand-drawn” styled charts.
+
+## Line chart
+
+Line chart displays series of data points in the form of lines. It can be used to show trend data, or comparison of different data sets.
 
 **Code**
 
-```markdown
+```
 {%/* chart() */%}
 {
-  "type": "bar",
+  "type": "Line",
+  "title": "Monthly income of an indie developer",
+  "xLabel": "Month",
+  "yLabel": "$ Dollars",
   "data": {
-    "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    "labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     "datasets": [
       {
-        "label": "# of Votes",
-        "data": [12, 19, 3, 5, 8, 3],
-        "backgroundColor": [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)"
-        ],
-        "borderColor": [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)"
-        ],
-        "borderWidth": 1
+        "label": "Plan",
+        "data": [30, 70, 200, 300, 500, 800, 1500, 2900, 5000, 8000]
+      },
+      {
+        "label": "Reality",
+        "data": [0, 1, 30, 70, 80, 100, 50, 80, 40, 150]
       }
     ]
   }
@@ -269,64 +319,478 @@ journey
 ```
 
 **Output**
+
 {% chart() %}
 {
-  "type": "bar",
+  "type": "Line",
+  "title": "Monthly income of an indie developer",
+  "xLabel": "Month",
+  "yLabel": "$ Dollars",
   "data": {
-    "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    "labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     "datasets": [
       {
-        "label": "# of Votes",
-        "data": [12, 19, 3, 5, 8, 3],
-        "backgroundColor": [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)"
-        ],
-        "borderColor": [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)"
-        ],
-        "borderWidth": 1
+        "label": "Plan",
+        "data": [30, 70, 200, 300, 500, 800, 1500, 2900, 5000, 8000]
+      },
+      {
+        "label": "Reality",
+        "data": [0, 1, 30, 70, 80, 100, 50, 80, 40, 150]
       }
     ]
   }
 }
 {% end %}
 
-# Carousel
 
-A carousel implemented in using [bulma-carousel](https://demo.creativebulma.net/components/carousel/).
+## XY chart
+
+XY chart is used to plot points by specifying their XY coordinates.
 
 **Code**
 
 ```
-{{/* carousel(images=[
-  "alexandre-dinaut-GHxr3O6yZ1c-unsplash.jpg", 
-  "chandler-cruttenden-YYemke7BfuE-unsplash.jpg", 
-  "jung-ho-park-7aZtpsyaWVM-unsplash.jpg", 
-  "kitera-dent-BIj4LObC6es-unsplash.jpg", 
-  "koes-nadi-XkUFF1nnbA8-unsplash.jpg", 
-  "lazyartistgallery-HHaIRbgzcGw-unsplash.jpg", 
-  "saira-nUxdL_19OQw-unsplash.jpg", 
-  "waldemar-brandt-2hAEHCt25eM-unsplash.jpg"]) */}}
+{%/* chart() */%}
+{
+  "type": "XY",
+  "title": "Pokemon farms",
+  "xLabel": "Coordinate",
+  "yLabel": "Count",
+  "data": {
+    "datasets": [
+      {
+        "label": "Pikachu",
+        "data": [
+          {
+            "x": 3,
+            "y": 10
+          },
+          {
+            "x": 4,
+            "y": 122
+          },
+          {
+            "x": 10,
+            "y": 100
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 4
+          }
+        ]
+      },
+      {
+        "label": "Squirtle",
+        "data": [
+          {
+            "x": 3,
+            "y": 122
+          },
+          {
+            "x": 4,
+            "y": 212
+          },
+          {
+            "x": -3,
+            "y": 100
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 1.5,
+            "y": 12
+          }
+        ]
+      }
+    ]
+  }
+}
+{%/* end */%}
 ```
 
 **Output**
 
-{{ carousel(images=[
-  "alexandre-dinaut-GHxr3O6yZ1c-unsplash.jpg", 
-  "chandler-cruttenden-YYemke7BfuE-unsplash.jpg", 
-  "jung-ho-park-7aZtpsyaWVM-unsplash.jpg", 
-  "kitera-dent-BIj4LObC6es-unsplash.jpg", 
-  "koes-nadi-XkUFF1nnbA8-unsplash.jpg", 
-  "lazyartistgallery-HHaIRbgzcGw-unsplash.jpg", 
-  "saira-nUxdL_19OQw-unsplash.jpg", 
-  "waldemar-brandt-2hAEHCt25eM-unsplash.jpg"]) }}
+{% chart() %}
+{
+  "type": "XY",
+  "title": "Pokemon farms",
+  "xLabel": "Coordinate",
+  "yLabel": "Count",
+  "data": {
+    "datasets": [
+      {
+        "label": "Pikachu",
+        "data": [
+          {
+            "x": 3,
+            "y": 10
+          },
+          {
+            "x": 4,
+            "y": 122
+          },
+          {
+            "x": 10,
+            "y": 100
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 4
+          }
+        ]
+      },
+      {
+        "label": "Squirtle",
+        "data": [
+          {
+            "x": 3,
+            "y": 122
+          },
+          {
+            "x": 4,
+            "y": 212
+          },
+          {
+            "x": -3,
+            "y": 100
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 1.5,
+            "y": 12
+          }
+        ]
+      }
+    ]
+  }
+}
+{% end %}
+
+
+
+## Bar chart
+
+A bar chart provides a way of showing data values represented as vertical bars
+
+**Code**
+
+```
+{%/* chart() */%}
+{
+  "type": "Bar",
+  "title": "github stars VS patron number",
+  "xLabel": "Platforms",
+  "yLabel": "Count",
+  "data": {
+    "labels": ["github stars", "patrons"],
+    "datasets": [
+      {
+        "data": [100, 20]
+      }
+    ]
+  }
+}
+{%/* end */%}
+```
+
+**Output**
+
+{% chart() %}
+{
+  "type": "Bar",
+  "title": "github stars VS patron number",
+  "xLabel": "Platforms",
+  "yLabel": "Count",
+  "data": {
+    "labels": ["github stars", "patrons"],
+    "datasets": [
+      {
+        "data": [100, 20]
+      }
+    ]
+  }
+}
+{% end %}
+
+
+
+## Stacked bar chart
+
+A stacked bar chart provides a way of showing data values represented as vertical bars
+
+**Code**
+
+```
+{%/* chart() */%}
+{
+  "type": "StackedBar",
+  "title": "Issues and PR Submissions",
+  "xLabel": "Month",
+  "yLabel": "Count",
+  "data": {
+    "labels": ["Jan", "Feb", "Mar", "April", "May"],
+    "datasets": [
+      {
+        "label": "Issues",
+        "data": [12, 19, 11, 29, 17]
+      },
+      {
+        "label": "PRs",
+        "data": [3, 5, 2, 4, 1]
+      },
+      {
+        "label": "Merges",
+        "data": [2, 3, 0, 1, 1]
+      }
+    ]
+  }
+}
+{%/* end */%}
+```
+
+**Output**
+
+{% chart() %}
+{
+  "type": "StackedBar",
+  "title": "Issues and PR Submissions",
+  "xLabel": "Month",
+  "yLabel": "Count",
+  "data": {
+    "labels": ["Jan", "Feb", "Mar", "April", "May"],
+    "datasets": [
+      {
+        "label": "Issues",
+        "data": [12, 19, 11, 29, 17]
+      },
+      {
+        "label": "PRs",
+        "data": [3, 5, 2, 4, 1]
+      },
+      {
+        "label": "Merges",
+        "data": [2, 3, 0, 1, 1]
+      }
+    ]
+  }
+}
+{% end %}
+
+
+
+## Pie/Doughnut chart
+
+A pie/doughnut chart provides a way of illustrating numerical proportion.
+
+**Code**
+
+```
+{%/* chart() */%}
+{
+  "type": "Pie",
+  "title": "What Tim is made of",
+  "data": {
+    "labels": ["a", "b", "e", "f", "g"],
+    "datasets": [
+      {
+        "data": [500, 200, 80, 90, 100]
+      }
+    ]
+  }
+}
+{%/* end */%}
+```
+
+**Output**
+
+{% chart() %}
+{
+  "type": "Pie",
+  "title": "What Tim is made of",
+  "data": {
+    "labels": ["a", "b", "e", "f", "g"],
+    "datasets": [
+      {
+        "data": [500, 200, 80, 90, 100]
+      }
+    ]
+  }
+}
+{% end %}
+
+## Radar chart
+
+A radar chart provides a way of displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point.
+
+**Code**
+
+```
+{%/* chart() */%}
+{
+  "type": "Radar",
+  "title": "Letters in random words",
+  "data": {
+    "labels": ["c", "h", "a", "r", "t"],
+    "datasets": [
+      {
+        "label": "ccharrrt",
+        "data": [2, 1, 1, 3, 1]
+      },
+      {
+        "label": "chhaart", 
+        "data": [1, 2, 2, 1, 1]
+      }
+    ]
+  }
+}
+{%/* end */%}
+```
+
+**Output**
+
+{% chart() %}
+{
+  "type": "Radar",
+  "title": "Letters in random words",
+  "data": {
+    "labels": ["c", "h", "a", "r", "t"],
+    "datasets": [
+      {
+        "label": "ccharrrt",
+        "data": [2, 1, 1, 3, 1]
+      },
+      {
+        "label": "chhaart", 
+        "data": [1, 2, 2, 1, 1]
+      }
+    ]
+  }
+}
+{% end %}
+
+# Galleria
+
+[Galleria](https://galleriajs.github.io/) is a framework that simplifies the process of creating beautiful image galleries for the web and mobile devices.
+
+**Code**
+
+```
+{/* galleria() */}
+{
+  "images": [
+    {
+      "src": "alexandre-dinaut-GHxr3O6yZ1c-unsplash.jpg",
+      "title": "Clouds & Mountains",
+      "description": "Just hanging out with each other."
+    },
+    {
+      "src": "chandler-cruttenden-YYemke7BfuE-unsplash.jpg",
+      "title": "Crop",
+      "description": "Waiting for the harvest."
+    },
+    {
+      "src": "jung-ho-park-7aZtpsyaWVM-unsplash.jpg",
+      "title": "The Fog",
+      "description": "Engulfing everything."
+    },
+    {
+      "src": "kitera-dent-BIj4LObC6es-unsplash.jpg",
+      "title": "Just Plants",
+      "description": "Backdrop of ocean."
+    },
+    {
+      "src": "koes-nadi-XkUFF1nnbA8-unsplash.jpg",
+      "title": "Whoa",
+      "description": "Something to look at."
+    },
+    {
+      "src": "lazyartistgallery-HHaIRbgzcGw-unsplash.jpg",
+      "title": "Let's Chill",
+      "description": "Three birds just chilling !!"
+    },
+    {
+      "src": "saira-nUxdL_19OQw-unsplash.jpg",
+      "title": "Canyon",
+      "description": "Might of nature."
+    },
+    {
+      "src": "waldemar-brandt-2hAEHCt25eM-unsplash.jpg",
+      "title": "Evening",
+      "description": "Time to wind down."
+    }
+  ]
+}
+{%/* end */%}
+```
+
+**Output**
+
+{% galleria() %}
+{
+  "images": [
+    {
+      "src": "alexandre-dinaut-GHxr3O6yZ1c-unsplash.jpg",
+      "title": "Clouds & Mountains",
+      "description": "Just hanging out with each other."
+    },
+    {
+      "src": "chandler-cruttenden-YYemke7BfuE-unsplash.jpg",
+      "title": "Crop",
+      "description": "Waiting for the harvest."
+    },
+    {
+      "src": "jung-ho-park-7aZtpsyaWVM-unsplash.jpg",
+      "title": "The Fog",
+      "description": "Engulfing everything."
+    },
+    {
+      "src": "kitera-dent-BIj4LObC6es-unsplash.jpg",
+      "title": "Just Plants",
+      "description": "Backdrop of ocean."
+    },
+    {
+      "src": "koes-nadi-XkUFF1nnbA8-unsplash.jpg",
+      "title": "Whoa",
+      "description": "Something to look at."
+    },
+    {
+      "src": "lazyartistgallery-HHaIRbgzcGw-unsplash.jpg",
+      "title": "Let's Chill",
+      "description": "Three birds just chilling !!"
+    },
+    {
+      "src": "saira-nUxdL_19OQw-unsplash.jpg",
+      "title": "Canyon",
+      "description": "Might of nature."
+    },
+    {
+      "src": "waldemar-brandt-2hAEHCt25eM-unsplash.jpg",
+      "title": "Evening",
+      "description": "Time to wind down."
+    }
+  ]
+}
+{% end %}
+
+**Photo By:**
+- [ALEXANDRE DINAUT](https://unsplash.com/@alexdinaut?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@alexdinaut?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Chandler Cruttenden](https://unsplash.com/@chanphoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@chanphoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Jung Ho Park](https://unsplash.com/@mylovefromjesus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@mylovefromjesus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Kitera Dent](https://unsplash.com/@kitera?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@kitera?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Koes nadi](https://unsplash.com/@bangkoes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@bangkoes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Lazyartistgallery](https://unsplash.com/@rahulp9800?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@rahulp9800?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Saira](https://unsplash.com/@sairaa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@sairaa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- [Waldemar Brandt](https://unsplash.com/@waldemarbrandt67w?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@waldemarbrandt67w?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
