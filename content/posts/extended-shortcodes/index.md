@@ -694,7 +694,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
 **Code**
 
 ```
-{/* galleria() */}
+{%/* galleria() */%}
 {
   "images": [
     {
