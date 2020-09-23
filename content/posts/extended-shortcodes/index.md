@@ -372,32 +372,12 @@ XY chart is used to plot points by specifying their XY coordinates.
           {
             "x": 10,
             "y": 100
-          },
-          {
-            "x": 1,
-            "y": 2
-          },
-          {
-            "x": 2,
-            "y": 4
           }
         ]
       },
       {
         "label": "Squirtle",
         "data": [
-          {
-            "x": 3,
-            "y": 122
-          },
-          {
-            "x": 4,
-            "y": 212
-          },
-          {
-            "x": -3,
-            "y": 100
-          },
           {
             "x": 1,
             "y": 1
@@ -407,8 +387,27 @@ XY chart is used to plot points by specifying their XY coordinates.
             "y": 12
           }
         ]
+      },
+      {
+        "label": "Charizard",
+        "data": [
+          {
+            "x": 2,
+            "y": 5
+          },
+          {
+            "x": 6,
+            "y": 8
+          }
+        ]
       }
     ]
+  },
+  "options": {
+    "xTickCount": 5,
+    "yTickCount": 5,
+    "showLine": false,
+    "dotSize": 1
   }
 }
 {%/* end */%}
@@ -438,32 +437,12 @@ XY chart is used to plot points by specifying their XY coordinates.
           {
             "x": 10,
             "y": 100
-          },
-          {
-            "x": 1,
-            "y": 2
-          },
-          {
-            "x": 2,
-            "y": 4
           }
         ]
       },
       {
         "label": "Squirtle",
         "data": [
-          {
-            "x": 3,
-            "y": 122
-          },
-          {
-            "x": 4,
-            "y": 212
-          },
-          {
-            "x": -3,
-            "y": 100
-          },
           {
             "x": 1,
             "y": 1
@@ -473,8 +452,27 @@ XY chart is used to plot points by specifying their XY coordinates.
             "y": 12
           }
         ]
+      },
+      {
+        "label": "Charizard",
+        "data": [
+          {
+            "x": 2,
+            "y": 5
+          },
+          {
+            "x": 6,
+            "y": 8
+          }
+        ]
       }
     ]
+  },
+  "options": {
+    "xTickCount": 5,
+    "yTickCount": 5,
+    "showLine": false,
+    "dotSize": 1
   }
 }
 {% end %}
@@ -654,6 +652,10 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
         "data": [1, 2, 2, 1, 1]
       }
     ]
+  },
+  "options": {
+    "showLegend": true,
+    "showLabels": true,
   }
 }
 {%/* end */%}
@@ -677,6 +679,10 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
         "data": [1, 2, 2, 1, 1]
       }
     ]
+  },
+  "options": {
+    "showLegend": true,
+    "showLabels": true
   }
 }
 {% end %}

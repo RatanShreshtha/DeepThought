@@ -15,7 +15,8 @@
 	<link rel='apple-touch-icon' sizes='180x180' href='{{config.extra.favicon.apple_touch_icon}}' />
 
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css' />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css" />
 	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' />
 
 
@@ -25,6 +26,8 @@
 	{% endblock %}
 
 	<title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+	<script src='https://kit.fontawesome.com/201b8d5e05.js' crossorigin='anonymous'></script>
 
 	{% if config.extra.analytics.google %}
 	<script src='https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}' async></script>
@@ -62,7 +65,8 @@
 					<div class='navbar-item'>
 						<div class='field has-addons'>
 							<div class='control'>
-								<input id='search-dialog' class='input is-small' type='search' placeholder='Search'>
+								<input id='nav-search' class='input is-small' type='search' placeholder='Search'
+									data-target="#search-modal">
 							</div>
 							<div class='control'>
 								<a class='button is-small'>
@@ -77,30 +81,24 @@
 	</nav>
 	{% endblock %}
 
-	<section class='modal'>
-		<div class='modal-background'></div>
-		<div class='modal-card'>
-			<header class='modal-card-head'>
-				<p class='modal-card-title'>Search</p>
-				<button class='delete' aria-label='close'></button>
-			</header>
-			<section class='modal-card-body'>
-
-				<div class='field'>
-					<p class='control has-icons-right'>
-						<input id='search' class='input' type='search' placeholder='🔎 Search the website'>
-						<span class='icon is-small is-right'>
-							<i class='fas fa-search'></i>
-						</span>
-					</p>
+	<div id="search-modal" class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<div class='field'>
+				<p class='control has-icons-right'>
+					<input id='search' class='input' type='search' placeholder='Search this website.'>
+					<span class='icon is-small is-right'>
+						<i class='fas fa-search'></i>
+					</span>
+				</p>
+			</div>
+			<div class='search-results'>
+				<div class='search-results__items'>
 				</div>
-				<div class='search-results'>
-					<div class='search-results__items'>
-					</div>
-				</div>
-			</section>
+			</div>
 		</div>
-	</section>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
 
 	{% block header %}
 	{% endblock %}
@@ -111,32 +109,30 @@
 	{% block footer %}
 	<footer class='footer py-4'>
 		<div class='has-text-centered'>
-			<p>
-				Built with <span class='icon'><i class='fas fa-code'></i></span> code and <span class='icon'>
-					<i class='fas fa-heart'></i></span> love
-				<br />
-				<span class='has-text-weight-bold'>
-					Powered By <span class='icon'><i class='fas fa-power-off'></i></span> Zola
-				</span>
+			<p class="mb-1">
+				Built with
+				<span class='icon is-small'><i class='fas fa-code fa-xs'></i></span> code
+				and 
+				<span class='icon is-small'><i class='fas fa-heart fa-xs'></i></span> love
+			</p>
+			<p class="mt-1">
+				Powered By <span class='icon is-small'><i class='fas fa-power-off fa-xs'></i></span> Zola
 			</p>
 		</div>
 	</footer>
 	{% endblock %}
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src='https://kit.fontawesome.com/201b8d5e05.js' crossorigin='anonymous'></script>
 	<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
-	<script src='https://talk.hyvor.com/web-api/embed'></script>
 	<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.js'></script>
-
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js'></script>
 	<script src='{{ get_url(path='search_index.en.js') }}'></script>
 	<script src='{{ get_url(path='js/site.js') }}'></script>
-	<script src='{{ get_url(path='js/search.js') }}'></script>
+
 	{% block custom_js %}
 	{% endblock %}
 </body>

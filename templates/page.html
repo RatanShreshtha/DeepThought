@@ -120,14 +120,14 @@
 {% endblock main %}
 
 {% block custom_js %}
-
-
+{% if page.extra.comments and config.extra.commenting.hyvor %}
 <script type='text/javascript'>
-	// initialize hyvor comments 
 	var HYVOR_TALK_WEBSITE = {{ config.extra.commenting.hyvor }};
 	var HYVOR_TALK_CONFIG = {
 		url: window.location.href,
 		id: window.btoa(encodeURIComponent(escape(window.location.href)))
 	};
 </script>
+<script async type="text/javascript" src="//talk.hyvor.com/web-api/embed"></script>
+{% endif %}
 {% endblock %}
