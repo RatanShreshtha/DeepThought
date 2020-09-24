@@ -383,8 +383,8 @@ XY chart is used to plot points by specifying their XY coordinates.
             "y": 1
           },
           {
-            "x": 1.5,
-            "y": 12
+            "x": 3,
+            "y": 3
           }
         ]
       },
@@ -448,8 +448,8 @@ XY chart is used to plot points by specifying their XY coordinates.
             "y": 1
           },
           {
-            "x": 1.5,
-            "y": 12
+            "x": 3,
+            "y": 3
           }
         ]
       },
@@ -489,16 +489,20 @@ A bar chart provides a way of showing data values represented as vertical bars
 {%/* chart() */%}
 {
   "type": "Bar",
-  "title": "github stars VS patron number",
+  "title": "How to feel powerful ?",
   "xLabel": "Platforms",
   "yLabel": "Count",
   "data": {
-    "labels": ["github stars", "patrons"],
+    "labels": ["Earn Money", "Get Famous", "Use terminal in front of non-programmers"],
     "datasets": [
       {
-        "data": [100, 20]
+        "data": [30, 45, 100]
       }
     ]
+  },
+  "options": {
+    "yTickCount": 2,
+    "dataColors": ["Red", "Green", "Blue"]
   }
 }
 {%/* end */%}
@@ -509,16 +513,20 @@ A bar chart provides a way of showing data values represented as vertical bars
 {% chart() %}
 {
   "type": "Bar",
-  "title": "github stars VS patron number",
+  "title": "How to feel powerful ?",
   "xLabel": "Platforms",
   "yLabel": "Count",
   "data": {
-    "labels": ["github stars", "patrons"],
+    "labels": ["Earn Money", "Get Famous", "Use terminal in front of non-programmers"],
     "datasets": [
       {
-        "data": [100, 20]
+        "data": [30, 45, 100]
       }
     ]
+  },
+  "options": {
+    "yTickCount": 2,
+    "dataColors": ["Red", "Green", "Blue"]
   }
 }
 {% end %}
@@ -648,14 +656,14 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
         "data": [2, 1, 1, 3, 1]
       },
       {
-        "label": "chhaart", 
+        "label": "chhaart",
         "data": [1, 2, 2, 1, 1]
       }
     ]
   },
   "options": {
     "showLegend": true,
-    "showLabels": true,
+    "showLabels": true
   }
 }
 {%/* end */%}
@@ -675,7 +683,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
         "data": [2, 1, 1, 3, 1]
       },
       {
-        "label": "chhaart", 
+        "label": "chhaart",
         "data": [1, 2, 2, 1, 1]
       }
     ]

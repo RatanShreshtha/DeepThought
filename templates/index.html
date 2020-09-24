@@ -5,17 +5,16 @@
 	<div class='hero-body'>
 		<div class='container'>
 			<div class='columns'>
-				<div class='column is-three-fifths is-offset-one-fifth'>
-					<figure class='image center mb-2'>
-						<img class='is-rounded card' src='{{config.extra.author.avatar}}' style='max-width: 150px'>
+				<div class='column is-10 is-offset-1'>
+					<figure class='image center'>
+						<img class='is-rounded card' src='{{config.extra.author.avatar}}' style='max-width: 180px'>
 					</figure>
 					<div class='has-text-centered'>
 						<h1 class='title'>{{ section.title }}</h1>
 						<h2 class='subtitle'>{{ section.description }}</h2>
 						{{ macros:: social_links( social_config=config.extra.social) }}
 					</div>
-					<hr />
-					<div class='content has-text-justified'>
+					<div class='content has-text-justified mt-5'>
 						{{section.content | safe}}
 					</div>
 				</div>

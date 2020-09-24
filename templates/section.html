@@ -19,7 +19,7 @@
 <main class='section pt-0'>
 	<div class='container'>
 		<div class='columns'>
-			<div class='column  is-8 is-offset-2'>
+			<div class='column is-10 is-offset-1'>
 				{% if paginator %}
 				{% set pages = paginator.pages %}
 				{% else %}
@@ -37,7 +37,7 @@
 					<div class='content mt-2'>
 						{{ page.summary | safe }}
 						<a class='read-more' href='{{ page.permalink }}'>
-							Read More
+							Read More <span class="icon is-small"><i class="fas fa-arrow-right fa-xs"></i></span>
 						</a>
 					</div>
 
