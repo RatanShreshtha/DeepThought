@@ -57,7 +57,7 @@ access_token = "<your_access_token>"
 ```
 
 ## Features
-- [ ] Dark Mode
+- [x] Dark Mode
 - [x] Pagination
 - [x] Search
 - [x] Charts

@@ -171,6 +171,11 @@ function search() {
 $(document).ready(function () {
   mermaid.initialize({ startOnLoad: true });
 
+  if (localStorage.getItem("theme") === "dark") {
+    $("body").attr("theme", "dark");
+    $("img, picture, video").attr("theme", "dark");
+  }
+
   $(".navbar-burger").click(function () {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
@@ -197,6 +202,21 @@ $(document).ready(function () {
 
   $("#search").keyup(function () {
     search();
+  });
+
+  $("#dark-mode").click(function () {
+    if (
+      localStorage.getItem("theme") == null ||
+      localStorage.getItem("theme") == "light"
+    ) {
+      localStorage.setItem("theme", "dark");
+      $("body").attr("theme", "dark");
+      $("img, picture, video").attr("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+      $("body").removeAttr("theme", "dark");
+      $("img, picture, video").removeAttr("theme", "dark");
+    }
   });
 
   $(".chart").each(function (index) {
