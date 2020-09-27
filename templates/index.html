@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
-
 {% block main %}
-<main class='hero'>
-	<div class='hero-body'>
-		<div class='container'>
-			<div class='columns'>
-				<div class='column is-10 is-offset-1'>
-					<figure class='image center'>
-						<img class='is-rounded card' src='{{config.extra.author.avatar}}' style='max-width: 180px'>
-					</figure>
-					<div class='has-text-centered'>
-						<h1 class='title'>{{ section.title }}</h1>
-						<h2 class='subtitle'>{{ section.description }}</h2>
-						{{ macros:: social_links( social_config=config.extra.social) }}
-					</div>
-					<div class='content has-text-justified mt-5'>
-						{{section.content | safe}}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</main>
+  <main class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-10 is-offset-1">
+            {% if config.extra.author.avatar %}
+              <figure class="image center">
+                <img class="is-rounded card" src='{{ config.extra.author.avatar }}' style="max-width: 180px"/>
+              </figure>
+            {% endif %}
+            <div class="has-text-centered">
+              <h1 class="title">{{ section.title }}</h1>
+              <h2 class="subtitle">{{ section.description }}</h2>
+              {{ macros:: social_links( social_config=config.extra.social) }}
+            </div>
+            <div class="content has-text-justified mt-5">
+              {{ section.content | safe }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 {% endblock %}

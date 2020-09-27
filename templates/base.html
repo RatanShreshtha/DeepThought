@@ -1,140 +1,139 @@
 {% import 'macros.html' as macros %}
 <!DOCTYPE html>
 <html>
-
-<head>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
-
-	<meta name='theme-color' content='#ffffff'>
-	<meta name='msapplication-TileColor' content='#da532c'>
-	<link rel='manifest' href='{{config.extra.favicon.webmanifest}}'>
-	<link rel='mask-icon' href='{{config.extra.favicon.safari_pinned_tab}}' color='#5bbad5' />
-	<link rel='icon' type='image/png' sizes='16x16' href='{{config.extra.favicon.favicon_16x16}}' />
-	<link rel='icon' type='image/png' sizes='32x32' href='{{config.extra.favicon.favicon_32x32}}' />
-	<link rel='apple-touch-icon' sizes='180x180' href='{{config.extra.favicon.apple_touch_icon}}' />
-
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css' />
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css" />
-	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' />
-
-
-	<link rel='stylesheet' href='{{ get_url(path='site.css') }}' />
-
-	{% block custom_css %}
-	{% endblock %}
-
-	<title>{% block title %}{{ config.title }}{% endblock title %}</title>
-
-	<script src='https://kit.fontawesome.com/201b8d5e05.js' crossorigin='anonymous'></script>
-
-	{% if config.extra.analytics.google %}
-	<script src='https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}' async></script>
-	<script type='text/javascript'>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', '{{ config.extra.analytics.google }}');
-	</script>
-	{% endif %}
-</head>
-
-<body class='site'>
-	{% block nav %}
-	<nav class='navbar is-light' role='navigation' aria-label='main navigation'>
-		<div class='container'>
-			<div class='navbar-brand'>
-				<a class='navbar-item has-text-weight-bold' href='/'>{{ config.title }}</a>
-				<a role='button' class='navbar-burger burger' aria-label='menu' aria-expanded='false'
-					data-target='navMenu'>
-					<span aria-hidden='true'></span>
-					<span aria-hidden='true'></span>
-					<span aria-hidden='true'></span>
-				</a>
-			</div>
-
-			<div id='navMenu' class='navbar-menu'>
-				<div class='navbar-end'>
-					{% for item in config.extra.navbar_items %}
-					<a href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}' class='navbar-item'>
-						{{ item.name }}
-					</a>
-					{% endfor %}
-					<div class='navbar-item'>
-						<div class='field has-addons'>
-							<div class='control'>
-								<input id='nav-search' class='input is-small' type='search' placeholder='Search'
-									data-target="#search-modal">
-							</div>
-							<div class='control'>
-								<a class='button is-small'>
-									<span class='icon'><i class='fas fa-search'></i></span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-	{% endblock %}
-
-	<div id="search-modal" class="modal">
-		<div class="modal-background"></div>
-		<div class="modal-content">
-			<div class='field'>
-				<p class='control has-icons-right'>
-					<input id='search' class='input' type='search' placeholder='Search this website.'>
-					<span class='icon is-small is-right'>
-						<i class='fas fa-search'></i>
-					</span>
-				</p>
-			</div>
-			<div class='search-results'>
-				<div class='search-results__items'>
-				</div>
-			</div>
-		</div>
-		<button class="modal-close is-large" aria-label="close"></button>
-	</div>
-
-	{% block header %}
-	{% endblock %}
-
-	{% block main %}
-	{% endblock %}
-
-	{% block footer %}
-	<footer class='footer py-2'>
-		<div class='has-text-centered'>
-			<p class="mb-1">
-				Built with
-				<span class='icon is-small'><i class='fas fa-code fa-xs'></i></span> code
-				and 
-				<span class='icon is-small'><i class='fas fa-heart fa-xs'></i></span> love
-			</p>
-			<p class="mt-1">
-				Powered By <span class='icon is-small'><i class='fas fa-power-off fa-xs'></i></span> Zola
-			</p>
-		</div>
-	</footer>
-	{% endblock %}
-
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
-	<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js'></script>
-	<script src='{{ get_url(path='search_index.en.js') }}'></script>
-	<script src='{{ get_url(path='js/site.js') }}'></script>
-
-	{% block custom_js %}
-	{% endblock %}
-</body>
-
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="#ffffff" name="theme-color"/>
+    <meta content="#da532c" name="msapplication-TileColor"/>
+    {% if config.extra.favicon.webmanifest %}
+      <link href='{{ config.extra.favicon.webmanifest }}' rel="manifest"/>
+    {% endif %}
+    {% if config.extra.favicon.safari_pinned_tab %}
+      <link color="#5bbad5" href='{{ config.extra.favicon.safari_pinned_tab }}' rel="mask-icon"/>
+    {% endif %}
+    {% if config.extra.favicon.favicon_16x16 %}
+      <link href='{{ config.extra.favicon.favicon_16x16 }}' rel="icon" sizes="16x16" type="image/png"/>
+    {% endif %}
+    {% if config.extra.favicon.favicon_32x32 %}
+      <link href='{{ config.extra.favicon.favicon_32x32 }}' rel="icon" sizes="32x32" type="image/png"/>
+    {% endif %}
+    {% if config.extra.favicon.apple_touch_icon %}
+      <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180"/>
+    {% endif %}
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css" rel="stylesheet"/>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet"/>
+    <link href='{{ get_url(path='site.css') }}' rel="stylesheet"/> {% block custom_css %}{% endblock %}
+    <title>
+      {% block title %}
+        {{ config.title }}
+      {% endblock title %}
+    </title>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/201b8d5e05.js"></script>
+    {% if config.extra.analytics.google %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}"></script>
+      <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "{{ config.extra.analytics.google }}");
+      </script>
+    {% endif %}
+  </head>
+  <body class="site">
+    {% block nav %}
+      <nav aria-label="main navigation" class="navbar is-light" role="navigation">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item has-text-weight-bold" href="/">{{ config.title }}</a>
+            <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="navbar-menu" id="navMenu">
+            <div class="navbar-end">
+              {% for item in config.extra.navbar_items %}
+                <a class="navbar-item" href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}'>
+                  {{ item.name }}
+                </a>
+              {% endfor %}
+              <div class="navbar-item">
+                <div class="field has-addons">
+                  <div class="control">
+                    <input class="input is-small" data-target="#search-modal" id="nav-search" placeholder="Search" type="search"/>
+                  </div>
+                  <div class="control">
+                    <a class="button is-small">
+                      <span class="icon">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    {% endblock %}
+    <div class="modal" id="search-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="field">
+          <p class="control has-icons-right">
+            <input class="input" id="search" placeholder="Search this website." type="search"/>
+            <span class="icon is-small is-right">
+              <i class="fas fa-search"></i>
+            </span>
+          </p>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </div>
+      <button aria-label="close" class="modal-close is-large"></button>
+    </div>
+    {% block header %}{% endblock %}
+    {% block main %}{% endblock %}
+    {% block footer %}
+      <footer class="footer py-2">
+        <div class="has-text-centered">
+          <p class="mb-1">
+            Built with
+            <span class="icon is-small">
+              <i class="fas fa-code fa-xs"></i>
+            </span>
+            code and
+            <span class="icon is-small">
+              <i class="fas fa-heart fa-xs"></i>
+            </span>
+            love
+          </p>
+          <p class="mt-1">
+            Powered By
+            <span class="icon is-small">
+              <i class="fas fa-power-off fa-xs"></i>
+            </span>
+            Zola
+          </p>
+        </div>
+      </footer>
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+    <script src='{{ get_url(path='search_index.en.js') }}'></script>
+    <script src='{{ get_url(path='js/site.js') }}'></script>
+    {% block custom_js %}{% endblock %}
+  </body>
 </html>
