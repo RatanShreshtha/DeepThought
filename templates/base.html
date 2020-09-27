@@ -56,27 +56,18 @@
             </a>
           </div>
           <div class="navbar-menu" id="navMenu">
-            <div class="navbar-end">
+            <div class="navbar-end has-text-centered">
               {% for item in config.extra.navbar_items %}
                 <a class="navbar-item" href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}'>
                   {{ item.name }}
                 </a>
               {% endfor %}
-              <div class="navbar-item">
-                <div class="field has-addons">
-                  <div class="control">
-                    <input class="input is-small" data-target="#search-modal" id="nav-search" placeholder="Search" type="search"/>
-                  </div>
-                  <div class="control">
-                    <a class="button is-small">
-                      <span class="icon">
-                        <i class="fas fa-search"></i>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <a class="navbar-item" id="dark-mode" title="Turn on dark mode.">
+              <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </a>
+              <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
                 <span class="icon">
                   <i class="fas fa-adjust"></i>
                 </span>
