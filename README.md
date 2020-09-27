@@ -4,7 +4,7 @@ A simple blog theme focused on writing powered by Bulma and Zola.
 ![DeepThought](./screenshot.png)
 
 ## Live Demo
-Live demo of the website is available at [here](https://zen-austin-0c80be.netlify.app/)
+Live version of the website is available at [here](https://zen-austin-0c80be.netlify.app/)
 
 ## Installation
 Get [Zola](https://www.getzola.org/) and follow their guide on [installing a theme](https://www.getzola.org/documentation/themes/installing-and-using-themes/).
