@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% block header %}
-<section class="section">
-  <div class="container has-text-centered">
-    <h1 class="title">
-      <span class="icon"><i class="fas fa-tags"></i></span> Tags
-    </h1>
-    <h2 class="subtitle">
-      {{ terms | length }} tags in total
-    </h2>
+<header class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        <span class="icon"><i class="fas fa-tags"></i></span> Tags
+      </h1>
+      <h2 class="subtitle">
+        {{ terms | length }} tags in total
+      </h2>
+    </div>
   </div>
-</section>
+</header>
 {% endblock %}
 
 {% block content %}

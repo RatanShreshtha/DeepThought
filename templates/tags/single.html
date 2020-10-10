@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block header %}
-<section class="section">
-  <div class="container">
-    <h1 class="title has-text-centered">
-      <span class="icon"><i class="fas fa-tag"></i></span> {{ term.name }}
-    </h1>
+<header class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        <span class="icon"><i class="fas fa-tag"></i></span> {{ term.name }}
+      </h1>
+    </div>
   </div>
-</section>
+</header>
 {% endblock %}
 
 {% block content %}

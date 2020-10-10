@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
+
 {% block title %}
 {{ config.title }} | {{ section.title }}
 {% endblock title %}
+
 {% block header %}
-<section class="section">
-  <div class="container">
-    <div class="has-text-centered">
-      <h1 class="title">{{ section.title }}</h1>
-      <h2 class="subtitle">{{ section.description }}</h2>
+<header class='hero'>
+  <div class='hero-body'>
+    <div class='container'>
+      <div class='has-text-centered'>
+        <h1 class='title'>{{ section.title }}</h1>
+        <h2 class='subtitle'>{{ section.description }}</h2>
+      </div>
     </div>
   </div>
-</section>
+</header>
 {% endblock %}
 
 {% block content %}
