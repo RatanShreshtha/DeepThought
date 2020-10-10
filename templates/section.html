@@ -36,8 +36,8 @@
             </a>
           </h1>
           <h2 class="subtitle">{{ page.description }}</h2>
-          <p>{{ macros::page_publish_metadata(page=page) }}</p>
-          <div class="content">
+          {{ macros::page_publish_metadata(page=page) }}
+          <div class="content mt-2">
             {{ page.summary | safe }}
             <a class="read-more" href='{{ page.permalink }}'>
               Read More
