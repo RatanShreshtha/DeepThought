@@ -1,87 +1,98 @@
 {% extends 'base.html' %}
 {% block title %}
-  {{ config.title }} | {{ section.title }}
+{{ config.title }} | {{ section.title }}
 {% endblock title %}
 {% block header %}
-  <header class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <div class="has-text-centered">
-          <h1 class="title">{{ section.title }}</h1>
-          <h2 class="subtitle">{{ section.description }}</h2>
-        </div>
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title">{{ section.title }}</h1>
+      <h2 class="subtitle">{{ section.description }}</h2>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        {% if paginator %}
+        {% set pages = paginator.pages %}
+        {% else %}
+        {% set pages = section.pages %}
+        {% endif %}
+
+        {% for page in pages %}
+        <article class="box">
+          <h1 class="title">
+            <a class="link" class="link" href='{{ page.permalink }}'>
+              {{ page.title }}
+            </a>
+          </h1>
+          <h2 class="subtitle">{{ page.description }}</h2>
+          <p>{{ macros::page_publish_metadata(page=page) }}</p>
+          <div class="content">
+            {{ page.summary | safe }}
+            <a class="read-more" href='{{ page.permalink }}'>
+              Read More
+              <span class="icon is-small">
+                <i class="fas fa-arrow-right fa-xs"></i>
+              </span>
+            </a>
+          </div>
+          <div class="columns">
+            <div class="column">
+              {% if page.taxonomies.categories %}
+              {{ macros::render_categories(categories=page.taxonomies.categories) }}
+              {% endif %}
+            </div>
+            <div class="column has-text-right-desktop">
+              {% if page.taxonomies.tags %}
+              {{ macros::render_tags(tags=page.taxonomies.tags) }}
+              {% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
       </div>
     </div>
-  </header>
+  </div>
+</section>
 {% endblock %}
-{% block main %}
-  <main class="section pt-0">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-10 is-offset-1">
-          {% if paginator %}
-            {% set pages = paginator.pages %}
-          {% else %}
-            {% set pages = section.pages %}
-          {% endif %}
-          {% for page in pages %}
-            <article class="box">
-              <h1 class="title is-4">
-                <a class="link" class="link" href='{{ page.permalink }}'>
-                  {{ page.title }}
-                </a>
-              </h1>
-              <h2 class="subtitle is-6">{{ page.description }}</h2>
-              <p>{{ macros::page_publish_metadata(page=page) }}</p>
-              <div class="content mt-2">
-                {{ page.summary | safe }}
-                <a class="read-more" href='{{ page.permalink }}'>
-                  Read More
-                  <span class="icon is-small">
-                    <i class="fas fa-arrow-right fa-xs"></i>
-                  </span>
-                </a>
-              </div>
-              <div class="columns">
-                <div class="column">
-                  {% if page.taxonomies.categories %}
-                    {{ macros::render_categories(categories=page.taxonomies.categories) }}
-                  {% endif %}
-                </div>
-                <div class="column has-text-right-desktop">
-                  {% if page.taxonomies.tags %}
-                    {{ macros::render_tags(tags=page.taxonomies.tags) }}
-                  {% endif %}
-                </div>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-      </div>
-      {% if paginator.previous or paginator.next %}
+
+{% block pagination%}
+{% if paginator.previous or paginator.next %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
         <nav class="level">
           {% if paginator.previous %}
-            <div class="level-item has-text-centered">
-              <a class="button is-black is-outlined" href='{{ paginator.previous }}'>
-                <span class="icon mr-2">
-                  <i class="fas fa-arrow-circle-left"></i>
-                </span>
-                Previous Page
-              </a>
-            </div>
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ paginator.previous }}'>
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Previous Page
+            </a>
+          </div>
           {% endif %}
           {% if paginator.next %}
-            <div class="level-item has-text-centered">
-              <a class="button is-black is-outlined" href='{{ paginator.next }}'>
-                Next Page
-                <span class="icon ml-2">
-                  <i class="fas fa-arrow-circle-right"></i>
-                </span>
-              </a>
-            </div>
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ paginator.next }}'>
+              Next Page
+              <span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
           {% endif %}
         </nav>
-      {% endif %}
+      </div>
     </div>
-  </main>
+  </div>
+</section>
+{% endif %}
 {% endblock %}

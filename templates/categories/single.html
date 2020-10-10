@@ -1,64 +1,84 @@
 {% extends "base.html" %}
 
 {% block header %}
-<header class="hero">
-	<div class="hero-body">
-		<div class="container">
-			<h1 class="title has-text-centered">
-				<span class="icon"><i class="fas fa-folder"></i></span> {{ term.name }}
-			</h1>
-		</div>
-	</div>
-</header>
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">
+      <span class="icon"><i class="fas fa-folder"></i></span> {{ term.name }}
+    </h1>
+  </div>
+</section>
 {% endblock %}
 
-{% block main %}
-<main class="section pt-0">
-	<div class="container">
-		<div class="columns">
-			<div class="column  is-6 is-offset-3">
-				{% if paginator %}
-				{% set pages = paginator.pages %}
-				{% else %}
-				{% set pages = term.pages %}
-				{% endif %}
-				{% for page in pages %}
-				<article>
-					<h1 class="title is-4">
-						<a class="link" href="{{ page.permalink }}">
-							{{ page.title }}
-						</a>
-					</h1>
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        {% if paginator %}
+        {% set pages = paginator.pages %}
+        {% else %}
+        {% set pages = term.pages %}
+        {% endif %}
 
-					<p>{{ macros::page_publish_metadata(page=page) }}</p>
+        {% for page in pages %}
+        <article class="box">
+          <h1 class="title">
+            <a class="link" href="{{ page.permalink }}">
+              {{ page.title }}
+            </a>
+          </h1>
+          <h2 class="subtitle">
+            {{ page.description }}
+          </h2>
 
-					<a class="read-more" href="{{ page.permalink }}">
-						Read More <span class="icon is-small"><i class="fas fa-arrow-right fa-xs"></i></span>
-					</a>
-				</article>
-				{% if not loop.last %}
-				<hr />{% endif %}
-				{% endfor %}
-			</div>
-		</div>
-		{% if paginator.previous or paginator.next %}
-		<nav class="level">
-			{% if paginator.previous %}
-			<div class="level-item has-text-centered">
-				<a href="{{ paginator.previous }}" class="button is-black is-outlined">
-					<span class="icon mr-2"><i class="fas fa-arrow-circle-left"></i></span> Previous Page
-				</a>
-			</div>
-			{% endif %}
-			{% if paginator.next %}
-			<div class="level-item has-text-centered">
-				<a href="{{ paginator.next }}" class="button is-black is-outlined">
-					Next Page <span class="icon ml-2"><i class="fas fa-arrow-circle-right"></i></span>
-				</a>
-			</div>
-			{% endif %}
-		</nav>
-		{% endif %}
-	</div>
-</main>
-{% endblock main %}
+          <div class="mb-4">
+            {{ macros::page_content_metadata(page=page) }}
+            {{ macros::page_publish_metadata(page=page) }}
+          </div>
+
+          <a class="read-more" href="{{ page.permalink }}">
+            Read More <span class="icon is-small"><i class="fas fa-arrow-right fa-xs"></i></span>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block pagination%}
+{% if paginator.previous or paginator.next %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+          {% if paginator.previous %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ paginator.previous }}'>
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Previous Page
+            </a>
+          </div>
+          {% endif %}
+          {% if paginator.next %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ paginator.next }}'>
+              Next Page
+              <span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          {% endif %}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

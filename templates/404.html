@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block main %}
-  <main class="hero">
+{% block content %}
+  <section class="hero">
     <div class="hero-body">
       <div class="container">
-        <div class="columns">
-          <div class="column is-three-fifths is-offset-one-fifth">
+        <div class="columns is-centered">
+          <div class="column is-9">
             <figure class="image center mb-2">
               <img class="is-rounded card" src='{{ config.extra.author.avatar }}' style="max-width: 150px"/>
             </figure>
@@ -29,5 +29,5 @@
         </div>
       </div>
     </div>
-  </main>
+  </section>
 {% endblock %}

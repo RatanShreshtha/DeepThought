@@ -1,127 +1,147 @@
 {% extends 'base.html' %}
+
 {% block title %}
-  {{ config.title }} | {{ page.title }}
+{{ config.title }} | {{ page.title }}
 {% endblock title %}
-{% block main %}
-  <main class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-10 is-offset-1">
-          <article>
-            <h1 class="title">{{ page.title }}</h1>
-            <h2 class="subtitle">{{ page.description }}</h2>
-            <div class="columns mb-0">
-              <div class="column">
-                {{ macros::page_publish_metadata(page=page) }}
-              </div>
-              <div class="column has-text-right-desktop">
-                {{ macros::page_content_metadata(page=page) }}
-              </div>
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <article>
+          <h1 class="title">{{ page.title }}</h1>
+          <h2 class="subtitle">{{ page.description }}</h2>
+          <div class="columns is-multiline">
+            <div class="column is-6">
+              {{ macros::page_publish_metadata(page=page) }}
             </div>
-            <div class="columns mb-0">
-              <div class="column">
-                {% if page.taxonomies.categories %}
-                  {{ macros::render_categories(categories=page.taxonomies.categories) }}
-                {% endif %}
-              </div>
-              <div class="column has-text-right-desktop">
-                {% if page.taxonomies.tags %}
-                  {{ macros::render_tags(tags=page.taxonomies.tags) }}
-                {% endif %}
-              </div>
+            <div class="column is-6 has-text-right-desktop">
+              {{ macros::page_content_metadata(page=page) }}
             </div>
-            {% if page.extra.toc %}
-              <hr/>
-              <div class="content">
-                <p class="has-text-weight-bold">Table of Contents</p>
+            <div class="column is-6">
+              {% if page.taxonomies.categories %}
+              {{ macros::render_categories(categories=page.taxonomies.categories) }}
+              {% endif %}
+            </div>
+            <div class="column is-6 has-text-right-desktop">
+              {% if page.taxonomies.tags %}
+              {{ macros::render_tags(tags=page.taxonomies.tags) }}
+              {% endif %}
+            </div>
+          </div>
+          {% if page.extra.toc %}
+          <p class="subtitle">Table of Contents</p>
+          <div class="content">
+            <ul>
+              {% for h1 in page.toc %}
+              {% set outer_index = loop.index %}
+              <li>
+                <a href='{{ h1.permalink | safe }}'>{{ outer_index }} {{ h1.title }}</a>
+                {% if h1.children %}
                 <ul>
-                  {% for h1 in page.toc %}
-                    <li>
-                      <a href='{{ h1.permalink | safe }}'>{{ h1.title }}</a>
-                      {% if h1.children %}
-                        <ul>
-                          {% for h2 in h1.children %}
-                            <li>
-                              <a href='{{ h2.permalink | safe }}'>{{ h2.title }}</a>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                    </li>
+                  {% for h2 in h1.children %}
+                  <li>
+                    <a href='{{ h2.permalink | safe }}'>{{ outer_index }}.{{ loop.index }} {{ h2.title }}</a>
+                  </li>
                   {% endfor %}
                 </ul>
-              </div>
-            {% endif %}
-            <hr/>
-            <div class="content has-text-justified">
-              {{ page.content | safe }}
-            </div>
-            <div id="mapid"></div>
-            <div class="container has-text-centered mt-6">
-              {{ macros::page_share_links(page=page) }}
-            </div>
-          </article>
-          <hr/>
-          {% if page.earlier or page.later or page.lighter or page.heavier %}
-            <nav class="level mt-2">
-              {% if page.later %}
-                <div class="level-item has-text-centered">
-                  <a class="button is-black is-outlined" href='{{ page.later.permalink }}'>
-                    <span class="icon mr-2">
-                      <i class="fas fa-arrow-circle-left"></i>
-                    </span>
-                    {{ page.later.title }}
-                  </a>
-                </div>
-              {% endif %}
-              {% if page.earlier %}
-                <div class="level-item has-text-centered">
-                  <a class="button is-black is-outlined" href='{{ page.earlier.permalink }}'>
-                    {{ page.earlier.title }}<span class="icon ml-2">
-                      <i class="fas fa-arrow-circle-right"></i>
-                    </span>
-                  </a>
-                </div>
-              {% endif %}
-              {% if page.heavier %}
-                <div class="level-item has-text-centered">
-                  <a class="button is-black is-outlined" href='{{ page.heavier.permalink }}'>
-                    <span class="icon mr-2">
-                      <i class="fas fa-arrow-circle-left"></i>
-                    </span>
-                    {{ page.heavier.title }}
-                  </a>
-                </div>
-              {% endif %}
-              {% if page.lighter %}
-                <div class="level-item has-text-centered">
-                  <a class="button is-black is-outlined" href='{{ page.lighter.permalink }}'>
-                    {{ page.lighter.title }}<span class="icon ml-2">
-                      <i class="fas fa-arrow-circle-right"></i>
-                    </span>
-                  </a>
-                </div>
-              {% endif %}
-            </nav>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
           {% endif %}
-          {% if page.extra.comments and config.extra.commenting.hyvor %}
-            <hr/>
-            <section id="hyvor-talk-view"></section>
-          {% endif %}
-        </div>
+          <hr />
+          <div class="content has-text-justified">
+            {{ page.content | safe }}
+          </div>
+          <div class="container has-text-centered">
+            {{ macros::page_share_links(page=page) }}
+          </div>
+        </article>
       </div>
     </div>
-  </main>
-{% endblock main %}
+  </div>
+</section>
+{% endblock content %}
+
+{% block pagination%}
+{% if page.earlier or page.later or page.lighter or page.heavier %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+          {% if page.later %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ page.later.permalink }}'>
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              {{ page.later.title }}
+            </a>
+          </div>
+          {% endif %}
+          {% if page.earlier %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ page.earlier.permalink }}'>
+              {{ page.earlier.title }}<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          {% endif %}
+          {% if page.heavier %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ page.heavier.permalink }}'>
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              {{ page.heavier.title }}
+            </a>
+          </div>
+          {% endif %}
+          {% if page.lighter %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href='{{ page.lighter.permalink }}'>
+              {{ page.lighter.title }}<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          {% endif %}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block comment %}
+{% if page.extra.comments and config.extra.commenting.hyvor %}
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div id="hyvor-talk-view"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
 {% block custom_js %}
-  {% if page.extra.comments and config.extra.commenting.hyvor %}
-    <script type="text/javascript">
-      var HYVOR_TALK_WEBSITE = {{ config.extra.commenting.hyvor }};
-      var HYVOR_TALK_CONFIG = {
-        url: window.location.href,
-        id: window.btoa(encodeURIComponent(escape(window.location.href)))
-      };
-    </script>
-    <script async src="//talk.hyvor.com/web-api/embed" type="text/javascript"></script>
-  {% endif %}
+{% if page.extra.comments and config.extra.commenting.hyvor %}
+<script type="text/javascript">
+  var HYVOR_TALK_WEBSITE = {{ config.extra.commenting.hyvor }};
+  var HYVOR_TALK_CONFIG = {
+    url: window.location.href,
+    id: window.btoa(encodeURIComponent(escape(window.location.href)))
+  };
+</script>
+<script async src="//talk.hyvor.com/web-api/embed" type="text/javascript"></script>
+{% endif %}
 {% endblock %}

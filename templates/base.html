@@ -1,130 +1,160 @@
 {% import 'macros.html' as macros %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="#ffffff" name="theme-color"/>
-    <meta content="#da532c" name="msapplication-TileColor"/>
-    {% if config.extra.favicon.webmanifest %}
-      <link href='{{ config.extra.favicon.webmanifest }}' rel="manifest"/>
-    {% endif %}
-    {% if config.extra.favicon.safari_pinned_tab %}
-      <link color="#5bbad5" href='{{ config.extra.favicon.safari_pinned_tab }}' rel="mask-icon"/>
-    {% endif %}
-    {% if config.extra.favicon.favicon_16x16 %}
-      <link href='{{ config.extra.favicon.favicon_16x16 }}' rel="icon" sizes="16x16" type="image/png"/>
-    {% endif %}
-    {% if config.extra.favicon.favicon_32x32 %}
-      <link href='{{ config.extra.favicon.favicon_32x32 }}' rel="icon" sizes="32x32" type="image/png"/>
-    {% endif %}
-    {% if config.extra.favicon.apple_touch_icon %}
-      <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180"/>
-    {% endif %}
-    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css" rel="stylesheet"/>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet"/>
-    <link href='{{ get_url(path='site.css') }}' rel="stylesheet"/> {% block custom_css %}{% endblock %}
-    <title>
-      {% block title %}
-        {{ config.title }}
-      {% endblock title %}
-    </title>
-    <script crossorigin="anonymous" src="https://kit.fontawesome.com/201b8d5e05.js"></script>
-    {% if config.extra.analytics.google %}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}"></script>
-      <script type="text/javascript">
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", "{{ config.extra.analytics.google }}");
-      </script>
-    {% endif %}
-  </head>
-  <body class="has-background-light">
-    {% block nav %}
-      <nav aria-label="main navigation" class="navbar is-light" role="navigation">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item has-text-weight-bold" href="/">{{ config.title }}</a>
-            <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-          <div class="navbar-menu" id="navMenu">
-            <div class="navbar-end has-text-centered">
-              {% for item in config.extra.navbar_items %}
-                <a class="navbar-item" href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}'>
-                  {{ item.name }}
-                </a>
-              {% endfor %}
-              <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </a>
-              <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
-                <span class="icon">
-                  <i class="fas fa-adjust"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    {% endblock %}
-    <div class="modal" id="search-modal">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="field">
-          <p class="control has-icons-right">
-            <input class="input" id="search" placeholder="Search this website." type="search"/>
-            <span class="icon is-small is-right">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  {% if config.extra.favicon.webmanifest %}
+  <link href='{{ config.extra.favicon.webmanifest }}' rel="manifest" />
+  {% endif %}
+  {% if config.extra.favicon.safari_pinned_tab %}
+  <link color="#5bbad5" href='{{ config.extra.favicon.safari_pinned_tab }}' rel="mask-icon" />
+  {% endif %}
+  {% if config.extra.favicon.favicon_16x16 %}
+  <link href='{{ config.extra.favicon.favicon_16x16 }}' rel="icon" sizes="16x16" type="image/png" />
+  {% endif %}
+  {% if config.extra.favicon.favicon_32x32 %}
+  <link href='{{ config.extra.favicon.favicon_32x32 }}' rel="icon" sizes="32x32" type="image/png" />
+  {% endif %}
+  {% if config.extra.favicon.apple_touch_icon %}
+  <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180" />
+  {% endif %}
+
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css"
+    rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+  <link href='{{ get_url(path='site.css') }}' rel="stylesheet" />
+
+  {% block custom_css %}
+  {% endblock %}
+
+  <title>
+    {% block title %}
+    {{ config.title }}
+    {% endblock title %}
+  </title>
+
+  <script crossorigin="anonymous" src="https://kit.fontawesome.com/201b8d5e05.js"></script>
+
+  {% if config.extra.analytics.google %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "{{ config.extra.analytics.google }}");
+  </script>
+  {% endif %}
+</head>
+
+<body class="has-background-white">
+  {% block navbar %}
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-bold" href="/">{{ config.title }}</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          {% for item in config.extra.navbar_items %}
+          <a class="navbar-item" href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}'>
+            {{ item.name }}
+          </a>
+          {% endfor %}
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
               <i class="fas fa-search"></i>
             </span>
-          </p>
-        </div>
-        <div class="search-results">
-          <div class="search-results__items"></div>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
         </div>
       </div>
-      <button aria-label="close" class="modal-close is-large"></button>
     </div>
-    {% block header %}{% endblock %}
-    {% block main %}{% endblock %}
-    {% block footer %}
-      <footer class="py-2">
-        <p class="has-text-centered">
-          Built with
-          <span class="icon is-small">
-            <i class="fas fa-code fa-xs"></i>
+  </nav>
+  {% endblock %}
+
+  {% block header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block search %}
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="field">
+        <p class="control has-icons-right">
+          <input class="input" id="search" placeholder="Search this website." type="search" />
+          <span class="icon is-small is-right">
+            <i class="fas fa-search"></i>
           </span>
-          code and
-          <span class="icon is-small">
-            <i class="fas fa-heart fa-xs"></i>
-          </span>
-          love <br/> Powered By
-          <span class="icon is-small">
-            <i class="fas fa-power-off fa-xs"></i>
-          </span>
-          Zola
         </p>
-      </footer>
-    {% endblock %}
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
-    <script src='{{ get_url(path='search_index.en.js') }}'></script>
-    <script src='{{ get_url(path='js/site.js') }}'></script>
-    {% block custom_js %}{% endblock %}
-  </body>
+      </div>
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  {% endblock %}
+
+
+  {% block pagination %}
+  {% endblock %}
+
+  {% block comment %}
+  {% endblock %}
+
+  {% block footbar %}
+  <footer class="py-4 has-background-light">
+    <p class="has-text-centered">
+      Built with
+      <span class="icon is-small">
+        <i class="fas fa-code fa-xs"></i>
+      </span>
+      code and
+      <span class="icon is-small">
+        <i class="fas fa-heart fa-xs"></i>
+      </span>
+      love <br /> Powered By
+      <span class="icon is-small">
+        <i class="fas fa-power-off fa-xs"></i>
+      </span>
+      Zola
+    </p>
+  </footer>
+  {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+  <script src='{{ get_url(path='search_index.en.js') }}'></script>
+  <script src='{{ get_url(path='js/site.js') }}'></script>
+
+  {% block custom_js %}
+  {% endblock %}
+</body>
+
 </html>

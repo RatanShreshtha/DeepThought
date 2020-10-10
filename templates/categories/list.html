@@ -1,36 +1,31 @@
 {% extends "base.html" %}
 
 {% block header %}
-<header class="hero">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title">
-        <span class="icon"><i class="fas fa-folder"></i><i class="fas fa-folder" style="position: relative;left: -15px;top: 7px;"></i></span>
-        Categories
-      </h1>
-      <h2 class="subtitle">
-        {{ terms | length }} categories in total
-      </h2>
-    </div>
+<section class="section">
+  <div class="container has-text-centered">
+    <h1 class="title">
+      <span class="icon"><i class="fas fa-folder"></i><i class="fas fa-folder"
+          style="position: relative;left: -15px;top: 7px;"></i></span>
+      Categories
+    </h1>
+    <h2 class="subtitle">
+      {{ terms | length }} categories in total
+    </h2>
   </div>
-</header>
+</section>
 {% endblock %}
 
-{% block main %}
-<main class="section pt-0">
+{% block content %}
+<section class="section">
   <div class="container">
-    <div class="columns">
-      <div class="column is-10 is-offset-1 has-text-justified">
-        {% for category in terms %}
-        <span class="my-3 mx-2" style="display: inline-block;">
-        <a class="link" href="{{ get_taxonomy_url(kind="categories", name=category.name) }}">
-          <span class="icon"><i class="fas fa-folder"></i></span>{{ category.name }}<sup>{{ category.pages | length }}</sup>
-        </a>
-        </span>
-        {% endfor %}
-
-      </div>
-    </div>
+    {% for category in terms %}
+    <span class="my-3 mx-2" style="display: inline-block;">
+      <a class="link" href="{{ get_taxonomy_url(kind="categories", name=category.name) }}">
+        <span class="icon"><i
+            class="fas fa-folder"></i></span>{{ category.name }}<sup>{{ category.pages | length }}</sup>
+      </a>
+    </span>
+    {% endfor %}
   </div>
-</main>
-{% endblock main %}
+</section>
+{% endblock content %}
