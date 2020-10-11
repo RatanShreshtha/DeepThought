@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="section">
+<section class="section py-0">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
@@ -36,7 +36,14 @@
             </a>
           </h1>
           <h2 class="subtitle">{{ page.description }}</h2>
-          {{ macros::page_publish_metadata(page=page) }}
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              {{ macros::page_publish_metadata(page=page) }}
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              {{ macros::page_content_metadata(page=page) }}
+            </div>
+          </div>
           <div class="content mt-2">
             {{ page.summary | safe }}
             <a class="read-more" href='{{ page.permalink }}'>

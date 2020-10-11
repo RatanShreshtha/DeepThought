@@ -242,7 +242,7 @@ $(document).ready(function () {
       );
     }
 
-    Galleria.run(`#galleria-${index}`);
+    Galleria.run(`.galleria`);
   });
 
   $(".map").each(function (index) {

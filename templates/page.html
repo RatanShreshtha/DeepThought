@@ -5,26 +5,26 @@
 {% endblock title %}
 
 {% block content %}
-<section class="section">
+<section class="section pb-0">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
         <article>
           <h1 class="title">{{ page.title }}</h1>
           <h2 class="subtitle">{{ page.description }}</h2>
-          <div class="columns is-multiline">
-            <div class="column is-6">
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
               {{ macros::page_publish_metadata(page=page) }}
             </div>
-            <div class="column is-6 has-text-right-desktop">
+            <div class="column is-4 has-text-right-desktop">
               {{ macros::page_content_metadata(page=page) }}
             </div>
-            <div class="column is-6">
+            <div class="column is-4">
               {% if page.taxonomies.categories %}
               {{ macros::render_categories(categories=page.taxonomies.categories) }}
               {% endif %}
             </div>
-            <div class="column is-6 has-text-right-desktop">
+            <div class="column is-8 has-text-right-desktop">
               {% if page.taxonomies.tags %}
               {{ macros::render_tags(tags=page.taxonomies.tags) }}
               {% endif %}
@@ -121,7 +121,7 @@
 
 {% block comment %}
 {% if page.extra.comments and config.extra.commenting.hyvor %}
-<section class="section">
+<section class="section pt-0">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
