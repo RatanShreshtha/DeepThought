@@ -5,9 +5,11 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-9">
-            <figure class="image center mb-2">
-              <img class="is-rounded card" src='{{ config.extra.author.avatar }}' style="max-width: 150px"/>
+            {% if config.extra.author.avatar %}
+            <figure class="image center">
+              <img class="is-rounded card" src='{{ config.extra.author.avatar }}' style="max-width: 180px" />
             </figure>
+            {% endif %}
             <div class="has-text-centered">
               <h1 class="title">
                 HTTP 404
