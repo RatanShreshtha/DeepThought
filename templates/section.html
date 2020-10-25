@@ -74,8 +74,8 @@
 {% endblock %}
 
 {% block pagination%}
-{% if paginator.previous or paginator.next %}
 <section class="section">
+  {% if paginator.previous or paginator.next %}
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
@@ -104,6 +104,6 @@
       </div>
     </div>
   </div>
+  {% endif %}
 </section>
-{% endif %}
 {% endblock %}

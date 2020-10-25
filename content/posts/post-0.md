@@ -1,6 +1,6 @@
 +++
-title="Third Post"
-date=2018-09-23
+title="Zeroth Post"
+date=2018-08-20
 
 [taxonomies]
 categories = ["Sample Post"]
