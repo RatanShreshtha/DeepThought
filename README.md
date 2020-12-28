@@ -16,11 +16,22 @@ Just to double-check to make sure you have the right version. It is not supporte
 ## How to serve?
 Go into your sites directory, and type `zola serve`. You should see your new site at `localhost:1111`.
 
+ **NOTE**: you must provide the theme options variables in `config.toml` to serve a functioning site
+
 ## Deployment
 [Zola](https://www.getzola.org) already has great documentation for deploying to [Netlify](https://www.getzola.org/documentation/deployment/netlify/) or [Github Pages](https://www.getzola.org/documentation/deployment/github-pages/). I won't bore you with a regurgitated explanation.
 
 ## Theme Options
 ```toml
+
+navbar_items = [
+	{ url = "$BASE_URL/", name = "Home" },
+	{ url = "$BASE_URL/posts", name = "Posts" },
+	{ url = "$BASE_URL/docs", name = "Docs" },
+	{ url = "$BASE_URL/tags", name = "Tags" },
+	{ url = "$BASE_URL/categories", name = "Categories" },
+]
+
 # Add links to favicon, you can use https://realfavicongenerator.net/ to generate favicon for your site
 [extra.favicon]
 favicon_16x16 = "/icons/favicon-16x16.png"
