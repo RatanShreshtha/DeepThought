@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        {% if config.extra.author.avatar %}
-        <figure class="image center">
-          <img class="is-rounded card" src='{{ config.extra.author.avatar }}' style="max-width: 180px" />
-        </figure>
-        {% endif %}
-        <div class="has-text-centered">
-          <h1 class="title">{{ section.title }}</h1>
-          <h2 class="subtitle">{{ section.description }}</h2>
-          {{ macros:: social_links( social_config=config.extra.social) }}
-        </div>
-        <div class="content has-text-justified mt-5">
-          {{ section.content | safe }}
-        </div>
+<section class='hero pb-0'>
+  <div class="hero-head">
+    <h1 class='title has-text-centered is-1'>{{ section.title }}</h1>
+    <p class='subtitle has-text-centered'>{{ section.description }}</p>
+    {% if config.extra.author.avatar %}
+    <figure class="image is-flex is-justify-content-center is-align-items-center">
+      <img class="is-rounded" src='{{ config.extra.author.avatar }}' style="max-width: 192px" />
+    </figure>
+    {% endif %}
+  </div>
+  <div class='hero-body'>
+    <div class='container'>
+      <div class="content">
+        {{ macros:: social_links( social_config=config.extra.social) }}
+        {{ section.content | safe }}
       </div>
     </div>
   </div>

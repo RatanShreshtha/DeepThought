@@ -9,8 +9,11 @@
   <div class='hero-body'>
     <div class='container'>
       <div class='has-text-centered'>
-        <h1 class='title'>{{ section.title }}</h1>
-        <h2 class='subtitle'>{{ section.description }}</h2>
+        <h1 class='title is-1'>{{ section.title }}</h1>
+        <p class='subtitle'>{{ section.description }}</p>
+      </div>
+      <div class="content">
+        {{ section.content | safe }}
       </div>
     </div>
   </div>
@@ -18,10 +21,10 @@
 {% endblock %}
 
 {% block content %}
-<section class="section py-0">
+<section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-8">
+      <div class="column is-9">
         {% if paginator %}
         {% set pages = paginator.pages %}
         {% else %}
@@ -30,12 +33,12 @@
 
         {% for page in pages %}
         <article class="box">
-          <h1 class="title">
+          <h2 class="title">
             <a class="link" class="link" href='{{ page.permalink }}'>
               {{ page.title }}
             </a>
-          </h1>
-          <h2 class="subtitle">{{ page.description }}</h2>
+          </h2>
+          <p class="subtitle">{{ page.description }}</p>
           <div class="columns is-multiline is-gapless">
             <div class="column is-8">
               {{ macros::page_publish_metadata(page=page) }}
@@ -70,40 +73,5 @@
       </div>
     </div>
   </div>
-</section>
-{% endblock %}
-
-{% block pagination%}
-<section class="section">
-  {% if paginator.previous or paginator.next %}
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <nav class="level">
-          {% if paginator.previous %}
-          <div class="level-item has-text-centered">
-            <a class="button is-black is-outlined" href='{{ paginator.previous }}'>
-              <span class="icon mr-2">
-                <i class="fas fa-arrow-circle-left"></i>
-              </span>
-              Previous Page
-            </a>
-          </div>
-          {% endif %}
-          {% if paginator.next %}
-          <div class="level-item has-text-centered">
-            <a class="button is-black is-outlined" href='{{ paginator.next }}'>
-              Next Page
-              <span class="icon ml-2">
-                <i class="fas fa-arrow-circle-right"></i>
-              </span>
-            </a>
-          </div>
-          {% endif %}
-        </nav>
-      </div>
-    </div>
-  </div>
-  {% endif %}
 </section>
 {% endblock %}

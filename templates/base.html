@@ -117,6 +117,37 @@
 
 
   {% block pagination %}
+  {% if paginator.previous or paginator.next %}
+  <section class="section">
+    <div class="container">
+      <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <a class="pagination-previous" href='{{ paginator.previous }}' {% if not paginator.previous %}disabled{% endif %}>
+          <span class="icon">
+            <i class="fas fa-angle-double-left"></i>
+          </span>
+          Previous
+        </a>
+        <a class="pagination-next" href='{{ paginator.next }}' {% if not paginator.next %}disabled{% endif %}>
+          Next page
+          <span class="icon">
+            <i class="fas fa-angle-double-right"></i>
+          </span>
+        </a>
+        <ul class="pagination-list">
+          {% for pager in range(start=1, end=paginator.number_pagers+1) %}
+          <li>
+            <a class="pagination-link {% if paginator.current_index == pager %}is-current{% endif %}"
+              href='{{ paginator.base_url }}{{pager}}'
+              aria-label="Goto page {{pager}}">
+              {{pager}}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </section>
+  {% endif %}
   {% endblock %}
 
   {% block comment %}
