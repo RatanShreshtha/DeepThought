@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<section class='hero'>
-  <div class='hero-body'>
+{% block header %}
+<header class='hero'>
+  <div class='hero-body pb-0'>
     <div class='container'>
       <div class="content">
         <h1 class='title has-text-centered is-1'>{{ section.title }}</h1>
@@ -13,9 +13,18 @@
         </figure>
         {% endif %}
         {{ macros:: social_links( social_config=config.extra.social) }}
-        {{ section.content | safe }}
       </div>
     </div>
   </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class='section'>
+    <div class='container'>
+      <div class="content">
+        {{ section.content | safe }}
+      </div>
+    </div>
 </section>
 {% endblock %}
