@@ -51,9 +51,11 @@ avatar = "/images/avatar.png"
 [extra.social]
 facebook = "RatanShreshtha"
 github = "RatanShreshtha"
+gitlab = "ratanshreshtha"
 keybase = "RatanShreshtha"
 linkedin = "ratanshreshtha"
 stackoverflow = "3728911"
+email = "deepthought@gmail.com"
 twitter = "RatanShreshtha"
 
 [extra.analytics]

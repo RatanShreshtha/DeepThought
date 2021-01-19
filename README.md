@@ -47,8 +47,10 @@ avatar = "/images/avatar.png"
 
 # Social links
 [extra.social]
+email = <email_id>
 facebook = "<facebook_username>"
 github = "<github_username>"
+gitlab = "<gitlab_username>"
 keybase = "<keybase_username>"
 linkedin = "<linkedin_username>"
 stackoverflow = "<stackoverflow_userid>"

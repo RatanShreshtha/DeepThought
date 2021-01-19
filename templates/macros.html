@@ -28,6 +28,13 @@
         </span>
       </a>
     {% endif %}
+    {% if social_config.github %}
+    <a class="link" href="https://gitlab.com/{{ social_config.gitlab }}" target="_blank">
+      <span class="icon is-medium">
+        <i class="fab fa-gitlab"></i>
+      </span>
+    </a>
+    {% endif %}
     {% if social_config.stackoverflow %}
       <a class="link" href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" target="_blank">
         <span class="icon is-medium">
@@ -41,6 +48,13 @@
           <i class="fab fa-keybase"></i>
         </span>
       </a>
+    {% endif %}
+    {% if social_config.keybase %}
+    <a class="link" href="mailto:{{ social_config.email }}" target="_blank">
+      <span class="icon is-medium">
+        <i class="far fa-envelope"></i>
+      </span>
+    </a>
     {% endif %}
     {% if config.generate_feed %}
       <a class="link" href='{{ config.base_url }}/{{ config.feed_filename }}' target="_blank">
