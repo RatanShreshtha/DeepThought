@@ -2,16 +2,16 @@
 
 {% block title %}
 {{ config.title }} | {{ page.title }}
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
 <section class="section">
   <div class="container">
     <div class="columns">
-      <div class="column is-10 is-offset-1">
+      <div class="column is-8 is-offset-2">
         <article class="box">
           <h1 class="title is-1">
-              {{ page.title }}
+            {{ page.title }}
           </h1>
           <p class="subtitle">{{ page.description }}</p>
           <div class="columns is-multiline is-gapless">
@@ -44,14 +44,14 @@
           <ul class="menu-list">
             {% for h1 in page.toc %}
             <li>
-              <a class="is-size-7" href="{{ h1.permalink | safe }}">
+              <a id="link-{{h1.id}}" class="is-size-7" href="{{ h1.permalink | safe }}">
                 {{ h1.title }}
               </a>
               {% if h1.children %}
               <ul>
                 {% for h2 in h1.children %}
                 <li>
-                  <a class="is-size-7" href="{{ h2.permalink | safe }}">
+                  <a id="link-{{h2.id}}" class="is-size-7" href="{{ h2.permalink | safe }}">
                     {{ h2.title }}
                   </a>
                 </li>
@@ -67,7 +67,7 @@
     </div>
   </div>
 </section>
-{% endblock %} 
+{% endblock %}
 
 {% block pagination %}
 {% if page.earlier or page.later or page.lighter or page.heavier %}
@@ -78,10 +78,7 @@
         <nav class="level">
           {% if page.later %}
           <div class="level-item has-text-centered">
-            <a
-              class="button is-black is-outlined"
-              href="{{ page.later.permalink }}"
-            >
+            <a class="button is-black is-outlined" href="{{ page.later.permalink }}">
               <span class="icon mr-2">
                 <i class="fas fa-arrow-circle-left"></i>
               </span>
@@ -90,10 +87,7 @@
           </div>
           {% endif %} {% if page.earlier %}
           <div class="level-item has-text-centered">
-            <a
-              class="button is-black is-outlined"
-              href="{{ page.earlier.permalink }}"
-            >
+            <a class="button is-black is-outlined" href="{{ page.earlier.permalink }}">
               {{ page.earlier.title }}<span class="icon ml-2">
                 <i class="fas fa-arrow-circle-right"></i>
               </span>
@@ -101,10 +95,7 @@
           </div>
           {% endif %} {% if page.heavier %}
           <div class="level-item has-text-centered">
-            <a
-              class="button is-black is-outlined"
-              href="{{ page.heavier.permalink }}"
-            >
+            <a class="button is-black is-outlined" href="{{ page.heavier.permalink }}">
               <span class="icon mr-2">
                 <i class="fas fa-arrow-circle-left"></i>
               </span>
@@ -113,10 +104,7 @@
           </div>
           {% endif %} {% if page.lighter %}
           <div class="level-item has-text-centered">
-            <a
-              class="button is-black is-outlined"
-              href="{{ page.lighter.permalink }}"
-            >
+            <a class="button is-black is-outlined" href="{{ page.lighter.permalink }}">
               {{ page.lighter.title }}<span class="icon ml-2">
                 <i class="fas fa-arrow-circle-right"></i>
               </span>
@@ -128,10 +116,10 @@
     </div>
   </div>
 </section>
-{% endif %} 
-{% endblock %} 
+{% endif %}
+{% endblock %}
 
-{% block comment %} 
+{% block comment %}
 {% if page.extra.comments and config.extra.commenting.hyvor %}
 <section class="section">
   <div class="container">
@@ -142,8 +130,35 @@
     </div>
   </div>
 </section>
-{% endif %} {% endblock %} {% block custom_js %} {% if page.extra.comments and
-config.extra.commenting.hyvor %}
+{% endif %}
+{% endblock %}
+
+{% block custom_js %}
+{% if page.extra.toc %}
+<script src="https://unpkg.com/in-view@0.6.1/dist/in-view.min.js"></script>
+<script type="text/javascript">
+  function handleView(item) {
+    inView(`#${item}`)
+      .on("enter", () => {
+        $(`a#link-${item}.is-active`).removeClass('is-active')
+        $(`#link-${item}`).addClass('is-active')
+      })
+      .on("exit", () => $(`#link-${item}`).removeClass('is-active'))
+
+  };
+
+  $('h1').each(function (el) {
+    handleView($(this).attr("id"))
+  })
+
+
+  $('h2').each(function (el) {
+    handleView($(this).attr("id"))
+  })
+</script>
+{% endif %}
+
+{% if page.extra.comments and config.extra.commenting.hyvor %}
 <script type="text/javascript">
   var HYVOR_TALK_WEBSITE = {{ config.extra.commenting.hyvor }};
   var HYVOR_TALK_CONFIG = {
@@ -151,10 +166,6 @@ config.extra.commenting.hyvor %}
     id: window.btoa(encodeURIComponent(escape(window.location.href)))
   };
 </script>
-<script
-  async
-  src="//talk.hyvor.com/web-api/embed"
-  type="text/javascript"
-></script>
+<script src="https://talk.hyvor.com/web-api/embed" type="text/javascript" async></script>
 {% endif %}
 {% endblock %}

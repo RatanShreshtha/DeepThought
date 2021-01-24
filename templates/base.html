@@ -54,12 +54,12 @@
   {% endif %}
 </head>
 
-<body class="has-background-white">
+<body>
   {% block navbar %}
   <nav aria-label="section navigation" class="navbar is-light" role="navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item has-text-weight-bold" href="/">{{ config.title }}</a>
+        <a class="navbar-item has-text-weight-bold" href="{{config.base_url}}">{{ config.title }}</a>
         <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>

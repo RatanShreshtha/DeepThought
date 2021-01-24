@@ -181,6 +181,13 @@ $(document).ready(function () {
     $(".navbar-menu").toggleClass("is-active");
   });
 
+  $('div.navbar-end > .navbar-item').each(function (el) {
+    if (location.href.includes($(this).attr('href'))) {
+      $('a.navbar-item.is-active').removeClass('is-active');
+      $(this).addClass('is-active');
+    }
+  })
+
   $("#nav-search").click(function () {
     var target = $(this).data("target");
     $("html").addClass("is-clipped");
