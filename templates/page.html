@@ -44,14 +44,14 @@
           <ul class="menu-list">
             {% for h1 in page.toc %}
             <li>
-              <a id="link-{{h1.id}}" class="is-size-7" href="{{ h1.permalink | safe }}">
+              <a id="link-{{h1.id}}" class="toc is-size-7 {% if loop.first %}is-active{% endif %}" href="{{ h1.permalink | safe }}">
                 {{ h1.title }}
               </a>
               {% if h1.children %}
               <ul>
                 {% for h2 in h1.children %}
                 <li>
-                  <a id="link-{{h2.id}}" class="is-size-7" href="{{ h2.permalink | safe }}">
+                  <a id="link-{{h2.id}}" class="toc is-size-7" href="{{ h2.permalink | safe }}">
                     {{ h2.title }}
                   </a>
                 </li>
@@ -135,26 +135,43 @@
 
 {% block custom_js %}
 {% if page.extra.toc %}
-<script src="https://unpkg.com/in-view@0.6.1/dist/in-view.min.js"></script>
 <script type="text/javascript">
-  function handleView(item) {
-    inView(`#${item}`)
-      .on("enter", () => {
-        $(`a#link-${item}.is-active`).removeClass('is-active')
-        $(`#link-${item}`).addClass('is-active')
-      })
-      .on("exit", () => $(`#link-${item}`).removeClass('is-active'))
+  const menuBarHeight = $("nav.navbar").height();
+  const tocItems = $('.toc');
+  const navSections = new Array($('.toc').length);
 
-  };
-
-  $('h1').each(function (el) {
-    handleView($(this).attr("id"))
+  tocItems.each(function (i) {
+    let id = $(this).attr("id").substring(5);
+    navSections[i] = document.getElementById(id);
   })
 
+  function isVisible(ele) {
+    const r = ele.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+    return (r.top <= h) && (r.top >= 0);
+  }
 
-  $('h2').each(function (el) {
-    handleView($(this).attr("id"))
-  })
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(navSections[i])) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+
 </script>
 {% endif %}
 
