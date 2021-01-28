@@ -145,15 +145,20 @@
     navSections[i] = document.getElementById(id);
   })
 
-  function isVisible(ele) {
-    const r = ele.getBoundingClientRect();
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex+1] : $("section.section").get(1);
+    
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
     const h = (window.innerHeight || document.documentElement.clientHeight);
-    return (r.top <= h) && (r.top >= 0);
+
+    return (c.top <= h) && (c.top + (n.top - c.top) - menuBarHeight >= 0);
   }
 
   function activateIfVisible() {
     for (b = true, i = 0; i < tocItems.length; i++) {
-      if (b && isVisible(navSections[i])) {
+      if (b && isVisible(i)) {
         tocItems[i].classList.add('is-active');
         b = false;
       } else
@@ -171,7 +176,6 @@
       isTicking = true;
     }
   }, false);
-
 </script>
 {% endif %}
 
