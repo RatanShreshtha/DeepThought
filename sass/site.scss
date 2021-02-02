@@ -28,11 +28,7 @@ picture[theme="dark"],
 video[theme="dark"] {
   filter: invert(1) hue-rotate(180deg);
 }
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .link {
   color: $link;
   &:hover {

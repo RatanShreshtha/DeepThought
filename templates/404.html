@@ -1,35 +1,39 @@
 {% extends 'base.html' %}
-{% block content %}
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-9">
-            {% if config.extra.author.avatar %}
-            <figure class="image center">
-              <img class="is-rounded card" src='{{ config.extra.author.avatar }}' style="max-width: 180px" />
-            </figure>
-            {% endif %}
-            <div class="has-text-centered">
-              <h1 class="title">
-                HTTP 404
-              </h1>
-              <h2 class="subtitle">
-                It seems you are looking for something that I don't have.
-              </h2>
-              <p class="is-size-4">
-                {{ macros:: social_links( social_config=config.extra.social) }}
-              </p>
-            </div>
-            <hr/>
-            <p class="has-text-centered">
-              <a class="link" href='{{ config.base_url }}'>
-                Home
-              </a>
-            </p>
-          </div>
-        </div>
+
+{% block header %}
+<header class='hero'>
+  <div class='hero-body pb-0'>
+    <div class='container'>
+      <div class="content">
+        <h1 class='title has-text-centered is-1'>HTTP 404</h1>
+        <p class='subtitle has-text-centered'>
+          It seems you are looking for something that I don't have.
+        </p>
+        {% if config.extra.author.avatar %}
+        <figure class="image is-flex is-justify-content-center is-align-items-center">
+          <img class="is-rounded" src='{{ config.extra.author.avatar }}' style="max-width: 192px" />
+        </figure>
+        {% endif %}
+        {{ macros:: social_links( social_config=config.extra.social) }}
       </div>
     </div>
-  </section>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class='section'>
+  <div class='container'>
+    <div class="content has-text-centered">
+      <a class="link" href='{{ config.base_url }}'>
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span>Home</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
 {% endblock %}
