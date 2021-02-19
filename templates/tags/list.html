@@ -20,7 +20,7 @@
   <div class="container">
     {% for tag in terms %}
     <span class="my-3 mx-2" style="display: inline-block;">
-      <a class="link" href="{{ get_taxonomy_url(kind="tags", name=tag.name) }}">
+      <a href="{{ get_taxonomy_url(kind="tags", name=tag.name) }}">
         <span class="icon"><i class="fas fa-tag"></i></span>{{ tag.name }}<sup>{{ tag.pages | length }}</sup>
       </a>
     </span>

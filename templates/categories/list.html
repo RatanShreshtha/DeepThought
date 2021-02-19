@@ -24,7 +24,7 @@
   <div class="container">
     {% for category in terms %}
     <span class="my-3 mx-2" style="display: inline-block;">
-      <a class="link" href="{{ get_taxonomy_url(kind="categories", name=category.name) }}">
+      <a href="{{ get_taxonomy_url(kind="categories", name=category.name) }}">
         <span class="icon"><i
             class="fas fa-folder"></i></span>{{ category.name }}<sup>{{ category.pages | length }}</sup>
       </a>

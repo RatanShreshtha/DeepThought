@@ -1,152 +1,135 @@
 {% macro social_links(social_config) %}
-  <p class="has-text-centered">
+<p class="has-text-centered">
+  <span class="icon-text">
     {% if social_config.facebook %}
-      <a class="link" href="https://facebook.com/{{ social_config.facebook }}" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-facebook fa-lg"></i>
-        </span>
-      </a>
+    <a href="https://facebook.com/{{ social_config.facebook }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="fab fa-facebook fa-lg"></i>
+    </a>
     {% endif %}
     {% if social_config.twitter %}
-      <a class="link" href="https://twitter.com/{{ social_config.twitter }}" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-twitter fa-lg"></i>
-        </span>
-      </a>
+    <a href="https://twitter.com/{{ social_config.twitter }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="fab fa-twitter fa-lg"></i>
+    </a>
     {% endif %}
     {% if social_config.linkedin %}
-      <a class="link" href="https://www.linkedin.com/in/{{ social_config.linkedin }}" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-linkedin fa-lg"></i>
-        </span>
-      </a>
+    <a href="https://www.linkedin.com/in/{{ social_config.linkedin }}" class="icon is-medium has-text-dark"
+      target="_blank">
+      <i class="fab fa-linkedin fa-lg"></i>
+    </a>
     {% endif %}
     {% if social_config.github %}
-      <a class="link" href="https://github.com/{{ social_config.github }}" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-github fa-lg"></i>
-        </span>
-      </a>
+    <a href="https://github.com/{{ social_config.github }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="fab fa-github fa-lg"></i>
+    </a>
     {% endif %}
     {% if social_config.gitlab %}
-    <a class="link" href="https://gitlab.com/{{ social_config.gitlab }}" target="_blank">
-      <span class="icon is-medium">
-        <i class="fab fa-gitlab fa-lg"></i>
-      </span>
+    <a href="https://gitlab.com/{{ social_config.gitlab }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="fab fa-gitlab fa-lg"></i>
     </a>
     {% endif %}
     {% if social_config.stackoverflow %}
-      <a class="link" href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-stack-overflow fa-lg"></i>
-        </span>
-      </a>
+    <a href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" class="icon is-medium has-text-dark"
+      target="_blank">
+      <i class="fab fa-stack-overflow fa-lg"></i>
+    </a>
     {% endif %}
     {% if social_config.keybase %}
-      <a class="link" href="https://keybase.io/{{ social_config.keybase }}" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-keybase fa-lg"></i>
-        </span>
-      </a>
+    <a href="https://keybase.io/{{ social_config.keybase }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="fab fa-keybase fa-lg"></i>
+    </a>
     {% endif %}
     {% if social_config.email %}
-    <a class="link" href="mailto:{{ social_config.email }}" target="_blank">
-      <span class="icon is-medium">
-        <i class="far fa-envelope fa-lg"></i>
-      </span>
+    <a href="mailto:{{ social_config.email }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="far fa-envelope fa-lg"></i>
     </a>
     {% endif %}
     {% if config.generate_feed %}
-      <a class="link" href='{{ config.base_url }}/{{ config.feed_filename }}' target="_blank">
-        <span class="icon is-medium">
-          <i class="fas fa-rss fa-lg"></i>
-        </span>
-      </a>
+    <a href="{{ config.base_url }}/{{ config.feed_filename }}" class="icon is-medium has-text-dark" target="_blank">
+      <i class="fas fa-rss fa-lg"></i>
+    </a>
     {% endif %}
-  </p>
+  </span>
+</p>
 {% endmacro %}
-{% macro  page_publish_metadata(page) %}
-  <p class="has-text-grey">
+
+{% macro page_publish_metadata(page) %}
+<p class="has-text-left has-text-grey">
+  <span class="icon-text">
     <span class="icon">
       <i class="fas fa-user"></i>
     </span>
-    {{ config.extra.author.name }} published on
+    <span>{{ config.extra.author.name }}</span>
+    <span>published on</span>
     <span class="icon">
       <i class="far fa-calendar-alt"></i>
     </span>
-    <time datetime='{{ page.date }}'>{{ page.date | date(format='%B %d, %Y') }}</time>
-  </p>
+    <span><time datetime="{{ page.date }}">{{ page.date | date(format='%B %d, %Y') }}</time></span>
+  </span>
+</p>
 {% endmacro %}
+
 {% macro page_content_metadata(page) %}
-  <p class="has-text-grey">
+<p class="has-text-right has-text-grey">
+  <span class="icon-text">
     <span class="icon">
       <i class="far fa-clock"></i>
     </span>
-    {{ page.reading_time }} min,
+    <span>{{ page.reading_time }} min,</span>
     <span class="icon">
       <i class="fas fa-pencil-alt"></i>
     </span>
-    {{ page.word_count }} words
-  </p>
+    <span>{{ page.word_count }} words</span>
+  </span>
+</p>
 {% endmacro %}
+
 {% macro render_categories(categories) %}
-  <p>
-    <span class="has-text-black has-text-weight-normal">Categories:</span>
-    {% for category in categories %}
-      <a class="link has-text-weight-light" href='{{ get_taxonomy_url(kind='categories', name=category) }}'>
-        <span class="icon is-small">
-          <i class="fas fa-folder fa-xs"></i>
-        </span>
-        {{ category }}
-      </a>
-    {% endfor %}
-  </p>
+<p class="has-text-left has-text-dark"></p>
+  Categories:
+  {% for category in categories %}
+  <a href="{{ get_taxonomy_url(kind='categories', name=category) }}" class="icon-text">
+    <span class="icon">
+      <i class="fas fa-folder"></i>
+    </span>
+    <span>{{category}}</span>
+  </a>
+  {% endfor %}
+</p>
 {% endmacro %}
+
 {% macro render_tags(tags) %}
-  <p>
-    <span class="has-text-black has-text-weight-normal">Tags:</span>
-    {% for tag in tags %}
-      <a class="link has-text-weight-light" href='{{ get_taxonomy_url(kind='tags', name=tag) }}'>
-        <span class="icon is-small">
-          <i class="fas fa-tag fa-xs"></i>
-        </span>
-        {{ tag }}
-      </a>
-    {% endfor %}
-  </p>
+<p class="has-text-right has-text-dark">
+  Tags:
+  {% for tag in tags %}
+  <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="icon-text">
+    <span class="icon">
+      <i class="fas fa-tag"></i>
+    </span>
+    <span>{{tag}}</span>
+  </a>
+  {% endfor %}
+</p>
 {% endmacro %}
+
 {% macro page_share_links(page) %}
-  <p class="is-size-5">
-    Share:
-    <a class="link" data-sharer="facebook" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on facebook">
-      <span class="icon">
-        <i class="fab fa-facebook-square"></i>
-      </span>
+<p class="has-text-centered">
+  Share:
+  <span class="icon-text">
+    <a data-sharer="facebook" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on facebook" class="icon">
+      <i class="fab fa-facebook"></i>
     </a>
-    <a class="link" data-sharer="twitter" data-title='{{ page.title }}' data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on twitter">
-      <span class="icon">
-        <i class="fab fa-twitter"></i>
-      </span>
+    <a data-sharer="twitter" data-title='{{ page.title }}' data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on twitter" class="icon">
+      <i class="fab fa-twitter"></i>
     </a>
-    <a class="link" data-sharer="linkedin" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on linkedin">
-      <span class="icon">
-        <i class="fab fa-linkedin"></i>
-      </span>
+    <a data-sharer="linkedin" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on LinkedIn" class="icon">
+      <i class="fab fa-linkedin"></i>
     </a>
-    <a class="link" data-sharer="reddit" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on reddit">
-      <span class="icon">
-        <i class="fab fa-reddit"></i>
-      </span>
+    <a data-sharer="reddit" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on reddit" class="icon">
+      <i class="fab fa-reddit"></i>
     </a>
-    <a class="link" data-sharer="hackernews" data-title="{{ page.title }}" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on hackernews">
-      <span class="icon">
-        <i class="fab fa-hacker-news"></i>
-      </span>
+    <a data-sharer="hackernews" data-title="{{ page.title }}" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on hackernews" class="icon">
+      <i class="fab fa-hacker-news"></i>
     </a>
-    <a class="link" data-sharer="whatsapp" data-title="{{ page.title }}" data-url='{{ page.permalink }}' href="javascript:void(0);" title="Share on whatsapp">
-      <span class="icon">
-        <i class="fab fa-whatsapp-square"></i>
-      </span>
-    </a>
-  </p>
+  </span>
+</p>
 {% endmacro %}

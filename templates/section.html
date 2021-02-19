@@ -34,7 +34,7 @@
         {% for page in pages %}
         <article class="box">
           <h2 class="title">
-            <a class="link" class="link" href='{{ page.permalink }}'>
+            <a href='{{ page.permalink }}'>
               {{ page.title }}
             </a>
           </h2>
@@ -49,7 +49,7 @@
           </div>
           <div class="content mt-2">
             {{ page.summary | safe }}
-            <a class="read-more" href='{{ page.permalink }}'>
+            <a href='{{ page.permalink }}'>
               Read More
               <span class="icon is-small">
                 <i class="fas fa-arrow-right fa-xs"></i>
