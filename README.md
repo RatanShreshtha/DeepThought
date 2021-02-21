@@ -67,6 +67,39 @@ hyvor = "<your_hyvor_website_id>"
 # To enable mapbox maps
 [extra.mapbox]
 access_token = "<your_access_token>"
+
+# To enable rendering of KaTeX math formulas
+katex.enabled = true
+katex.auto_render = true
+```
+
+### KaTeX math formula support
+
+This theme contains math formula support using [KaTeX](https://katex.org/),
+which can be enabled by setting `katex.enabled = true` in the `extra` section
++of `config.toml`:
+
+```toml
+[extra]
+katex.enabled = true
+katex.auto_render = true
+```
+
+After enabling this extension, the `katex` short code can be used in documents:
+* `{{ katex(body="\KaTeX") }}` to typeset a math formula inlined into a text,
+  similar to `$...$` in LaTeX
+* `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
+  similar to `$$...$$` in LaTeX
+
+#### Automatic rendering without short codes
+
+Optionally, `\\( \KaTeX \\)` / `$ \KaTeX $` inline and `\\[ \KaTeX \\]` / `$$ \KaTeX $$`
+block-style automatic rendering is also supported, if enabled in the config:
+
+```toml
+[extra]
+katex.enabled = true
+katex.auto_render = true
 ```
 
 ## Features

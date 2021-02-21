@@ -799,6 +799,23 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
 }
 {% end %}
 
+# KaTeX
+[KaTeX](https://katex.org/) is a math typesetting library based on TeX
+
+**Code**
+
+```
+{%/* katex(block=true) */%}
+\KaTeX
+{%/* end */%}
+```
+
+**Output**
+
+{% katex(block=true) %}
+\KaTeX
+{% end %}
+
 **Photo By:**
 - [ALEXANDRE DINAUT](https://unsplash.com/@alexdinaut?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@alexdinaut?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
 - [Chandler Cruttenden](https://unsplash.com/@chanphoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@chanphoto?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
