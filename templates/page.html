@@ -44,7 +44,8 @@
           <ul class="menu-list">
             {% for h1 in page.toc %}
             <li>
-              <a id="link-{{h1.id}}" class="toc is-size-7 {% if loop.first %}is-active{% endif %}" href="{{ h1.permalink | safe }}">
+              <a id="link-{{h1.id}}" class="toc is-size-7 {% if loop.first %}is-active{% endif %}"
+                href="{{ h1.permalink | safe }}">
                 {{ h1.title }}
               </a>
               {% if h1.children %}
@@ -65,7 +66,6 @@
       </div>
       {% endif %}
     </div>
-    {{ macros::page_share_links(page=page) }}
   </div>
 </section>
 {% endblock %}
@@ -148,8 +148,8 @@
 
   function isVisible(tocIndex) {
     const current = navSections[tocIndex];
-    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex+1] : $("section.section").get(1);
-    
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1] : $("section.section").get(1);
+
     const c = current.getBoundingClientRect();
     const n = next.getBoundingClientRect();
     const h = (window.innerHeight || document.documentElement.clientHeight);
