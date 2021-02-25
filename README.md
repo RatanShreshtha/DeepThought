@@ -21,15 +21,64 @@ Go into your sites directory, and type `zola serve`. You should see your new sit
 ## Deployment
 [Zola](https://www.getzola.org) already has great documentation for deploying to [Netlify](https://www.getzola.org/documentation/deployment/netlify/) or [Github Pages](https://www.getzola.org/documentation/deployment/github-pages/). I won't bore you with a regurgitated explanation.
 
-## Theme Options
-```toml
+## Multilingual Navbar
 
+If you want to have a multilingual navbar on your blog, you must add your new code language in the [languages](https://www.getzola.org/documentation/content/multilingual/#configuration) array in the `config.toml` file.
+
+**NOTE**: Don't add you default language to this array
+
+```toml
+languages = [
+    {code = "fr"}, 
+    {code = "es"},
+]
+```
+
+And then create and array of nav item for each language:
+
+**NOTE**: Include your default language in this array
+
+```toml
 navbar_items = [
-	{ url = "$BASE_URL/", name = "Home" },
-	{ url = "$BASE_URL/posts", name = "Posts" },
-	{ url = "$BASE_URL/docs", name = "Docs" },
-	{ url = "$BASE_URL/tags", name = "Tags" },
-	{ url = "$BASE_URL/categories", name = "Categories" },
+ { code = "en", nav_items = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts", name = "Posts" },
+  { url = "$BASE_URL/docs", name = "Docs" },
+  { url = "$BASE_URL/tags", name = "Tags" },
+  { url = "$BASE_URL/categories", name = "Categories" },
+ ]},
+ { code = "fr", nav_items = [
+  { url = "$BASE_URL/", name = "Connexion" },
+ ]},
+ { code = "es", nav_items = [
+  { url = "$BASE_URL/", name = "Publicationes" },
+  { url = "$BASE_URL/", name = "Registrar" },
+ ]}
+]
+```
+
+en:
+
+![DeepThought](./screenshot_navbar_en.png)
+
+fr:
+
+![DeepThought](./screenshot_navbar_fr.png)
+
+es: 
+
+![DeepThought](./screenshot_navbar_es.png)
+## Theme Options
+
+```toml
+navbar_items = [
+ { code = "en", nav_items = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts", name = "Posts" },
+  { url = "$BASE_URL/docs", name = "Docs" },
+  { url = "$BASE_URL/tags", name = "Tags" },
+  { url = "$BASE_URL/categories", name = "Categories" },
+ ]}
 ]
 
 # Add links to favicon, you can use https://realfavicongenerator.net/ to generate favicon for your site
@@ -115,3 +164,4 @@ katex.auto_render = true
 - [x] Categories
 - [x] Social Links
 - [x] Post Sharing
+- [x] Multilingual Navbar

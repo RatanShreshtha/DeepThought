@@ -92,9 +92,13 @@
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-end has-text-centered">
           {% for item in config.extra.navbar_items %}
-          <a class="navbar-item" href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}'>
-            {{ item.name }}
-          </a>
+            {% if lang == item.code %}
+              {% for nav in item.nav_items %}
+                <a class="navbar-item" href='{{ nav.url | replace(from='$BASE_URL', to=config.base_url) }}'>
+                  {{ nav.name }}
+                </a>
+              {% endfor %}
+            {% endif %}
           {% endfor %}
           <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
             <span class="icon">
