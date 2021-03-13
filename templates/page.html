@@ -121,15 +121,14 @@
 {% endblock %}
 
 {% block comment %}
-{% if page.extra.comments and config.extra.commenting.hyvor %}
+{% if page.extra.comments and config.extra.commenting.disqus_shortname %}
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <div id="hyvor-talk-view"></div>
+        <div id="disqus_thread"></div>
       </div>
     </div>
-  </div>
 </section>
 {% endif %}
 {% endblock %}
@@ -180,14 +179,19 @@
 </script>
 {% endif %}
 
-{% if page.extra.comments and config.extra.commenting.hyvor %}
-<script type="text/javascript">
-  var HYVOR_TALK_WEBSITE = {{ config.extra.commenting.hyvor }};
-  var HYVOR_TALK_CONFIG = {
-    url: window.location.href,
-    id: window.btoa(encodeURIComponent(escape(window.location.href)))
+{% if page.extra.comments and config.extra.commenting.disqus_shortname %}
+<script>
+  var disqus_config = function () {
+    this.page.url = "{{config.base_url | safe}}";
+    this.page.identifier = "{{ current_path | safe}}";
   };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ config.extra.commenting.disqus_shortname | safe}}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
 </script>
-<script src="https://talk.hyvor.com/web-api/embed" type="text/javascript" async></script>
 {% endif %}
 {% endblock %}

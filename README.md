@@ -142,9 +142,9 @@ twitter = "<twitter_username>"
 [extra.analytics]
 google = "<your_gtag>"
 
-# To add hyvor comments
+# To add disqus comments
 [extra.commenting]
-hyvor = "<your_hyvor_website_id>"
+disqus_shortname = "<your_disqus_shortname>"
 
 # To enable mapbox maps
 [extra.mapbox]
