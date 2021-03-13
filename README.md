@@ -64,6 +64,8 @@
 - [x] Comments
 - [x] Categories
 - [x] Social Links
+- [x] Multilingual Navbar
+- [x] Katex
 
 
 ### Built With
@@ -149,7 +151,83 @@ hyvor = "<your_hyvor_website_id>"
 access_token = "<your_access_token>"
 ```
 
+#### Multilingual Navbar
 
+If you want to have a multilingual navbar on your blog, you must add your new code language in the [languages](https://www.getzola.org/documentation/content/multilingual/#configuration) array in the `config.toml` file.
+
+**NOTE**: Don't add you default language to this array
+
+```toml
+languages = [
+    {code = "fr"}, 
+    {code = "es"},
+]
+```
+
+And then create and array of nav item for each language:
+
+**NOTE**: Include your default language in this array
+
+```toml
+navbar_items = [
+ { code = "en", nav_items = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts", name = "Posts" },
+  { url = "$BASE_URL/docs", name = "Docs" },
+  { url = "$BASE_URL/tags", name = "Tags" },
+  { url = "$BASE_URL/categories", name = "Categories" },
+ ]},
+ { code = "fr", nav_items = [
+  { url = "$BASE_URL/", name = "Connexion" },
+ ]},
+ { code = "es", nav_items = [
+  { url = "$BASE_URL/", name = "Publicationes" },
+  { url = "$BASE_URL/", name = "Registrar" },
+ ]}
+]
+```
+
+en:
+
+![DeepThought](./screenshot_navbar_en.png)
+
+fr:
+
+![DeepThought](./screenshot_navbar_fr.png)
+
+es: 
+
+![DeepThought](./screenshot_navbar_es.png)
+
+
+### KaTeX math formula support
+
+This theme contains math formula support using [KaTeX](https://katex.org/),
+which can be enabled by setting `katex.enabled = true` in the `extra` section
++of `config.toml`:
+
+```toml
+[extra]
+katex.enabled = true
+katex.auto_render = true
+```
+
+After enabling this extension, the `katex` short code can be used in documents:
+* `{{ katex(body="\KaTeX") }}` to typeset a math formula inlined into a text,
+  similar to `$...$` in LaTeX
+* `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
+  similar to `$$...$$` in LaTeX
+
+#### Automatic rendering without short codes
+
+Optionally, `\\( \KaTeX \\)` / `$ \KaTeX $` inline and `\\[ \KaTeX \\]` / `$$ \KaTeX $$`
+block-style automatic rendering is also supported, if enabled in the config:
+
+```toml
+[extra]
+katex.enabled = true
+katex.auto_render = true
+```
 
 ## Roadmap
 
@@ -185,7 +263,7 @@ Project Link: [https://github.com/RatanShreshtha/DeepThought](https://github.com
 ## Acknowledgements
 
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
 * [Choose an Open Source License](https://choosealicense.com)
 * [Slick Carousel](https://kenwheeler.github.io/slick)
 * [Font Awesome](https://fontawesome.com)
+* [Unsplash](https://unsplash.com/)
