@@ -23,18 +23,16 @@
 {% block content %}
 <section class="section">
   <div class="container">
-    <p class="has-text-centered">
+    <span class="icon-text">
       {% for tag in terms %}
-      <a href="{{ get_taxonomy_url(kind='tags', name=tag.name) }}">
-        <span class="icon-text">
-          <span class="icon">
-            <i class="fas fa-tag"></i>
-          </span>
-          <span>{{tag.name}} <sup>{{ tag.pages | length }}</sup></span>
+      <a href="{{ get_taxonomy_url(kind='tags', name=tag.name) }}" class="mr-4">
+        <span class="icon">
+          <i class="fas fa-tag"></i>
         </span>
+        <span>{{tag.name}} <sup>{{ tag.pages | length }}</sup></span>
       </a>
       {% endfor %}
-    </p>
+    </span>
   </div>
 </section>
 {% endblock content %}
