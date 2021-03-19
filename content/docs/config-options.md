@@ -66,11 +66,11 @@ google = "<your_gtag>"
 
 ## Disqus Comments Setup
 
-**DeepThought** support disqus commenting out of the box. You can configure disqus_shortname in `[extra.commenting]` of `config.toml` file. 
+**DeepThought** support disqus commenting out of the box. You can configure disqus in `[extra.commenting]` of `config.toml` file. 
 
 ```toml
 [extra.commenting]
-disqus_shortname = "<your_disqus_shortname>"
+disqus = "<your_disqus>"
 ```
 
 ## Mapbox Setup

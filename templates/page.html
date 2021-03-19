@@ -121,7 +121,7 @@
 {% endblock %}
 
 {% block comment %}
-{% if page.extra.comments and config.extra.commenting.disqus_shortname %}
+{% if page.extra.comments and config.extra.commenting.disqus %}
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -179,7 +179,7 @@
 </script>
 {% endif %}
 
-{% if page.extra.comments and config.extra.commenting.disqus_shortname %}
+{% if page.extra.comments and config.extra.commenting.disqus %}
 <script>
   var disqus_config = function () {
     this.page.url = "{{config.base_url | safe}}";
@@ -188,7 +188,7 @@
 
   (function () {
     var d = document, s = d.createElement('script');
-    s.src = 'https://{{ config.extra.commenting.disqus_shortname | safe}}.disqus.com/embed.js';
+    s.src = 'https://{{ config.extra.commenting.disqus | safe}}.disqus.com/embed.js';
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
   })();

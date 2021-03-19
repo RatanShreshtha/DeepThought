@@ -8,8 +8,7 @@
         <h1 class="title">
           <span class="icon-text">
             <span class="icon">
-              <i class="fas fa-folder" style="position: relative;top: 7px;"></i>
-              <i class="fas fa-folder" style="position: relative;left: -65px;top: -7px;"></i>
+              <i class="fas fa-cubes"></i>
             </span>
             <span>Categories</span>
           </span>
@@ -28,7 +27,7 @@
       {% for category in terms %}
       <a href="{{ get_taxonomy_url(kind='categories', name=category.name) }}" class="mr-4">
         <span class="icon">
-          <i class="fas fa-folder"></i>
+          <i class="fas fa-cube"></i>
         </span>
         <span>{{category.name}} <sup>{{ category.pages | length }}</sup></span>
       </a>

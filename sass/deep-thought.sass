@@ -5,7 +5,30 @@
 
 // Update Bulma's global variables
 $family-sans-serif: "Recursive", sans-serif;
-$footer-padding: 1.5rem 2.5rem;
+$footer-padding: 1.0rem 2.5rem;
+
+$link: hsl(0, 0%, 21%);
+$link-hover: hsl(204, 71%, 39%);
+
+body
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+
+body[theme="dark"]
+    filter: invert(1) hue-rotate(180deg);
+
+
+section
+    flex: 1;
+
+
+img[theme="dark"],
+picture[theme="dark"],
+video[theme="dark"]
+    filter: invert(1) hue-rotate(180deg);
+
 
 @import "base/all"
 @import "components/all"
