@@ -57,25 +57,25 @@ twitter = "<twitter_username>"
 
 ## Google Analytics Setup
 
-**DeepThought** support google analytics out of the box. You can configure favicon in `[extra.analytics]` of `config.toml` file. 
+**DeepThought** support google analytics out of the box. You can configure google in `[extra.analytics]` of `config.toml` file. 
 
 ```toml
 [extra.analytics]
 google = "<your_gtag>"
 ```
 
-## Hyvor Comments Setup
+## Disqus Comments Setup
 
-**DeepThought** support hyvor commenting out of the box. You can configure favicon in `[extra.commenting]` of `config.toml` file. 
+**DeepThought** support disqus commenting out of the box. You can configure disqus in `[extra.commenting]` of `config.toml` file. 
 
 ```toml
 [extra.commenting]
-hyvor = "<your_website_id>"
+disqus = "<your_disqus>"
 ```
 
 ## Mapbox Setup
 
-**DeepThought** support mapbox out of the box to add maps in your posts. You can configure favicon in `[extra.mapbox]` of `config.toml` file. 
+**DeepThought** support mapbox out of the box to add maps in your posts. You can configure access_token in `[extra.mapbox]` of `config.toml` file. 
 
 ```toml
 [extra.mapbox]

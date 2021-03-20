@@ -10,7 +10,7 @@
     <div class="columns">
       <div class="column is-8 is-offset-2">
         <article class="box">
-          <h1 class="title is-1">
+          <h1 class="title">
             {{ page.title }}
           </h1>
           <p class="subtitle">{{ page.description }}</p>
@@ -44,7 +44,8 @@
           <ul class="menu-list">
             {% for h1 in page.toc %}
             <li>
-              <a id="link-{{h1.id}}" class="toc is-size-7 {% if loop.first %}is-active{% endif %}" href="{{ h1.permalink | safe }}">
+              <a id="link-{{h1.id}}" class="toc is-size-7 {% if loop.first %}is-active{% endif %}"
+                href="{{ h1.permalink | safe }}">
                 {{ h1.title }}
               </a>
               {% if h1.children %}
@@ -120,15 +121,14 @@
 {% endblock %}
 
 {% block comment %}
-{% if page.extra.comments and config.extra.commenting.hyvor %}
+{% if page.extra.comments and config.extra.commenting.disqus %}
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <div id="hyvor-talk-view"></div>
+        <div id="disqus_thread"></div>
       </div>
     </div>
-  </div>
 </section>
 {% endif %}
 {% endblock %}
@@ -147,8 +147,8 @@
 
   function isVisible(tocIndex) {
     const current = navSections[tocIndex];
-    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex+1] : $("section.section").get(1);
-    
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1] : $("section.section").get(1);
+
     const c = current.getBoundingClientRect();
     const n = next.getBoundingClientRect();
     const h = (window.innerHeight || document.documentElement.clientHeight);
@@ -179,14 +179,19 @@
 </script>
 {% endif %}
 
-{% if page.extra.comments and config.extra.commenting.hyvor %}
-<script type="text/javascript">
-  var HYVOR_TALK_WEBSITE = {{ config.extra.commenting.hyvor }};
-  var HYVOR_TALK_CONFIG = {
-    url: window.location.href,
-    id: window.btoa(encodeURIComponent(escape(window.location.href)))
+{% if page.extra.comments and config.extra.commenting.disqus %}
+<script>
+  var disqus_config = function () {
+    this.page.url = "{{config.base_url | safe}}";
+    this.page.identifier = "{{ current_path | safe}}";
   };
+
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ config.extra.commenting.disqus | safe}}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
 </script>
-<script src="https://talk.hyvor.com/web-api/embed" type="text/javascript" async></script>
 {% endif %}
 {% endblock %}

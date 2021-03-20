@@ -6,8 +6,8 @@ highlight_theme = "one-dark"
 generate_feed = true
 feed_filename = "rss.xml"
 taxonomies = [
-	{ name = "categories", feed = true, paginate_by = 10 },
-	{ name = "tags", fees = true, paginate_by = 10 },
+    { name = "categories", feed = true, paginate_by = 10 },
+    { name = "tags", fees = true, paginate_by = 10 },
 ]
 languages = []
 compile_sass = true
@@ -28,13 +28,13 @@ anchors = "on"
 
 [extra]
 navbar_items = [
- { code = "en", nav_items = [
-  { url = "$BASE_URL/", name = "Home" },
-  { url = "$BASE_URL/posts", name = "Posts" },
-  { url = "$BASE_URL/docs", name = "Docs" },
-  { url = "$BASE_URL/tags", name = "Tags" },
-  { url = "$BASE_URL/categories", name = "Categories" },
- ]}
+    { code = "en", nav_items = [
+        { url = "$BASE_URL/", name = "Home" },
+        { url = "$BASE_URL/posts", name = "Posts" },
+        { url = "$BASE_URL/docs", name = "Docs" },
+        { url = "$BASE_URL/tags", name = "Tags" },
+        { url = "$BASE_URL/categories", name = "Categories" },
+    ] },
 ]
 
 [extra.favicon]
@@ -62,7 +62,7 @@ twitter = "RatanShreshtha"
 google = "UA-176984489-2"
 
 [extra.commenting]
-hyvor = "1967"
+disqus = "deepthought-theme"
 
 [extra.mapbox]
 access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tla2s2NmM3MDd0ZzJzbXFtc3Y2YmU0NyJ9.0RhUnJPKbxHWw3xGPnnBlA"

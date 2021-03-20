@@ -5,12 +5,13 @@
   <div class='hero-body pb-0'>
     <div class='container'>
       <div class='has-text-centered'>
-        <h1 class="title is-1">
-          <span class="icon  mr-2">
-            <i class="fas fa-folder"></i>
-            <i class="fas fa-folder" style="position: relative;left: -15px;top: 7px;"></i>
+        <h1 class="title">
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fas fa-cubes"></i>
+            </span>
+            <span>Categories</span>
           </span>
-          Categories
         </h1>
         <p class='subtitle'>{{ terms | length }} categories in total</p>
       </div>
@@ -22,14 +23,16 @@
 {% block content %}
 <section class="section">
   <div class="container">
-    {% for category in terms %}
-    <span class="my-3 mx-2" style="display: inline-block;">
-      <a class="link" href="{{ get_taxonomy_url(kind="categories", name=category.name) }}">
-        <span class="icon"><i
-            class="fas fa-folder"></i></span>{{ category.name }}<sup>{{ category.pages | length }}</sup>
+    <span class="icon-text">
+      {% for category in terms %}
+      <a href="{{ get_taxonomy_url(kind='categories', name=category.name) }}" class="mr-4">
+        <span class="icon">
+          <i class="fas fa-cube"></i>
+        </span>
+        <span>{{category.name}} <sup>{{ category.pages | length }}</sup></span>
       </a>
+      {% endfor %}
     </span>
-    {% endfor %}
   </div>
 </section>
 {% endblock content %}

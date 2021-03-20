@@ -1,8 +1,7 @@
 {% import 'macros.html' as macros %}
-{% set lang = lang | default(value=config.default_language) %}
 
 <!DOCTYPE html>
-<html>
+<html lang="{{lang}}">
 
 <head>
   <meta charset="utf-8" />
@@ -26,11 +25,10 @@
   <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180" />
   {% endif %}
 
-  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.css"
     rel="stylesheet" />
-  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-  <link href='{{ get_url(path='site.css') }}' rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.css" rel="stylesheet" />
+  <link href="{{ get_url(path='deep-thought.css') }}" rel="stylesheet" />
 
   {% block custom_css %}
   {% endblock %}
@@ -94,13 +92,13 @@
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-end has-text-centered">
           {% for item in config.extra.navbar_items %}
-            {% if lang == item.code %}
-              {% for nav in item.nav_items %}
-                <a class="navbar-item" href='{{ nav.url | replace(from='$BASE_URL', to=config.base_url) }}'>
-                  {{ nav.name }}
-                </a>
-              {% endfor %}
-            {% endif %}
+          {% if lang == item.code %}
+          {% for nav in item.nav_items %}
+          <a class="navbar-item" href='{{ nav.url | replace(from='$BASE_URL', to=config.base_url) }}'>
+            {{ nav.name }}
+          </a>
+          {% endfor %}
+          {% endif %}
           {% endfor %}
           <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
             <span class="icon">
@@ -127,18 +125,20 @@
   {% block search %}
   <section class="modal" id="search-modal">
     <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="field">
-        <p class="control has-icons-right">
-          <input class="input" id="search" placeholder="Search this website." type="search" />
-          <span class="icon is-small is-right">
-            <i class="fas fa-search"></i>
-          </span>
-        </p>
-      </div>
-      <div class="search-results">
-        <div class="search-results__items"></div>
-      </div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
     </div>
     <button aria-label="close" class="modal-close is-large"></button>
   </section>
@@ -183,35 +183,46 @@
   {% endblock %}
 
   {% block footbar %}
-  <footer class="py-4 has-background-light">
-    <p class="has-text-centered">
-      Built with
-      <span class="icon is-small">
-        <i class="fas fa-code fa-xs"></i>
-      </span>
-      code and
-      <span class="icon is-small">
-        <i class="fas fa-heart fa-xs"></i>
-      </span>
-      love <br /> Powered By
-      <span class="icon is-small">
-        <i class="fas fa-power-off fa-xs"></i>
-      </span>
-      Zola
-    </p>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
   </footer>
   {% endblock %}
 
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mapbox-gl@2.1.1/dist/mapbox-gl.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/folio/galleria.folio.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
-  <script src='{{ get_url(path='search_index.en.js') }}'></script>
-  <script src='{{ get_url(path='js/site.js') }}'></script>
+  <script src="{{ get_url(path='search_index.en.js') }}"></script>
+  <script src="{{ get_url(path='js/site.js') }}"></script>
 
   {% block custom_js %}
   {% endblock %}
