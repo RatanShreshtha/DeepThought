@@ -125,18 +125,20 @@
   {% block search %}
   <section class="modal" id="search-modal">
     <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="field">
-        <p class="control has-icons-right">
-          <input class="input" id="search" placeholder="Search this website." type="search" />
-          <span class="icon is-small is-right">
-            <i class="fas fa-search"></i>
-          </span>
-        </p>
-      </div>
-      <div class="search-results">
-        <div class="search-results__items"></div>
-      </div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
     </div>
     <button aria-label="close" class="modal-close is-large"></button>
   </section>
