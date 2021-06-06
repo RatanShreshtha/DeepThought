@@ -155,7 +155,7 @@ access_token = "<your_access_token>"
 
 If you want to have a multilingual navbar on your blog, you must add your new code language in the [languages](https://www.getzola.org/documentation/content/multilingual/#configuration) array in the `config.toml` file.
 
-**NOTE**: Don't add you default language to this array
+**NOTE**: Don't add your default language to this array
 
 ```toml
 languages = [
@@ -202,14 +202,13 @@ es:
 
 ### KaTeX math formula support
 
-This theme contains math formula support using [KaTeX](https://katex.org/),
-which can be enabled by setting `katex.enabled = true` in the `extra` section
-+of `config.toml`:
+This theme supports displaying LaTeX-styled math formulas via [KaTeX](https://katex.org/).
+Support can be enabled by setting `katex.enabled = true` in the `extra` section
+of `config.toml` (all pages support) or page's headers (individual pages support):
 
 ```toml
 [extra]
 katex.enabled = true
-katex.auto_render = true
 ```
 
 After enabling this extension, the `katex` short code can be used in documents:
@@ -221,7 +220,7 @@ After enabling this extension, the `katex` short code can be used in documents:
 #### Automatic rendering without short codes
 
 Optionally, `\\( \KaTeX \\)` / `$ \KaTeX $` inline and `\\[ \KaTeX \\]` / `$$ \KaTeX $$`
-block-style automatic rendering is also supported, if enabled in the config:
+block-style automatic rendering is also supported, if enabled (see above):
 
 ```toml
 [extra]
