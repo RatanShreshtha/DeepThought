@@ -14,7 +14,9 @@
           <img class="is-rounded" src='{{ config.extra.author.avatar }}' style="max-width: 192px" />
         </figure>
         {% endif %}
-        {{ macros:: social_links( social_config=config.extra.social) }}
+        <div class="has-text-centered">
+          {{ macros:: social_links( social_config=config.extra.social) }}
+        </div>
       </div>
     </div>
   </div>
