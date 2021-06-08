@@ -1,40 +1,28 @@
 {% extends 'base.html' %}
 
-{% block header %}
-<header class='hero'>
-  <div class='hero-body pb-0'>
-    <div class='container'>
-      <div class="content">
-        <h1 class='title has-text-centered'>HTTP 404</h1>
-        <p class='subtitle has-text-centered'>
-          It seems you are looking for something that I don't have.
-        </p>
-        {% if config.extra.author.avatar %}
-        <figure class="image is-flex is-justify-content-center is-align-items-center">
-          <img class="is-rounded" src='{{ config.extra.author.avatar }}' style="max-width: 192px" />
-        </figure>
-        {% endif %}
-        <div class="has-text-centered">
-          {{ macros:: social_links( social_config=config.extra.social) }}
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-{% endblock %}
 
 {% block content %}
-<section class='section'>
-  <div class='container'>
-    <div class="content has-text-centered">
-      <a href='{{ config.base_url }}'>
-        <span class="icon-text">
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">HTTP 404</h1>
+      <p class="subtitle is-4">
+        It seems you are looking for something that I don't have.
+      </p>
+      {% if config.extra.author.avatar %}
+      <figure class="image is-flex is-justify-content-center is-align-items-center">
+        <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 192px" />
+      </figure>
+      {% endif %}
+      {{ macros:: social_links( social_config=config.extra.social) }}
+      <p class="my-6">
+        <a href='{{ config.base_url }}'>
           <span class="icon">
             <i class="fas fa-home"></i>
           </span>
           <span>Home</span>
-        </span>
-      </a>
+        </a>
+      </p>
     </div>
   </div>
 </section>

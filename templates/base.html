@@ -31,9 +31,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" rel="stylesheet" />
   <link href="{{ get_url(path='deep-thought.css') }}" rel="stylesheet" />
 
-  {% block custom_css %}
-  {% endblock %}
-
   <title>
     {% block title %}
     {{ config.title }}
@@ -71,7 +68,6 @@
 </head>
 
 <body class="has-background-white">
-  {% block navbar %}
   <nav aria-label="section navigation" class="navbar is-light" role="navigation">
     <div class="container">
       <div class="navbar-brand">
@@ -107,10 +103,6 @@
       </div>
     </div>
   </nav>
-  {% endblock %}
-
-  {% block header %}
-  {% endblock %}
 
   {% block content %}
   {% endblock %}
@@ -173,7 +165,6 @@
   {% block comment %}
   {% endblock %}
 
-  {% block footbar %}
   <footer class="footer py-4">
     <div class="content has-text-centered">
       <p>
@@ -203,7 +194,6 @@
       </p>
     </div>
   </footer>
-  {% endblock %}
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
