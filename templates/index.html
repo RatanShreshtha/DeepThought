@@ -1,32 +1,21 @@
-{% extends 'base.html' %}
-
-{% block header %}
-<header class='hero'>
-  <div class='hero-body pb-0'>
-    <div class='container'>
-      <div class="content">
-        <h1 class='title has-text-centered'>{{ section.title }}</h1>
-        <p class='subtitle has-text-centered'>{{ section.description }}</p>
-        {% if config.extra.author.avatar %}
-        <figure class="image is-flex is-justify-content-center is-align-items-center">
-          <img class="is-rounded" src='{{ config.extra.author.avatar }}' style="max-width: 192px" />
-        </figure>
-        {% endif %}
-        <div class="has-text-centered">
-          {{ macros:: social_links( social_config=config.extra.social) }}
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-<section class='section'>
-    <div class='container'>
-      <div class="content">
-        {{ section.content | safe }}
-      </div>
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">{{ section.title }}</h1>
+      <p class="subtitle is-4">{{ section.description }}</p>
+      {% if config.extra.author.avatar %}
+      <figure class="image is-flex is-justify-content-center is-align-items-center">
+        <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 192px" />
+      </figure>
+      {% endif %}
+      {{ macros:: social_links( social_config=config.extra.social) }}
     </div>
+    <div class="content">
+      {{ section.content | safe }}
+    </div>
+  </div>
 </section>
 {% endblock %}

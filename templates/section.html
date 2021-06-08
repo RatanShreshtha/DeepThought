@@ -4,25 +4,16 @@
 {{ config.title }} | {{ section.title }}
 {% endblock title %}
 
-{% block header %}
-<header class='hero'>
-  <div class='hero-body pb-0'>
-    <div class='container'>
-      <div class='has-text-centered'>
-        <h1 class='title'>{{ section.title }}</h1>
-        <p class='subtitle'>{{ section.description }}</p>
-      </div>
-      <div class="content">
-        {{ section.content | safe }}
-      </div>
-    </div>
-  </div>
-</header>
-{% endblock %}
-
 {% block content %}
 <section class="section">
   <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">{{ section.title }}</h1>
+      <p class="subtitle is-4">{{ section.description }}</p>
+    </div>
+    <div class="content">
+      {{ section.content | safe }}
+    </div>
     <div class="columns is-centered">
       <div class="column is-9">
         {% if paginator %}

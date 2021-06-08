@@ -1,5 +1,5 @@
 {% macro social_links(social_config) %}
-<span class="icon-text">
+<p>
   {% if social_config.facebook %}
   <a href="https://facebook.com/{{ social_config.facebook }}" target="_blank">
     <span class="icon is-large">
@@ -71,7 +71,7 @@
     </span>
   </a>
   {% endif %}
-</span>
+</p>
 {% endmacro %}
 
 {% macro page_publish_metadata(page) %}
