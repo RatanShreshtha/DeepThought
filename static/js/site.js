@@ -218,13 +218,15 @@ $(document).ready(function () {
     ) {
       localStorage.setItem("theme", "dark");
       $("body").attr("theme", "dark");
-      $("img, picture, video").attr("theme", "dark");
+      $("img, picture, video, pre").attr("theme", "dark");
+      $(".vimeo, .youtube, .chart").attr("theme", "dark");
 
       $("#dark-mode").attr("title", "Switch to light theme");
     } else {
       localStorage.setItem("theme", "light");
       $("body").removeAttr("theme", "dark");
-      $("img, picture, video").removeAttr("theme", "dark");
+      $("img, picture, video, pre").removeAttr("theme", "dark");
+      $(".vimeo, .youtube, .chart").removeAttr("theme", "dark");
 
       $("#dark-mode").attr("title", "Switch to dark theme");
     }
