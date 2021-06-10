@@ -83,7 +83,7 @@
           {% for item in config.extra.navbar_items %}
           {% if lang == item.code %}
           {% for nav in item.nav_items %}
-          <a class="navbar-item" href="{{ nav.url | replace(from='$BASE_URL', to=config.base_url) }}">
+          <a class="navbar-item has-text-weight-semibold" href="{{ nav.url | replace(from='$BASE_URL', to=config.base_url) }}">
             {{ nav.name }}
           </a>
           {% endfor %}

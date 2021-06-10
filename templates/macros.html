@@ -104,7 +104,7 @@
 <p>
   Categories:
   {% for category in categories %}
-  <a href="{{ get_taxonomy_url(kind='categories', name=category) }}">
+  <a class="has-text-info-dark has-text-weight-semibold" href="{{ get_taxonomy_url(kind='categories', name=category) }}">
     <span class="icon-text">
       <span class="icon">
         <i class="fas fa-cube"></i>
@@ -120,7 +120,7 @@
 <p>
   Tags:
   {% for tag in tags %}
-  <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}">
+  <a class="has-text-info-dark has-text-weight-semibold" href="{{ get_taxonomy_url(kind='tags', name=tag) }}">
     <span class="icon-text">
       <span class="icon">
         <i class="fas fa-tag"></i>
