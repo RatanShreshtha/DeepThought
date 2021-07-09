@@ -56,6 +56,14 @@
   </a>
   {% endif %}
 
+  {% if social_config.behance %}
+  <a href="https://www.behance.net/{{ social_config.behance }}" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-behance fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.email %}
   <a href="mailto:{{ social_config.email }}" target="_blank">
     <span class="icon is-large">
