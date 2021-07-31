@@ -79,6 +79,22 @@
     </span>
   </a>
   {% endif %}
+  
+  {% if social_config.medium %}
+  <a href="https://medium.com/@{{ social_config.medium }}" target="_blank">
+    <span class="icon is-large" title="Medium">
+      <i class="fab fa-medium fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.googleplay %}
+  <a href="https://play.google.com/store/apps/developer?id={{ social_config.googleplay }}&hl=en" target="_blank">
+    <span class="icon is-large" title="Google play">
+      <i class="fab fa-google-play fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
 
   {% if config.generate_feed %}
   <a href="{{ config.base_url }}/{{ config.feed_filename }}" target="_blank">
