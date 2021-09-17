@@ -9,7 +9,7 @@ taxonomies = [
     { name = "categories", feed = true, paginate_by = 10 },
     { name = "tags", fees = true, paginate_by = 10 },
 ]
-languages = []
+[languages.en]
 compile_sass = true
 build_search_index = true
 ignored_content = []
