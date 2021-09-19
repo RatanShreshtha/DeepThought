@@ -57,6 +57,8 @@ linkedin = "ratanshreshtha"
 stackoverflow = "3728911"
 email = "deepthought@gmail.com"
 twitter = "RatanShreshtha"
+#orcid = ""
+#google_scholar = ""
 
 [extra.analytics]
 google = "UA-176984489-2"
