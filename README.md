@@ -140,6 +140,8 @@ stackoverflow = "<stackoverflow_userid>"
 twitter = "<twitter_username>"
 instagram = "<instagram_usernaem>"
 behance = "<behance_username>"
+google_scholar = "<googlescholar_userid>"
+orcid = "<orcid_userid>"
 
 
 # To add google analytics
