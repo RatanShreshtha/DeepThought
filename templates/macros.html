@@ -1,5 +1,22 @@
 {% macro social_links(social_config) %}
 <p>
+
+  {% if social_config.google_scholar %}
+  <a href="https://scholar.google.com/citations?user={{ social_config.google_scholar }}" target="_blank">
+    <span class="icon is-large" title="Google Scholar">
+			<i class="ai ai-google-scholar ai-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.orcid %}
+  <a href="https://orcid.org/{{ social_config.orcid }}" target="_blank">
+    <span class="icon is-large" title="ORCiD">
+      <i class="fab fa-orcid fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.facebook %}
   <a href="https://facebook.com/{{ social_config.facebook }}" target="_blank">
     <span class="icon is-large" title="Facebook">
