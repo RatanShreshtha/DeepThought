@@ -105,6 +105,7 @@ Go into your sites directory and type `zola serve`. You should see your new site
 
 ### Theme Options
 ```toml
+[extra]
 navbar_items = [
  { code = "en", nav_items = [
   { url = "$BASE_URL/", name = "Home" },
