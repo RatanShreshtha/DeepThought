@@ -173,7 +173,9 @@ $(document).ready(function () {
 
   if (localStorage.getItem("theme") === "dark") {
     $("body").attr("theme", "dark");
-    $("img, picture, video").attr("theme", "dark");
+    $("img, picture, video, pre").attr("theme", "dark");
+    $(".vimeo, .youtube, .chart").attr("theme", "dark");
+    $("#dark-mode").attr("title", "Switch to light theme");
   }
 
   $(".navbar-burger").click(function () {
