@@ -171,7 +171,6 @@ function search() {
 }
 
 function documentReadyCallback() {
-  mermaid.initialize({ startOnLoad: true });
 
   if (localStorage.getItem("theme") === "dark") {
     document.body.setAttribute("theme", "dark");
@@ -236,77 +235,85 @@ function documentReadyCallback() {
     }
   });
 
-  document.querySelectorAll(".chart").forEach((el, i) => {
-    el.setAttribute("id", `chart-${i}`);
+  if (typeof mermaid !== "undefined") {
+    mermaid.initialize({ startOnLoad: true });
+  }
 
-    let svg = document.getElementById(`chart-${i}`);
-    let { type, ...chartData } = JSON.parse(el.textContent);
-    new chartXkcd[type](svg, chartData);
-  });
+  if (typeof chartXkcd !== "undefined") {
+    document.querySelectorAll(".chart").forEach((el, i) => {
+      el.setAttribute("id", `chart-${i}`);
 
-  document.querySelectorAll(".galleria").forEach((el, i) => {
-    el.setAttribute("id", `galleria-${i}`);
-
-    let { images } = JSON.parse(el.textContent);
-
-    for (let image of images) {
-      el.insertAdjacentHTML("beforeend",
-        `<a href="${image.src}"><img src="${image.src}" data-title="${image.title}" data-description="${image.description}"></a>`
-      );
-    }
-
-    Galleria.run(".galleria");
-  });
-
-  document.querySelectorAll(".map").forEach((el, i) => {
-    el.setAttribute("id", `map-${i}`);
-
-    mapboxgl.accessToken = el.querySelector(".mapbox-access-token").textContent.trim();
-    let zoom = el.querySelector(".mapbox-zoom").textContent.trim();
-
-    let map = new mapboxgl.Map({
-      container: `map-${i}`,
-      style: "mapbox://styles/mapbox/light-v10",
-      center: [-96, 37.8],
-      zoom: zoom,
+      let svg = document.getElementById(`chart-${i}`);
+      let { type, ...chartData } = JSON.parse(el.textContent);
+      new chartXkcd[type](svg, chartData);
     });
+  }
 
-    map.addControl(new mapboxgl.NavigationControl());
+  if (typeof Galleria !== "undefined") {
+    document.querySelectorAll(".galleria").forEach((el, i) => {
+      el.setAttribute("id", `galleria-${i}`);
 
-    let geojson = JSON.parse(el.querySelector(".mapbox-geojson").textContent.trim());
+      let { images } = JSON.parse(el.textContent);
 
-    const center = [0, 0];
+      for (let image of images) {
+        el.insertAdjacentHTML("beforeend",
+          `<a href="${image.src}"><img src="${image.src}" data-title="${image.title}" data-description="${image.description}"></a>`
+        );
+      }
 
-    geojson.features.forEach(function (marker) {
-      center[0] += marker.geometry.coordinates[0];
-      center[1] += marker.geometry.coordinates[1];
-
-      new mapboxgl.Marker()
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(
-              "<h3>" +
-              marker.properties.title +
-              "</h3><p>" +
-              marker.properties.description +
-              "</p>"
-            )
-        )
-        .addTo(map);
+      Galleria.run(".galleria");
     });
+  }
 
-    center[0] = center[0] / geojson.features.length;
-    center[1] = center[1] / geojson.features.length;
+  if (typeof mapboxgl !== "undefined") {
+    document.querySelectorAll(".map").forEach((el, i) => {
+      el.setAttribute("id", `map-${i}`);
 
-    map.setCenter(center);
-  });
+      mapboxgl.accessToken = el.querySelector(".mapbox-access-token").textContent.trim();
+      let zoom = el.querySelector(".mapbox-zoom").textContent.trim();
+
+      let map = new mapboxgl.Map({
+        container: `map-${i}`,
+        style: "mapbox://styles/mapbox/light-v10",
+        center: [-96, 37.8],
+        zoom: zoom,
+      });
+
+      map.addControl(new mapboxgl.NavigationControl());
+
+      let geojson = JSON.parse(el.querySelector(".mapbox-geojson").textContent.trim());
+
+      const center = [0, 0];
+
+      geojson.features.forEach(function (marker) {
+        center[0] += marker.geometry.coordinates[0];
+        center[1] += marker.geometry.coordinates[1];
+
+        new mapboxgl.Marker()
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                "<h3>" +
+                marker.properties.title +
+                "</h3><p>" +
+                marker.properties.description +
+                "</p>"
+              )
+          )
+          .addTo(map);
+      });
+
+      center[0] = center[0] / geojson.features.length;
+      center[1] = center[1] / geojson.features.length;
+
+      map.setCenter(center);
+    });
+  }
 };
 
-// replacement for jQuery $(document).ready()
-if (document.readyState === "complete" ||
-  (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+if (document.readyState === 'loading') {  // Loading hasn't finished yet
+  document.addEventListener('DOMContentLoaded', documentReadyCallback);
+} else {  // `DOMContentLoaded` has already fired
   documentReadyCallback();
-} else {
-  document.addEventListener("DOMContentLoaded", documentReadyCallback);
 }
