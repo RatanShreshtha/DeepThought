@@ -236,6 +236,28 @@ katex.enabled = true
 katex.auto_render = true
 ```
 
+
+### Elasticlunr search in other language
+
+Zola use [Elasticlunr.js](https://github.com/weixsong/elasticlunr.js) to add full-text search feature.
+To use languages other than en (English), you need to add some javascript files. See the Zola's issue [#1349](https://github.com/getzola/zola/issues/1349).
+By placing the `templates/base.html`on your project and using the `other_lang_search_js` block, you can load the requred additional javascript files in the right timing.
+
+e.g. `templates/base.html`
+
+```html
+{% extends "DeepThought/templates/base.html" %}
+{% block other_lang_search_js %}
+  <script src="{{ get_url(path='js/lunr.stemmer.support.js') }}"></script>
+  <script src="{{ get_url(path='js/tinyseg.js') }}"></script>
+  <script src="{{ get_url(path='js/lunr.' ~ lang ~ '.js') }}"></script>
+  <script src="{{ get_url(path='js/search.js') }}"></script>
+{% endblock %}
+```
+
+More detailed explanations are aound in [elasticlunr's documents](https://github.com/weixsong/elasticlunr.js#other-languages-example-in-browser).
+
+
 ## Roadmap
 
 See the [open issues](https://github.com/RatanShreshtha/DeepThought/issues) for a list of proposed features (and known issues).
