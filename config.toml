@@ -181,7 +181,7 @@ webmanifest = "/icons/site.webmanifest"
 
 [extra.author]
 name = "DeepThought"
-avatar = "/images/avatar.png"
+avatar = "images/avatar.png"
 
 [extra.social]
 facebook = "RatanShreshtha"
