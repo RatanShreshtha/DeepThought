@@ -31,6 +31,8 @@
   <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet" />
   <link href="{{ get_url(path='deep-thought.css') }}" rel="stylesheet" />
+  {% block user_custom_stylesheet %}
+  {% endblock %}
 
   <title>
     {% block title %}
@@ -211,6 +213,9 @@
   <script src="{{ get_url(path='js/site.js') }}"></script>
 
   {% block custom_js %}
+  {% endblock %}
+
+  {% block user_custom_js %}
   {% endblock %}
 </body>
 
