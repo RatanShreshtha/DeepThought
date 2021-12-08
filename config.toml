@@ -204,7 +204,7 @@ disqus = "deepthought-theme"
 [extra.utterances]
 theme = "preferred-color-scheme"
 repo = "repo-config"
-issueterm="pathname"
+issueterm="title"
 label = "comment2"
 
 [extra.mapbox]
