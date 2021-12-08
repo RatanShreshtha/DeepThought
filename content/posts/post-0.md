@@ -5,6 +5,9 @@ date=2018-08-20
 [taxonomies]
 categories = ["Sample Post"]
 tags = ["post", "lorem"]
+[extra]
+toc = true
+comments = true
 +++
 
 
