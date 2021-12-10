@@ -105,7 +105,15 @@ Go into your sites directory and type `zola serve`. You should see your new site
 
 ### Theme Options
 ```toml
+# Enable external libraries
 [extra]
+katex.enabled = true
+katex.auto_render = true
+
+chart.enabled = true
+mermaid.enabled = true
+galleria.enabled = true
+
 navbar_items = [
  { code = "en", nav_items = [
   { url = "$BASE_URL/", name = "Home" },
@@ -155,6 +163,7 @@ disqus = "<your_disqus_shortname>"
 
 # To enable mapbox maps
 [extra.mapbox]
+enabled = true
 access_token = "<your_access_token>"
 ```
 
@@ -211,13 +220,7 @@ es:
 
 This theme contains math formula support using [KaTeX](https://katex.org/),
 which can be enabled by setting `katex.enabled = true` in the `extra` section
-+of `config.toml`:
-
-```toml
-[extra]
-katex.enabled = true
-katex.auto_render = true
-```
+of `config.toml`.
 
 After enabling this extension, the `katex` short code can be used in documents:
 * `{{ katex(body="\KaTeX") }}` to typeset a math formula inlined into a text,
@@ -228,13 +231,8 @@ After enabling this extension, the `katex` short code can be used in documents:
 #### Automatic rendering without short codes
 
 Optionally, `\\( \KaTeX \\)` / `$ \KaTeX $` inline and `\\[ \KaTeX \\]` / `$$ \KaTeX $$`
-block-style automatic rendering is also supported, if enabled in the config:
-
-```toml
-[extra]
-katex.enabled = true
-katex.auto_render = true
-```
+block-style automatic rendering is also supported, if enabled in the config
+by setting `katex.auto_render = true`.
 
 
 ### Elasticlunr search in other language
