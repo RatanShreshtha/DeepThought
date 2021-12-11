@@ -162,6 +162,10 @@ include_content = true
 katex.enabled = true
 katex.auto_render = true
 
+chart.enabled = true
+mermaid.enabled = true
+galleria.enabled = true
+
 navbar_items = [
     { code = "en", nav_items = [
         { url = "$BASE_URL/", name = "Home" },
@@ -202,4 +206,5 @@ google = "UA-176984489-2"
 disqus = "deepthought-theme"
 
 [extra.mapbox]
+enabled = true
 access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tla2s2NmM3MDd0ZzJzbXFtc3Y2YmU0NyJ9.0RhUnJPKbxHWw3xGPnnBlA"

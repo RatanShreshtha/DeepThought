@@ -13,12 +13,14 @@ comments = true
 +++
 
 DeepThought theme provides multiple shortcodes on top of built-in ones in Zola.
+Please, have a look at the [Config Options](/docs/config-options#external-libraries)
+that explain how to enable them.
 
 <!-- more -->
 
 # Mermaid
 
-[mermaid](https://mermaidjs.github.io/) is a library helping you to generate diagram and flowcharts from text, in a similar manner as Markdown.
+[Mermaid](https://mermaidjs.github.io/) is a library helping you to generate diagram and flowcharts from text, in a similar manner as Markdown.
 
 ## Flowchart
 
@@ -800,7 +802,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
 {% end %}
 
 # KaTeX
-[KaTeX](https://katex.org/) is a math typesetting library based on TeX
+[KaTeX](https://katex.org/) is a math typesetting library based on TeX.
 
 **Code**
 
