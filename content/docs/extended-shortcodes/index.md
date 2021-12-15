@@ -16,6 +16,18 @@ DeepThought theme provides multiple shortcodes on top of built-in ones in Zola.
 
 <!-- more -->
 
+# Basic Zola shortcodes
+
+Embed gist:
+
+```
+{{/* gist(url="https://gist.github.com/Keats/e5fb6aad409f28721c0ba14161644c57", class="gist") */}}
+
+```
+
+{{ gist(url="https://gist.github.com/Keats/e5fb6aad409f28721c0ba14161644c57", class="gist") }}
+
+
 # Mermaid
 
 [mermaid](https://mermaidjs.github.io/) is a library helping you to generate diagram and flowcharts from text, in a similar manner as Markdown.
