@@ -89,7 +89,7 @@ Follow zola's guide on [installing a theme](https://www.getzola.org/documentatio
 Make sure to add `theme = "DeepThought"` to your `config.toml`
 
 **Check zola version (only 0.9.0+)**
-Just to double-check to make sure you have the right version. It is not supported to use this theme with a version under 0.9.0.
+Just to double-check to make sure you have the right version. It is not supported to use this theme with a version under 0.14.1.
 
 
 

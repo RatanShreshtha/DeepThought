@@ -3,7 +3,7 @@ description = "A simple blog theme focused on writing powered by Bulma and Zola.
 license = "MIT"
 homepage = "https://github.com/RatanShreshtha/DeepThought"
 
-min_version = "0.9.0"
+min_version = "0.14.1"
 
 demo = "https://deepthought-theme.netlify.app/"
 
