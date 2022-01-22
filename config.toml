@@ -201,6 +201,7 @@ twitter = "RatanShreshtha"
 
 [extra.analytics]
 google = "UA-176984489-2"
+plausible = "ratanshreshtha.dev"
 
 [extra.commenting]
 disqus = "deepthought-theme"
