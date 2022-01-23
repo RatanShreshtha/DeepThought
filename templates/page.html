@@ -132,6 +132,18 @@
   </div>
 </section>
 {% endif %}
+
+{% if page.extra.comments and config.extra.commenting.utterances.enabled %}
+<script
+	src="https://utteranc.es/client.js"
+	repo="{{config.extra.commenting.utterances.repo}}"
+	issue-term="{{config.extra.commenting.utterances.issue_term}}"
+	label="{{config.extra.commenting.utterances.label}}"
+	theme="{{config.extra.commenting.utterances.theme}}"
+	crossorigin="anonymous"
+	async
+></script>
+{% endif %} 
 {% endblock %}
 
 {% block custom_js %}

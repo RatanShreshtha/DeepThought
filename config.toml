@@ -205,6 +205,12 @@ plausible = "ratanshreshtha.dev"
 
 [extra.commenting]
 disqus = "deepthought-theme"
+[extra.commenting.utterances]
+enabled = true
+issue_term = "pathname"
+label = "✨💬✨ Comment"
+repo = ""
+theme = "github-light"
 
 [extra.mapbox]
 enabled = true
