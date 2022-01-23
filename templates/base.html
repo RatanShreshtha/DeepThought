@@ -59,7 +59,12 @@
   {% endif %}
 
   {% if config.extra.analytics.plausible %}
-  <script defer data-domain={{ config.extra.analytics.plausible }} src="https://plausible.io/js/plausible.js"></script>
+    <script
+      defer
+      src="{{ config.extra.analytics.plausible.src | safe }}"
+      data-api="{{ config.extra.analytics.plausible.data_api | safe }}"
+      data-domain="{{ config.extra.analytics.plausible.data_domain | safe }}"
+    ></script>
   {% endif %}
 
   {% if config.extra.katex.enabled %}

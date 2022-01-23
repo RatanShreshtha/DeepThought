@@ -201,7 +201,11 @@ twitter = "RatanShreshtha"
 
 [extra.analytics]
 google = "UA-176984489-2"
-plausible = "ratanshreshtha.dev"
+
+[extra.analytics.plausible]
+src = "https://plausible.io/js/plausible.js"
+data_api = "https://plausible.io/api/event"
+data_domain = "ratanshreshtha.dev"
 
 [extra.commenting]
 disqus = "deepthought-theme"
