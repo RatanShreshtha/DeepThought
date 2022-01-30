@@ -47,12 +47,19 @@ You can configure social links in `[extra.social]` of `config.toml` file.
 
 ```toml
 [extra.social]
+email = "<email_id>"
 facebook = "<facebook_username>"
 github = "<github_username>"
+gitlab = "<gitlab_username>"
 keybase = "<keybase_username>"
 linkedin = "<linkedin_username>"
 stackoverflow = "<stackoverflow_userid>"
 twitter = "<twitter_username>"
+instagram = "<instagram_usernaem>"
+behance = "<behance_username>"
+google_scholar = "<googlescholar_userid>"
+orcid = "<orcid_userid>"
+mastodon = "<mastadon_username>"
 ```
 
 ## Google Analytics Setup

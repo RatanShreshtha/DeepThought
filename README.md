@@ -151,6 +151,7 @@ instagram = "<instagram_usernaem>"
 behance = "<behance_username>"
 google_scholar = "<googlescholar_userid>"
 orcid = "<orcid_userid>"
+mastodon = "<mastadon_username>"
 
 
 # To add google analytics
