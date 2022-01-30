@@ -44,8 +44,6 @@
   </ol>
 </details>
 
-
-
 ## About The Project
 
 [![DeepThought](./screenshot.png)](https://deepthought-theme.netlify.app/)
@@ -53,6 +51,7 @@
 > A simple blog theme focused on writing powered by Bulma and Zola.
 
 ### Features
+
 - [x] Dark Mode
 - [x] Pagination
 - [x] Search
@@ -67,13 +66,10 @@
 - [x] Multilingual Navbar
 - [x] Katex
 
-
 ### Built With
 
-* [Zola](https://www.getzola.org/)
-* [Bulma](https://bulma.io/)
-
-
+- [Zola](https://www.getzola.org/)
+- [Bulma](https://bulma.io/)
 
 ## Getting Started
 
@@ -91,19 +87,20 @@ Make sure to add `theme = "DeepThought"` to your `config.toml`
 **Check zola version (only 0.9.0+)**
 Just to double-check to make sure you have the right version. It is not supported to use this theme with a version under 0.14.1.
 
-
-
 ## Usage
 
 ### How to serve?
+
 Go into your sites directory and type `zola serve`. You should see your new site at `localhost:1111`.
 
- **NOTE**: you must provide the theme options variables in `config.toml` to serve a functioning site
+**NOTE**: you must provide the theme options variables in `config.toml` to serve a functioning site
 
 ### Deployment
+
 [Zola](https://www.getzola.org) already has great documentation for deploying to [Netlify](https://www.getzola.org/documentation/deployment/netlify/) or [Github Pages](https://www.getzola.org/documentation/deployment/github-pages/). I won't bore you with a regurgitated explanation.
 
 ### Theme Options
+
 ```toml
 # Enable external libraries
 [extra]
@@ -176,7 +173,7 @@ If you want to have a multilingual navbar on your blog, you must add your new co
 
 ```toml
 languages = [
-    {code = "fr"}, 
+    {code = "fr"},
     {code = "es"},
 ]
 ```
@@ -212,10 +209,9 @@ fr:
 
 ![DeepThought](./screenshot_navbar_fr.png)
 
-es: 
+es:
 
 ![DeepThought](./screenshot_navbar_es.png)
-
 
 ### KaTeX math formula support
 
@@ -224,9 +220,10 @@ which can be enabled by setting `katex.enabled = true` in the `extra` section
 of `config.toml`.
 
 After enabling this extension, the `katex` short code can be used in documents:
-* `{{ katex(body="\KaTeX") }}` to typeset a math formula inlined into a text,
+
+- `{{ katex(body="\KaTeX") }}` to typeset a math formula inlined into a text,
   similar to `$...$` in LaTeX
-* `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
+- `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
   similar to `$$...$$` in LaTeX
 
 #### Automatic rendering without short codes
@@ -234,7 +231,6 @@ After enabling this extension, the `katex` short code can be used in documents:
 Optionally, `\\( \KaTeX \\)` / `$ \KaTeX $` inline and `\\[ \KaTeX \\]` / `$$ \KaTeX $$`
 block-style automatic rendering is also supported, if enabled in the config
 by setting `katex.auto_render = true`.
-
 
 ### Elasticlunr search in other language
 
@@ -245,23 +241,19 @@ By placing the `templates/base.html`on your project and using the `other_lang_se
 e.g. `templates/base.html`
 
 ```html
-{% extends "DeepThought/templates/base.html" %}
-{% block other_lang_search_js %}
-  <script src="{{ get_url(path='js/lunr.stemmer.support.js') }}"></script>
-  <script src="{{ get_url(path='js/tinyseg.js') }}"></script>
-  <script src="{{ get_url(path='js/lunr.' ~ lang ~ '.js') }}"></script>
-  <script src="{{ get_url(path='js/search.js') }}"></script>
+{% extends "DeepThought/templates/base.html" %} {% block other_lang_search_js %}
+<script src="{{ get_url(path='js/lunr.stemmer.support.js') }}"></script>
+<script src="{{ get_url(path='js/tinyseg.js') }}"></script>
+<script src="{{ get_url(path='js/lunr.' ~ lang ~ '.js') }}"></script>
+<script src="{{ get_url(path='js/search.js') }}"></script>
 {% endblock %}
 ```
 
 More detailed explanations are aound in [elasticlunr's documents](https://github.com/weixsong/elasticlunr.js#other-languages-example-in-browser).
 
-
 ## Roadmap
 
 See the [open issues](https://github.com/RatanShreshtha/DeepThought/issues) for a list of proposed features (and known issues).
-
-
 
 ## Contributing
 
@@ -273,25 +265,20 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 ## Contact
 
 Ratan Kulshreshtha - [@RatanShreshtha](https://twitter.com/RatanShreshtha)>
 
-
 Project Link: [https://github.com/RatanShreshtha/DeepThought](https://github.com/RatanShreshtha/DeepThought)
 
 ## Acknowledgements
 
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Choose an Open Source License](https://choosealicense.com)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Font Awesome](https://fontawesome.com)
-* [Unsplash](https://unsplash.com/)
+- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+- [Choose an Open Source License](https://choosealicense.com)
+- [Slick Carousel](https://kenwheeler.github.io/slick)
+- [Font Awesome](https://fontawesome.com)
+- [Unsplash](https://unsplash.com/)
