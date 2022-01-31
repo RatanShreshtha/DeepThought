@@ -236,7 +236,7 @@ by setting `katex.auto_render = true`.
 
 Zola use [Elasticlunr.js](https://github.com/weixsong/elasticlunr.js) to add full-text search feature.
 To use languages other than en (English), you need to add some javascript files. See the Zola's issue [#1349](https://github.com/getzola/zola/issues/1349).
-By placing the `templates/base.html`on your project and using the `other_lang_search_js` block, you can load the requred additional javascript files in the right timing.
+By placing the `templates/base.html`on your project and using the `other_lang_search_js` block, you can load the required additional javascript files in the right timing.
 
 e.g. `templates/base.html`
 
