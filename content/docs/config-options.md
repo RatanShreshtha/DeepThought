@@ -107,6 +107,15 @@ katex.enabled = true
 katex.auto_render = true    # automatic rendering without shortcodes
 ```
 
+### MathJax
+
+Alternative math formula support using [MathJax](https://www.mathjax.org/).
+To enable MathJax in your project, set the following in the `[extra]` section of `config.toml`:
+```toml
+[extra]
+mathjax.enabled = true
+```
+
 # Section Configurations
 
 Apart from standard config you can also add a `description` in your `_index.md` file for your sections that appears in listing.
