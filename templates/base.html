@@ -71,7 +71,7 @@
   {% endif %}
 </head>
 
-<body class="has-background-white">
+<body class="has-background-white" {% if config.extra.colorscheme %}theme="{{ config.extra.colorscheme }}"{% endif %}>
   <nav aria-label="section navigation" class="navbar is-light" role="navigation">
     <div class="container">
       <div class="navbar-brand">
