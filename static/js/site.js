@@ -171,7 +171,7 @@ function search() {
 }
 
 function setTheme(color) {
-    document.body.setAttribute("theme", color);
+    document.documentElement.setAttribute("theme", color);
     document.getElementById("dark-mode").setAttribute("title", "Switch to "+color+" theme");
 }
 
@@ -219,7 +219,7 @@ function documentReadyCallback() {
   });
 
   document.getElementById("dark-mode").addEventListener("click", () => {
-    const theme = document.body.getAttribute("theme");
+    const theme = document.documentElement.getAttribute("theme");
     const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (
       theme === "light" || theme === null || (theme === "auto" && !isDarkMode)

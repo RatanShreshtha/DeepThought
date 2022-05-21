@@ -8,8 +8,7 @@ $family-sans-serif: "Jost", sans-serif;
 $footer-padding: 1.0rem 2.5rem;
 
 @mixin base_dark
-    filter: invert(1) hue-rotate(180deg);
-
+    body,
     img,
     picture,
     video,
@@ -26,11 +25,11 @@ body
     min-height: 100vh;
 
 
-body[theme="dark"]
+html[theme="dark"]
     @include base_dark()
     
 
-body[theme="auto"]
+html[theme="auto"]
     @media (prefers-color-scheme: dark)
         @include base_dark()
     
