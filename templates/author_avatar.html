@@ -1,0 +1,4 @@
+<figure class="image is-flex is-justify-content-center is-align-items-center">
+  {% set image = resize_image(path=config.extra.author.avatar, width=192, format="webp", op="fit_width") %}
+  <img class="is-rounded" src="{{ image.url }}" style="max-width: 192px" />
+</figure>

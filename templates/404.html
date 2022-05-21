@@ -10,9 +10,7 @@
         It seems you are looking for something that I don't have.
       </p>
       {% if config.extra.author.avatar %}
-      <figure class="image is-flex is-justify-content-center is-align-items-center">
-        <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 192px" />
-      </figure>
+        {% include 'author_avatar.html' %}
       {% endif %}
       {{ macros:: social_links( social_config=config.extra.social) }}
       <p class="my-6">
