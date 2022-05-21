@@ -7,6 +7,14 @@
 $family-sans-serif: "Jost", sans-serif;
 $footer-padding: 1.0rem 2.5rem;
 
+@mixin base_dark
+    body,
+    img,
+    picture,
+    video,
+    pre
+        filter: invert(1) hue-rotate(180deg);
+
 html
     scroll-behavior: smooth;
 
@@ -17,16 +25,17 @@ body
     min-height: 100vh;
 
 
-body[theme="dark"]
-    filter: invert(1) hue-rotate(180deg);
+html[theme="dark"]
+    @include base_dark()
+    
 
+html[theme="auto"]
+    @media (prefers-color-scheme: dark)
+        @include base_dark()
+    
 
 section
     flex: 1;
 
 
-img[theme="dark"],
-picture[theme="dark"],
-video[theme="dark"],
-pre[theme="dark"]
-    filter: invert(1) hue-rotate(180deg);
+        
