@@ -37,5 +37,18 @@ html[theme="auto"]
 section
     flex: 1;
 
+.content pre 
+    table 
+        td, th
+            border: none;
+            padding-bottom: 0px;
+        td:nth-of-type(1)
+            text-align: center;
+            user-select: none;
+    mark
+        // If you want your highlights to take the full width.
+        display: block;
 
-        
+.content pre[data-linenos]
+    padding-left: 1em;
+    padding-right: 1em;
