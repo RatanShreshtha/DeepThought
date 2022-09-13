@@ -212,6 +212,7 @@ soundcloud = "RatanShreshtha"
 googleplay = "RatanShreshtha"
 orcid = "RatanShreshtha"
 google_scholar = "RatanShreshtha"
+kofi = ""
 
 [extra.analytics]
 google = "UA-176984489-2"
