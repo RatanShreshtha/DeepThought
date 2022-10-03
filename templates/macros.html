@@ -121,6 +121,22 @@
   </a>
   {% endif %}
 
+  {% if social_config.discord %}
+  <a href="https://discordapp.com/users/{{ social_config.discord }}" target="_blank">
+    <span class="icon is-large" title="Discord">
+      <i class="fa-brands fa-discord"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.youtube %}
+  <a href="https://www.youtube.com/c/{{ social_config.youtube }}" target="_blank">
+    <span class="icon is-large" title="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if config.generate_feed %}
   <a href="{{ config.base_url }}/{{ config.feed_filename }}" target="_blank">
     <span class="icon is-large" title="RSS Feed">
