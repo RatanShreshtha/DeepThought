@@ -1,24 +1,7 @@
 {% macro social_links(social_config) %}
 <p>
-
-  {% if social_config.google_scholar %}
-  <a href="https://scholar.google.com/citations?user={{ social_config.google_scholar }}" target="_blank">
-    <span class="icon is-large" title="Google Scholar">
-			<i class="ai ai-google-scholar ai-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
-  {% if social_config.orcid %}
-  <a href="https://orcid.org/{{ social_config.orcid }}" target="_blank">
-    <span class="icon is-large" title="ORCiD">
-      <i class="fab fa-orcid fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
   {% if social_config.facebook %}
-  <a href="https://facebook.com/{{ social_config.facebook }}" target="_blank">
+  <a class="has-text-facebook" href="https://facebook.com/{{ social_config.facebook }}" target="_blank">
     <span class="icon is-large" title="Facebook">
       <i class="fab fa-facebook fa-lg"></i>
     </span>
@@ -26,7 +9,7 @@
   {% endif %}
 
   {% if social_config.twitter %}
-  <a href="https://twitter.com/{{ social_config.twitter }}" target="_blank">
+  <a class="has-text-twitter" href="https://twitter.com/{{ social_config.twitter }}" target="_blank">
     <span class="icon is-large" title="Twitter">
       <i class="fab fa-twitter fa-lg"></i>
     </span>
@@ -34,81 +17,129 @@
   {% endif %}
 
   {% if social_config.linkedin %}
-  <a href="https://www.linkedin.com/in/{{ social_config.linkedin }}" target="_blank">
+  <a class="has-text-linkedin" href="https://www.linkedin.com/in/{{ social_config.linkedin }}" target="_blank">
     <span class="icon is-large" title="LinkedIn">
       <i class="fab fa-linkedin fa-lg"></i>
     </span>
   </a>
   {% endif %}
 
-  {% if social_config.github %}
-  <a href="https://github.com/{{ social_config.github }}" target="_blank">
-    <span class="icon is-large" title="GitHub">
-      <i class="fab fa-github fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
-  {% if social_config.gitlab %}
-  <a href="https://gitlab.com/{{ social_config.gitlab }}" target="_blank">
-    <span class="icon is-large" title="GitLab">
-      <i class="fab fa-gitlab fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
-  {% if social_config.stackoverflow %}
-  <a href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" target="_blank">
-    <span class="icon is-large" title="Stack Overflow">
-      <i class="fab fa-stack-overflow fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
-  {% if social_config.keybase %}
-  <a href="https://keybase.io/{{ social_config.keybase }}" target="_blank">
-    <span class="icon is-large" title="Keybase">
-      <i class="fab fa-keybase fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
-  {% if social_config.mastodon %}
-  <a href="https://mastodon.social/{{ social_config.mastodon }}" target="_blank">
-    <span class="icon is-large" title="Mastodon">
-      <i class="fab fa-mastodon fa-lg"></i>
-    </span>
-  </a>
-  {% endif %}
-
   {% if social_config.instagram %}
-  <a href="https://www.instagram.com/{{ social_config.instagram}}" target="_blank">
+  <a class="has-text-instagram" href="https://www.instagram.com/{{ social_config.instagram}}" target="_blank">
     <span class="icon is-large" title="Instagram">
       <i class="fab fa-instagram fa-lg"></i>
     </span>
   </a>
   {% endif %}
 
+  {% if social_config.tumblr %}
+  <a class="has-text-tumblr" href="https://www.tumblr.com/blog/{{ social_config.tumblr }}" target="_blank">
+    <span class="icon is-large" title="Tumblr">
+      <i class="fab fa-tumblr fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.reddit %}
+  <a class="has-text-reddit" href="https://www.reddit.com/user/{{ social_config.reddit }}" target="_blank">
+    <span class="icon is-large" title="Reddit">
+      <i class="fab fa-reddit fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.discord %}
+  <a class="has-text-discord" href="https://discordapp.com/users/{{ social_config.discord }}" target="_blank">
+    <span class="icon is-large" title="Discord">
+      <i class="fa-brands fa-discord"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.mastodon %}
+  <a class="has-text-mastodon" href="https://mastodon.social/{{ social_config.mastodon }}" target="_blank">
+    <span class="icon is-large" title="Mastodon">
+      <i class="fab fa-mastodon fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.github %}
+  <a class="has-text-github" href="https://github.com/{{ social_config.github }}" target="_blank">
+    <span class="icon is-large" title="GitHub">
+      <i class="fab fa-github fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.bitbucket %}
+  <a class="has-text-bitbucket" href="https://bitbucket.org/{{ social_config.bitbucket }}" target="_blank">
+    <span class="icon is-large" title="Bitbucket">
+      <i class="fab fa-bitbucket fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.gitlab %}
+  <a class="has-text-gitlab" href="https://gitlab.com/{{ social_config.gitlab }}" target="_blank">
+    <span class="icon is-large" title="GitLab">
+      <i class="fab fa-gitlab fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.behance %}
-  <a href="https://www.behance.net/{{ social_config.behance }}" target="_blank">
+  <a class="has-text-behance" href="https://www.behance.net/{{ social_config.behance }}" target="_blank">
     <span class="icon is-large" title="Behance">
       <i class="fab fa-behance fa-lg"></i>
     </span>
   </a>
   {% endif %}
 
-  {% if social_config.email %}
-  <a href="mailto:{{ social_config.email }}" target="_blank">
-    <span class="icon is-large" title="Email">
-      <i class="far fa-envelope fa-lg"></i>
+  {% if social_config.stackoverflow %}
+  <a class="has-text-stackoverflow" href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" target="_blank">
+    <span class="icon is-large" title="Stack Overflow">
+      <i class="fab fa-stack-overflow fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.medium %}
+  <a class="has-text-medium" href="https://medium.com/@{{ social_config.medium }}" target="_blank">
+    <span class="icon is-large" title="Medium">
+      <i class="fab fa-medium fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.google_scholar %}
+  <a class="has-text-googlescholar" href="https://scholar.google.com/citations?user={{ social_config.google_scholar }}" target="_blank">
+    <span class="icon is-large" title="Google Scholar">
+      <i class="ai ai-google-scholar ai-lg"></i>
     </span>
   </a>
   {% endif %}
   
-  {% if social_config.medium %}
-  <a href="https://medium.com/@{{ social_config.medium }}" target="_blank">
-    <span class="icon is-large" title="Medium">
-      <i class="fab fa-medium fa-lg"></i>
+  {% if social_config.orcid %}
+  <a class="has-text-orcid" href="https://orcid.org/{{ social_config.orcid }}" target="_blank">
+    <span class="icon is-large" title="ORCiD">
+      <i class="fab fa-orcid fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.keybase %}
+  <a class="has-text-keybase" href="https://keybase.io/{{ social_config.keybase }}" target="_blank">
+    <span class="icon is-large" title="Keybase">
+      <i class="fab fa-keybase fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.email %}
+  <a class="has-text-black" href="mailto:{{ social_config.email }}" target="_blank">
+    <span class="icon is-large" title="Email">
+      <i class="far fa-envelope fa-lg"></i>
     </span>
   </a>
   {% endif %}
@@ -121,16 +152,8 @@
   </a>
   {% endif %}
 
-  {% if social_config.discord %}
-  <a href="https://discordapp.com/users/{{ social_config.discord }}" target="_blank">
-    <span class="icon is-large" title="Discord">
-      <i class="fa-brands fa-discord"></i>
-    </span>
-  </a>
-  {% endif %}
-
   {% if social_config.youtube %}
-  <a href="https://www.youtube.com/c/{{ social_config.youtube }}" target="_blank">
+  <a class="has-text-youtube" href="https://www.youtube.com/c/{{ social_config.youtube }}" target="_blank">
     <span class="icon is-large" title="YouTube">
       <i class="fa-brands fa-youtube"></i>
     </span>
@@ -138,7 +161,7 @@
   {% endif %}
 
   {% if config.generate_feed %}
-  <a href="{{ config.base_url }}/{{ config.feed_filename }}" target="_blank">
+  <a class="has-text-rss" href="{{ config.base_url }}/{{ config.feed_filename }}" target="_blank">
     <span class="icon is-large" title="RSS Feed">
       <i class="fas fa-rss fa-lg"></i>
     </span>
