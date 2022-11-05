@@ -32,6 +32,15 @@
   </a>
   {% endif %}
 
+
+  {% if social_config.twitch %}
+  <a class="has-text-twitch" href="https://www.twitch.tv/{{ social_config.twitch }}" target="_blank">
+    <span class="icon is-large" title="Twitch">
+      <i class="fab fa-twitch fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.tumblr %}
   <a class="has-text-tumblr" href="https://www.tumblr.com/blog/{{ social_config.tumblr }}" target="_blank">
     <span class="icon is-large" title="Tumblr">
@@ -108,6 +117,22 @@
   <a class="has-text-medium" href="https://medium.com/@{{ social_config.medium }}" target="_blank">
     <span class="icon is-large" title="Medium">
       <i class="fab fa-medium fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.dev %}
+  <a class="has-text-dev" href="https://dev.to/{{ social_config.dev }}" target="_blank">
+    <span class="icon is-large" title="dev.to">
+      <i class="fab fa-dev fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.soundcloud %}
+  <a class="has-text-soundcloud" href="https://soundcloud.com/{{ social_config.soundcloud }}" target="_blank">
+    <span class="icon is-large" title="soundcloud">
+      <i class="fab fa-soundcloud fa-lg"></i>
     </span>
   </a>
   {% endif %}
