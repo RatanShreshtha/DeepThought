@@ -65,8 +65,14 @@
   </a>
   {% endif %}
 
+  {# Certainly not the best implementation but Tera bombs if you try to access a nonexistent key #}
   {% if social_config.mastodon_username %}
-  <a class="has-text-mastodon" href="https://{{ social_config.mastodon_server | default(value='mastodon.social') }}/@{{ social_config.mastodon_username }}" target="_blank" rel="me">
+    {% set mastodon_username = social_config.mastodon_username %}
+  {% elif social_config.mastodon %}
+    {% set mastodon_username = social_config.mastodon %}
+  {% endif %}
+  {% if mastodon_username %}
+  <a class="has-text-mastodon" href="https://{{ social_config.mastodon_server | default(value='mastodon.social') }}/@{{ mastodon_username }}" target="_blank" rel="me">
     <span class="icon is-large" title="Mastodon">
       <i class="fab fa-mastodon fa-lg"></i>
     </span>
