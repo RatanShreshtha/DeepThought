@@ -59,7 +59,8 @@ instagram = "<instagram_usernaem>"
 behance = "<behance_username>"
 google_scholar = "<googlescholar_userid>"
 orcid = "<orcid_userid>"
-mastodon = "<mastadon_username>"
+mastodon_username = "<mastadon_username>"
+mastodon_server = "<mastodon_server>"
 ```
 
 ## Google Analytics Setup

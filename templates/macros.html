@@ -65,8 +65,8 @@
   </a>
   {% endif %}
 
-  {% if social_config.mastodon %}
-  <a class="has-text-mastodon" href="https://mastodon.social/{{ social_config.mastodon }}" target="_blank">
+  {% if social_config.mastodon_username %}
+  <a class="has-text-mastodon" href="https://{{ social_config.mastodon_server | default(value='mastodon.social') }}/{{ social_config.mastodon_username }}" target="_blank">
     <span class="icon is-large" title="Mastodon">
       <i class="fab fa-mastodon fa-lg"></i>
     </span>
