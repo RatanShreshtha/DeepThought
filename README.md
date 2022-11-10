@@ -185,7 +185,8 @@ instagram = "<instagram_username>"
 behance = "<behance_username>"
 google_scholar = "<googlescholar_userid>"
 orcid = "<orcid_userid>"
-mastodon = "<mastadon_username>"
+mastodon_username = "<mastadon_username>"
+mastodon_server = "<mastodon_server>" (if not set, defaults to mastodon.social)
 
 
 # To add google analytics

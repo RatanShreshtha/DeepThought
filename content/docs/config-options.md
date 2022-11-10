@@ -55,11 +55,12 @@ keybase = "<keybase_username>"
 linkedin = "<linkedin_username>"
 stackoverflow = "<stackoverflow_userid>"
 twitter = "<twitter_username>"
-instagram = "<instagram_usernaem>"
+instagram = "<instagram_username>"
 behance = "<behance_username>"
 google_scholar = "<googlescholar_userid>"
 orcid = "<orcid_userid>"
-mastodon = "<mastadon_username>"
+mastodon_username = "<mastadon_username>"
+mastodon_server = "<mastodon_server>" (if not set, defaults to mastodon.social)
 ```
 
 ## Google Analytics Setup
