@@ -65,6 +65,14 @@
   </a>
   {% endif %}
 
+  {% if social_config.signal %}
+  <a class="has-text-signal" href="https://signal.me/#p/+{{ social_config.signal }}" target="_blank">
+    <span class="icon is-large" title="Signal">
+      <i class="fa-regular fa-comment"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {# Certainly not the best implementation but Tera bombs if you try to access a nonexistent key #}
   {% if social_config.mastodon_username %}
     {% set mastodon_username = social_config.mastodon_username %}
