@@ -57,7 +57,7 @@ hard_link_static = false
 #
 taxonomies = [
     { name = "categories", feed = true, paginate_by = 10 },
-    { name = "tags", fees = true, paginate_by = 10 },
+    { name = "tags", feed = true, paginate_by = 10 },
 ]
 
 # When set to "true", a search index is built from the pages and section
@@ -136,7 +136,7 @@ include_content = true
 [translations]
 
 # Additional languages definition
-# You can define language specific config values and translations: 
+# You can define language specific config values and translations:
 # title, description, generate_feed, feed_filename, taxonomies, build_search_index
 # as well as its own search configuration and translations (see above for details on those)
 [languages]
