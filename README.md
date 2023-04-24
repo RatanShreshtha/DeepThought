@@ -187,7 +187,7 @@ google_scholar = "<googlescholar_userid>"
 orcid = "<orcid_userid>"
 mastodon_username = "<mastadon_username>"
 mastodon_server = "<mastodon_server>" (if not set, defaults to mastodon.social)
-
+kofi = "<kofi_username>"
 
 # To add google analytics
 [extra.analytics]

@@ -24,6 +24,46 @@
   </a>
   {% endif %}
 
+  {% if social_config.github %}
+  <a href="https://github.com/{{ social_config.github }}" target="_blank">
+    <span class="icon is-large" title="GitHub">
+      <i class="fab fa-github fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.gitlab %}
+  <a href="https://gitlab.com/{{ social_config.gitlab }}" target="_blank">
+    <span class="icon is-large" title="GitLab">
+      <i class="fab fa-gitlab fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.stackoverflow %}
+  <a href="https://stackoverflow.com/users/{{ social_config.stackoverflow }}" target="_blank">
+    <span class="icon is-large" title="Stack Overflow">
+      <i class="fab fa-stack-overflow fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.keybase %}
+  <a href="https://keybase.io/{{ social_config.keybase }}" target="_blank">
+    <span class="icon is-large" title="Keybase">
+      <i class="fab fa-keybase fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.mastodon %}
+  <a rel="me" href="{{ social_config.mastodon }}" target="_blank">
+    <span class="icon is-large" title="Mastodon">
+      <i class="fab fa-mastodon fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.instagram %}
   <a class="has-text-instagram" href="https://www.instagram.com/{{ social_config.instagram}}" target="_blank">
     <span class="icon is-large" title="Instagram">
@@ -187,6 +227,10 @@
   <a class="has-text-youtube" href="https://www.youtube.com/c/{{ social_config.youtube }}" target="_blank">
     <span class="icon is-large" title="YouTube">
       <i class="fa-brands fa-youtube"></i>
+  {% if social_config.kofi %}
+  <a href="https://ko-fi.com/{{ social_config.kofi }}" target="_blank">
+    <span class="icon is-large" title="Ko-fi">
+      <i class="fas fa-mug-hot fa-lg"></i>
     </span>
   </a>
   {% endif %}
