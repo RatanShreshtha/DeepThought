@@ -161,6 +161,7 @@ include_content = true
 [extra]
 katex.enabled = true
 katex.auto_render = true
+# mathjax.enabled = true
 
 chart.enabled = true
 mermaid.enabled = true
