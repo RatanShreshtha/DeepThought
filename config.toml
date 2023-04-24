@@ -173,6 +173,7 @@ navbar_items = [
         { url = "$BASE_URL/docs", name = "Docs" },
         { url = "$BASE_URL/tags", name = "Tags" },
         { url = "$BASE_URL/categories", name = "Categories" },
+        { url = "$BASE_URL/docs/donate", name = "Donate" },
     ] },
 ]
 
@@ -218,6 +219,12 @@ google = "G-JPHGX4YXVE"
 
 [extra.commenting]
 disqus = "deepthought-theme"
+
+[extra.utterances]
+theme = "preferred-color-scheme"
+repo = "repo-config"
+issueterm="title"
+label = "comment2"
 
 [extra.mapbox]
 enabled = true

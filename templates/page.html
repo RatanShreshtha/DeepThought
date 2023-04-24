@@ -213,4 +213,16 @@
   })();
 </script>
 {% endif %}
+
+{% if page.extra.comments and config.extra.utterances %}
+  <script src="https://utteranc.es/client.js"
+        repo="{{ config.extra.utterances.repo| safe}}"
+        issue-term="{{ config.extra.utterances.issueterm| safe}}"
+        label="{{ config.extra.utterances.label| safe}}"
+        theme="{{ config.extra.utterances.theme| safe}}"
+        crossorigin="anonymous"
+        async>
+</script>
+{% endif %}
+
 {% endblock %}
