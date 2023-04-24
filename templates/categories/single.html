@@ -47,6 +47,7 @@
             </div>
           </div>
           <div class="content mt-2">
+            {% if page.summary %}
             {{ page.summary | safe }}
             <a href='{{ page.permalink }}'>
               Read More
@@ -54,6 +55,9 @@
                 <i class="fas fa-arrow-right fa-xs"></i>
               </span>
             </a>
+            {% else %}
+            {{ page.content | safe }}
+            {% endif %}
           </div>
           <div class="columns">
             <div class="column">
