@@ -92,11 +92,13 @@
           {% endfor %}
           {% endif %}
           {% endfor %}
+          {% if config.build_search_index %}
           <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
             <span class="icon">
               <i class="fas fa-search"></i>
             </span>
           </a>
+          {% endif %}
           <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
             <span class="icon">
               <i class="fas fa-adjust"></i>
@@ -113,6 +115,7 @@
   {% block content %}
   {% endblock %}
 
+  {% if config.build_search_index %}
   {% block search %}
   <section class="modal" id="search-modal">
     <div class="modal-background"></div>
@@ -134,6 +137,7 @@
     <button aria-label="close" class="modal-close is-large"></button>
   </section>
   {% endblock %}
+  {% endif %}
 
 
   {% block pagination %}
@@ -217,8 +221,12 @@
   {% if config.extra.mapbox.enabled %}
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js" integrity="sha384-Pulw7+h73841BQIK0LzJCydKRPChJUF9w8h8W0o3h+cLtoyNPJS847bQauLWOTwg" crossorigin="anonymous"></script>
   {% endif %}
+
+  {% if config.build_search_index %}
   <script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
   <script src="{{ get_url(path='search_index.' ~ lang ~ '.js') }}"></script>
+  {% endif %}
+
   {%- if lang != "en" -%}
   {%- block other_lang_search_js -%}
   {%- endblock -%}
