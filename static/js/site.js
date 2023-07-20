@@ -191,28 +191,33 @@ function documentReadyCallback() {
     }
   })
 
-  document.getElementById("nav-search").addEventListener("click", (evt) => {
-    //let target = evt.currentTarget.getAttribute("data-target");
-    document.querySelector("html").classList.add("is-clipped");
-    document.getElementById("search-modal").classList.add("is-active");
+  const navSearch = document.getElementById("nav-search");
 
-    document.getElementById("search").focus();
-    document.getElementById("search").select();
-  });
+  if (navSearch) {
+    navSearch.addEventListener("click", (evt) => {
+      //let target = evt.currentTarget.getAttribute("data-target");
+      document.querySelector("html").classList.add("is-clipped");
+      document.getElementById("search-modal").classList.add("is-active");
 
-  document.querySelector(".modal-close").addEventListener("click", (evt) => {
-    document.querySelector("html").classList.remove("is-clipped");
-    evt.currentTarget.parentElement.classList.remove("is-active");
-  });
+      document.getElementById("search").focus();
+      document.getElementById("search").select();
+    });
 
-  document.querySelector(".modal-background").addEventListener("click", (evt) => {
-    document.querySelector("html").classList.remove("is-clipped");
-    evt.currentTarget.parentElement.classList.remove("is-active");
-  });
+    document.querySelector(".modal-close").addEventListener("click", (evt) => {
+      document.querySelector("html").classList.remove("is-clipped");
+      evt.currentTarget.parentElement.classList.remove("is-active");
+    });
 
-  document.getElementById("search").addEventListener("keyup", () => {
-    search();
-  });
+    document.querySelector(".modal-background").addEventListener("click", (evt) => {
+      document.querySelector("html").classList.remove("is-clipped");
+      evt.currentTarget.parentElement.classList.remove("is-active");
+    });
+
+    document.getElementById("search").addEventListener("keyup", () => {
+      search();
+    });
+  }
+
 
   document.getElementById("dark-mode").addEventListener("click", () => {
     if (
