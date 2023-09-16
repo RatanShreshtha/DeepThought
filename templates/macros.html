@@ -150,7 +150,7 @@
     </span>
   </a>
   {% endif %}
-  
+
   {% if social_config.orcid %}
   <a class="has-text-orcid" href="https://orcid.org/{{ social_config.orcid }}" target="_blank">
     <span class="icon is-large" title="ORCiD">
@@ -206,7 +206,17 @@
   <span class="icon">
     <i class="fas fa-user"></i>
   </span>
-  <span>{{ config.extra.author.name }} published on</span>
+  {% if page.authors %}
+    {% for author in page.authors %}
+      {% if page.authors | length > 1 and loop.last %}
+      and
+      {% endif %}
+    <span><a href="/{{ author | lower }}">{{ author }}</a>{% if page.authors | length > 2 and loop.index < page.authors | length - 1 %},
+      {% endif %}
+    {% endfor %} published on</span>
+  {% else %}
+    <span>{{ config.extra.author.name }} published on</span>
+  {% endif %}
   <span class="icon">
     <i class="far fa-calendar-alt"></i>
   </span>
