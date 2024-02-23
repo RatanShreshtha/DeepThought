@@ -1,3 +1,5 @@
+"use strict";
+
 function debounce(func, wait) {
   var timeout;
 
@@ -168,133 +170,161 @@ function search() {
   );
 }
 
-$(document).ready(function () {
-  mermaid.initialize({ startOnLoad: true });
+function documentReadyCallback() {
 
   if (localStorage.getItem("theme") === "dark") {
-    $("body").attr("theme", "dark");
-    $("img, picture, video").attr("theme", "dark");
+    document.body.setAttribute("theme", "dark");
+    document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
+    document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
+    document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
   }
 
-  $(".navbar-burger").click(function () {
-    $(".navbar-burger").toggleClass("is-active");
-    $(".navbar-menu").toggleClass("is-active");
+  document.querySelector(".navbar-burger").addEventListener("click", () => {
+    document.querySelector(".navbar-burger").classList.toggle("is-active");
+    document.querySelector(".navbar-menu").classList.toggle("is-active");
   });
 
-  $('div.navbar-end > .navbar-item').each(function (el) {
-    if (location.href.includes($(this).attr('href'))) {
-      $('a.navbar-item.is-active').removeClass('is-active');
-      $(this).addClass('is-active');
+  document.querySelectorAll("div.navbar-end > .navbar-item").forEach((el) => {
+    if (location.href.includes(el.getAttribute("href"))) {
+      document.querySelectorAll("a.navbar-item.is-active").forEach(itm => itm.classList.remove("is-active"));
+      el.classList.add("is-active");
     }
   })
 
-  $("#nav-search").click(function () {
-    var target = $(this).data("target");
-    $("html").addClass("is-clipped");
-    $(target).addClass("is-active");
+  document.getElementById("nav-search").addEventListener("click", (evt) => {
+    //let target = evt.currentTarget.getAttribute("data-target");
+    document.querySelector("html").classList.add("is-clipped");
+    document.getElementById("search-modal").classList.add("is-active");
 
-    $("#search").focus();
-    $("#search").select();
+    document.getElementById("search").focus();
+    document.getElementById("search").select();
   });
 
-  $(".modal-close").click(function () {
-    $("html").removeClass("is-clipped");
-    $(this).parent().removeClass("is-active");
+  document.querySelector(".modal-close").addEventListener("click", (evt) => {
+    document.querySelector("html").classList.remove("is-clipped");
+    evt.currentTarget.parentElement.classList.remove("is-active");
   });
 
-  $(".modal-background").click(function () {
-    $("html").removeClass("is-clipped");
-    $(this).parent().removeClass("is-active");
+  document.querySelector(".modal-background").addEventListener("click", (evt) => {
+    document.querySelector("html").classList.remove("is-clipped");
+    evt.currentTarget.parentElement.classList.remove("is-active");
   });
 
-  $("#search").keyup(function () {
+  document.getElementById("search").addEventListener("keyup", () => {
     search();
   });
 
-  $("#dark-mode").click(function () {
+  document.getElementById("dark-mode").addEventListener("click", () => {
     if (
       localStorage.getItem("theme") == null ||
       localStorage.getItem("theme") == "light"
     ) {
       localStorage.setItem("theme", "dark");
-      $("body").attr("theme", "dark");
-      $("img, picture, video, pre").attr("theme", "dark");
-      $(".vimeo, .youtube, .chart").attr("theme", "dark");
+      document.body.setAttribute("theme", "dark");
+      document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
+      document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
 
-      $("#dark-mode").attr("title", "Switch to light theme");
+      document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
     } else {
       localStorage.setItem("theme", "light");
-      $("body").removeAttr("theme", "dark");
-      $("img, picture, video, pre").removeAttr("theme", "dark");
-      $(".vimeo, .youtube, .chart").removeAttr("theme", "dark");
+      document.body.removeAttribute("theme", "dark");
+      document.querySelectorAll("img, picture, video, pre").forEach(img => img.removeAttribute("theme", "dark"))
+      document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.removeAttribute("theme", "dark"));
 
-      $("#dark-mode").attr("title", "Switch to dark theme");
+      document.getElementById("dark-mode").setAttribute("title", "Switch to dark theme");
     }
   });
 
-  $(".chart").each(function (index) {
-    $(this).attr("id", `chart-${index}`);
+  if (typeof mermaid !== "undefined") {
+    mermaid.initialize({ startOnLoad: true });
+  }
 
-    var svg = document.querySelector(`#chart-${index}`);
-    var { type, ...chartData } = JSON.parse($(this).text());
-    new chartXkcd[type](svg, chartData);
-  });
+  if (typeof chartXkcd !== "undefined") {
+    document.querySelectorAll(".chart").forEach((el, i) => {
+      el.setAttribute("id", `chart-${i}`);
 
-  $(".galleria").each(function (index) {
-    $(this).attr("id", `galleria-${index}`);
-
-    var { images } = JSON.parse($(this).text());
-
-    for (let image of images) {
-      $(this).append(
-        `<a href="${image.src}"><img src="${image.src}" data-title="${image.title}" data-description="${image.description}"></a>`
-      );
-    }
-
-    Galleria.run(`.galleria`);
-  });
-
-  $(".map").each(function (index) {
-    $(this).attr("id", `map-${index}`);
-
-    mapboxgl.accessToken = $(this).find(".mapbox-access-token").text().trim();
-    var zoom = $(this).find(".mapbox-zoom").text().trim();
-
-    var map = new mapboxgl.Map({
-      container: `map-${index}`,
-      style: "mapbox://styles/mapbox/light-v10",
-      center: [-96, 37.8],
-      zoom: zoom,
+      let svg = document.getElementById(`chart-${i}`);
+      let { type, ...chartData } = JSON.parse(el.textContent);
+      new chartXkcd[type](svg, chartData);
     });
+  }
 
-    map.addControl(new mapboxgl.NavigationControl());
+  if (typeof Galleria !== "undefined") {
+    document.querySelectorAll(".galleria").forEach((el, i) => {
+      el.setAttribute("id", `galleria-${i}`);
 
-    var geojson = JSON.parse($(this).find(".mapbox-geojson").text().trim());
+      let { images } = JSON.parse(el.textContent);
 
-    const center = [0, 0];
+      for (let image of images) {
+        el.insertAdjacentHTML("beforeend",
+          `<a href="${image.src}"><img src="${image.src}" data-title="${image.title}" data-description="${image.description}"></a>`
+        );
+      }
 
-    geojson.features.forEach(function (marker) {
-      center[0] += marker.geometry.coordinates[0];
-      center[1] += marker.geometry.coordinates[1];
-
-      new mapboxgl.Marker()
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(
-              "<h3>" +
-              marker.properties.title +
-              "</h3><p>" +
-              marker.properties.description +
-              "</p>"
-            )
-        )
-        .addTo(map);
+      Galleria.run(".galleria");
     });
+  }
 
-    center[0] = center[0] / geojson.features.length;
-    center[1] = center[1] / geojson.features.length;
+  if (typeof mapboxgl !== "undefined") {
+    document.querySelectorAll(".map").forEach((el, i) => {
+      el.setAttribute("id", `map-${i}`);
 
-    map.setCenter(center);
-  });
-});
+      mapboxgl.accessToken = el.querySelector(".mapbox-access-token").textContent.trim();
+      let zoom = el.querySelector(".mapbox-zoom").textContent.trim();
+
+      let map = new mapboxgl.Map({
+        container: `map-${i}`,
+        style: "mapbox://styles/mapbox/light-v10",
+        center: [-96, 37.8],
+        zoom: zoom,
+      });
+
+      map.addControl(new mapboxgl.NavigationControl());
+
+      let geojson = JSON.parse(el.querySelector(".mapbox-geojson").textContent.trim());
+
+      const center = [0, 0];
+
+      geojson.features.forEach(function (marker) {
+        center[0] += marker.geometry.coordinates[0];
+        center[1] += marker.geometry.coordinates[1];
+
+        new mapboxgl.Marker()
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                "<h3>" +
+                marker.properties.title +
+                "</h3><p>" +
+                marker.properties.description +
+                "</p>"
+              )
+          )
+          .addTo(map);
+      });
+
+      center[0] = center[0] / geojson.features.length;
+      center[1] = center[1] / geojson.features.length;
+
+      map.setCenter(center);
+    });
+  }
+
+  if (typeof renderMathInElement !== "undefined") {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ]
+    });
+  }
+};
+
+if (document.readyState === 'loading') {  // Loading hasn't finished yet
+  document.addEventListener('DOMContentLoaded', documentReadyCallback);
+} else {  // `DOMContentLoaded` has already fired
+  documentReadyCallback();
+}

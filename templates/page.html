@@ -71,7 +71,7 @@
 {% endblock %}
 
 {% block pagination %}
-{% if page.earlier or page.later or page.lighter or page.heavier %}
+{% if page.earlier or page.later or page.lighter or page.heavier or page.higher or page.lower %}
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -111,6 +111,23 @@
               </span>
             </a>
           </div>
+          {% endif %} {% if page.higher %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="{{ page.higher.permalink }}">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              {{ page.higher.title }}
+            </a>
+          </div>
+          {% endif %} {% if page.lower %}
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="{{ page.lower.permalink }}">
+              {{ page.lower.title }}<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
           {% endif %}
         </nav>
       </div>
@@ -137,24 +154,25 @@
 {% block custom_js %}
 {% if page.extra.toc %}
 <script type="text/javascript">
-  const menuBarHeight = $("nav.navbar").height();
-  const tocItems = $('.toc');
-  const navSections = new Array($('.toc').length);
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
 
-  tocItems.each(function (i) {
-    let id = $(this).attr("id").substring(5);
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
     navSections[i] = document.getElementById(id);
   })
 
   function isVisible(tocIndex) {
     const current = navSections[tocIndex];
-    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1] : $("section.section").get(1);
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
 
     const c = current.getBoundingClientRect();
     const n = next.getBoundingClientRect();
     const h = (window.innerHeight || document.documentElement.clientHeight);
 
-    return (c.top <= h) && (c.top + (n.top - c.top) - menuBarHeight >= 0);
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
   }
 
   function activateIfVisible() {

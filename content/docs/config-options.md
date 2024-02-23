@@ -47,17 +47,25 @@ You can configure social links in `[extra.social]` of `config.toml` file.
 
 ```toml
 [extra.social]
+email = "<email_id>"
 facebook = "<facebook_username>"
 github = "<github_username>"
+gitlab = "<gitlab_username>"
 keybase = "<keybase_username>"
 linkedin = "<linkedin_username>"
 stackoverflow = "<stackoverflow_userid>"
 twitter = "<twitter_username>"
+instagram = "<instagram_username>"
+behance = "<behance_username>"
+google_scholar = "<googlescholar_userid>"
+orcid = "<orcid_userid>"
+mastodon_username = "<mastadon_username>"
+mastodon_server = "<mastodon_server>" (if not set, defaults to mastodon.social)
 ```
 
 ## Google Analytics Setup
 
-**DeepThought** support google analytics out of the box. You can configure google in `[extra.analytics]` of `config.toml` file. 
+**DeepThought** supports google analytics out of the box. You can configure google in `[extra.analytics]` of `config.toml` file. 
 
 ```toml
 [extra.analytics]
@@ -66,20 +74,45 @@ google = "<your_gtag>"
 
 ## Disqus Comments Setup
 
-**DeepThought** support disqus commenting out of the box. You can configure disqus in `[extra.commenting]` of `config.toml` file. 
+**DeepThought** supports disqus commenting out of the box. You can configure disqus in `[extra.commenting]` of `config.toml` file. 
 
 ```toml
 [extra.commenting]
 disqus = "<your_disqus>"
 ```
 
-## Mapbox Setup
+## External Libraries
 
-**DeepThought** support mapbox out of the box to add maps in your posts. You can configure access_token in `[extra.mapbox]` of `config.toml` file. 
+### Mermaid, Chart and Galleria
+
+To gain the features displayed in [Extended Shortcodes](/docs/extended-shortcodes),
+enable the libraries you want to use in the `[extra]` section of `config.toml`.
+
+```toml
+chart.enabled = true
+mermaid.enabled = true
+galleria.enabled = true
+```
+
+### Mapbox
+
+**DeepThought** supports Mapbox out of the box to add maps in your posts.
+You can enable it and set an access token in the `[extra.mapbox]` section of `config.toml`.
 
 ```toml
 [extra.mapbox]
+enabled = true
 access_token = "<your_access_token>"
+```
+
+### KaTeX
+
+This theme contains math formula support using [KaTeX](https://katex.org/).
+To enable KaTeX in your project, set the following in the `[extra]` section of `config.toml`:
+```toml
+[extra]
+katex.enabled = true
+katex.auto_render = true    # automatic rendering without shortcodes
 ```
 
 # Section Configurations

@@ -1,0 +1,232 @@
+@import "initial-variables"
+@import "functions"
+
+$primary: $turquoise !default
+
+$info: $cyan !default
+$success: $green !default
+$warning: $yellow !default
+$danger: $red !default
+
+$light: $white-ter !default
+$dark: $grey-darker !default
+
+// Invert colors
+
+$orange-invert: findColorInvert($orange) !default
+$yellow-invert: findColorInvert($yellow) !default
+$green-invert: findColorInvert($green) !default
+$turquoise-invert: findColorInvert($turquoise) !default
+$cyan-invert: findColorInvert($cyan) !default
+$blue-invert: findColorInvert($blue) !default
+$purple-invert: findColorInvert($purple) !default
+$red-invert: findColorInvert($red) !default
+
+$primary-invert: findColorInvert($primary) !default
+$primary-light: findLightColor($primary) !default
+$primary-dark: findDarkColor($primary) !default
+$info-invert: findColorInvert($info) !default
+$info-light: findLightColor($info) !default
+$info-dark: findDarkColor($info) !default
+$success-invert: findColorInvert($success) !default
+$success-light: findLightColor($success) !default
+$success-dark: findDarkColor($success) !default
+$warning-invert: findColorInvert($warning) !default
+$warning-light: findLightColor($warning) !default
+$warning-dark: findDarkColor($warning) !default
+$danger-invert: findColorInvert($danger) !default
+$danger-light: findLightColor($danger) !default
+$danger-dark: findDarkColor($danger) !default
+$light-invert: findColorInvert($light) !default
+$dark-invert: findColorInvert($dark) !default
+
+// Social colors
+$bitbucket: hsl(210, 60%, 31%) !default
+$bitbucket-invert: findColorInvert($bitbucket)
+$bitbucket-light: findLightColor($bitbucket)
+$bitbucket-dark: findDarkColor($bitbucket)
+
+$behance: hsl(220, 100%, 50%) !default
+$behance-invert: findColorInvert($behance)
+$behance-light: findLightColor($behance)
+$behance-dark: findDarkColor($behance)
+
+$dev: hsl(262, 82%, 11%) !default
+$dev-invert: findColorInvert($dev)
+$dev-light: findLightColor($dev)
+$dev-dark: findDarkColor($dev)
+
+$discord: hsl(226.7, 58.4%, 65.1%) !default
+$discord-invert: findColorInvert($discord)
+$discord-light: findLightColor($discord)
+$discord-dark: findDarkColor($discord)
+
+$facebook: hsl(213.9, 89.3%, 52.2%) !default
+$facebook-invert: findColorInvert($facebook)
+$facebook-light: findLightColor($facebook)
+$facebook-dark: findDarkColor($facebook)
+
+$github: hsl(210, 12.2%, 16.1%) !default
+$github-invert: findColorInvert($github)
+$github-light: findLightColor($github)
+$github-dark: findDarkColor($github)
+
+$gitlab: hsl(13.6, 79.2%, 52.9%) !default
+$gitlab-invert: findColorInvert($gitlab)
+$gitlab-light: findLightColor($gitlab)
+$gitlab-dark: findDarkColor($gitlab)
+
+$googlescholar: hsl(217, 82%, 59%) !default
+$googlescholar-invert: findColorInvert($googlescholar)
+$googlescholar-light: findLightColor($googlescholar)
+$googlescholar-dark: findDarkColor($googlescholar)
+
+$instagram: hsl(353.8, 82.1%, 62.7%) !default
+$instagram-invert: findColorInvert($instagram)
+$instagram-light: findLightColor($instagram)
+$instagram-dark: findDarkColor($instagram)
+
+$keybase: hsl(208, 93%, 58%) !default
+$keybase-invert: findColorInvert($keybase)
+$keybase-light: findLightColor($keybase)
+$keybase-dark: findDarkColor($keybase)
+
+$linkedin: hsl(210, 90.2%, 40%) !default
+$linkedin-invert: findColorInvert($linkedin)
+$linkedin-light: findLightColor($linkedin)
+$linkedin-dark: findDarkColor($linkedin)
+
+$mastodon: hsl(247, 69%, 58%) !default
+$mastodon-invert: findColorInvert($mastodon)
+$mastodon-light: findLightColor($mastodon)
+$mastodon-dark: findDarkColor($mastodon)
+
+$medium: hsl(0, 0%, 0%) !default
+$medium-invert: findColorInvert($medium)
+$medium-light: findLightColor($medium)
+$medium-dark: findDarkColor($medium)
+
+$orcid: hsl(76, 60%, 51%) !default
+$orcid-invert: findColorInvert($orcid)
+$orcid-light: findLightColor($orcid)
+$orcid-dark: findDarkColor($orcid)
+
+$reddit: hsl(16.2, 100%, 50%) !default
+$reddit-invert: findColorInvert($reddit)
+$reddit-light: findLightColor($reddit)
+$reddit-dark: findDarkColor($reddit)
+
+$rss: hsl(27, 83%, 51%) !default
+$rss-invert: findColorInvert($rss)
+$rss-light: findLightColor($rss)
+$rss-dark: findDarkColor($rss)
+
+$soundcloud: hsl(20, 100%, 50%) !default
+$soundcloud-invert: findColorInvert($soundcloud)
+$soundcloud-light: findLightColor($soundcloud)
+$soundcloud-dark: findDarkColor($soundcloud)
+
+$stackoverflow: hsl(27, 90%, 50%) !default
+$stackoverflow-invert: findColorInvert($stackoverflow)
+$stackoverflow-light: findLightColor($stackoverflow)
+$stackoverflow-dark: findDarkColor($stackoverflow)
+
+$twitch: hsl(264, 100%, 64%) !default
+$twitch-invert: findColorInvert($twitch)
+$twitch-light: findLightColor($twitch)
+$twitch-dark: findDarkColor($twitch)
+
+$tumblr: hsl(209.5, 36.2%, 32%) !default
+$tumblr-invert: findColorInvert($tumblr)
+$tumblr-light: findLightColor($tumblr)
+$tumblr-dark: findDarkColor($tumblr)
+
+$twitter: hsl(202.8, 89.1%, 53.1%) !default
+$twitter-invert: findColorInvert($twitter)
+$twitter-light: findLightColor($twitter)
+$twitter-dark: findDarkColor($twitter)
+
+$vimeo: hsl(196.6, 100%, 46.9%) !default
+$vimeo-invert: findColorInvert($vimeo)
+$vimeo-light: findLightColor($vimeo)
+$vimeo-dark: findDarkColor($vimeo)
+
+$youtube: hsl(360, 100%, 50%) !default
+$youtube-invert: findColorInvert($youtube)
+$youtube-light: findLightColor($youtube)
+$youtube-dark: findDarkColor($youtube)
+
+// General colors
+
+$scheme-main: $white !default
+$scheme-main-bis: $white-bis !default
+$scheme-main-ter: $white-ter !default
+$scheme-invert: $black !default
+$scheme-invert-bis: $black-bis !default
+$scheme-invert-ter: $black-ter !default
+
+$background: $white-ter !default
+
+$border: $grey-lighter !default
+$border-hover: $grey-light !default
+$border-light: $grey-lightest !default
+$border-light-hover: $grey-light !default
+
+// Text colors
+
+$text: $grey-dark !default
+$text-invert: findColorInvert($text) !default
+$text-light: $grey !default
+$text-strong: $grey-darker !default
+
+// Code colors
+
+$code: darken($red, 15%) !default
+$code-background: $background !default
+
+$pre: $text !default
+$pre-background: $background !default
+
+// Link colors
+
+$link: $blue !default
+$link-invert: findColorInvert($link) !default
+$link-light: findLightColor($link) !default
+$link-dark: findDarkColor($link) !default
+$link-visited: $purple !default
+
+$link-hover: $grey-darker !default
+$link-hover-border: $grey-light !default
+
+$link-focus: $grey-darker !default
+$link-focus-border: $blue !default
+
+$link-active: $grey-darker !default
+$link-active-border: $grey-dark !default
+
+// Typography
+
+$family-primary: $family-sans-serif !default
+$family-secondary: $family-sans-serif !default
+$family-code: $family-monospace !default
+
+$size-small: $size-7 !default
+$size-normal: $size-6 !default
+$size-medium: $size-5 !default
+$size-large: $size-4 !default
+
+// Effects
+
+$shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1), 0 0px 0 1px rgba($scheme-invert, 0.02) !default
+
+// Lists and maps
+$custom-colors: null !default
+$custom-shades: null !default
+
+$colors: mergeColorMaps(("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert, $primary-light, $primary-dark), "link": ($link, $link-invert, $link-light, $link-dark), "info": ($info, $info-invert, $info-light, $info-dark), "success": ($success, $success-invert, $success-light, $success-dark), "warning": ($warning, $warning-invert, $warning-light, $warning-dark), "danger": ($danger, $danger-invert, $danger-light, $danger-dark)), $custom-colors) !default
+
+$shades: mergeColorMaps(("black-bis": $black-bis, "black-ter": $black-ter, "grey-darker": $grey-darker, "grey-dark": $grey-dark, "grey": $grey, "grey-light": $grey-light, "grey-lighter": $grey-lighter, "white-ter": $white-ter, "white-bis": $white-bis), $custom-shades) !default
+
+$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default
+
+$socialProvidersList: mergeColorMaps(("bitbucket": ($bitbucket, $bitbucket-invert, $bitbucket-light, $bitbucket-dark), "behance": ($behance, $behance-invert, $behance-light, $behance-dark), "dev": ($dev, $dev-invert, $dev-light, $dev-dark), "discord": ($discord, $discord-invert, $discord-light, $discord-dark), "facebook": ($facebook, $facebook-invert, $facebook-light, $facebook-dark), "github": ($github, $github-invert, $github-light, $github-dark),"gitlab": ($gitlab, $gitlab-invert, $gitlab-light, $gitlab-dark), "googlescholar": ($googlescholar, $googlescholar-invert, $googlescholar-light, $googlescholar-dark), "keybase": ($keybase, $keybase-invert, $keybase-light, $keybase-dark), "instagram": ($instagram, $instagram-invert, $instagram-light, $instagram-dark), "linkedin": ($linkedin, $linkedin-invert, $linkedin-light, $linkedin-dark), "mastodon": ($mastodon, $mastodon-invert, $mastodon-light, $mastodon-dark), "medium": ($medium, $medium-invert, $medium-light, $medium-dark), "orcid": ($orcid, $orcid-invert, $orcid-light, $orcid-dark), "reddit": ($reddit, $reddit-invert, $reddit-light, $reddit-dark), "rss": ($rss, $rss-invert, $rss-light, $rss-dark), "soundcloud": ($soundcloud, $soundcloud-invert, $soundcloud-light, $soundcloud-dark), "stackoverflow": ($stackoverflow, $stackoverflow-invert, $stackoverflow-light, $stackoverflow-dark), "twitch": ($twitch, $twitch-invert, $twitch-light, $twitch-dark), "tumblr": ($tumblr, $tumblr-invert, $tumblr-light, $tumblr-dark), "twitter": ($twitter, $twitter-invert, $twitter-light, $twitter-dark), "vimeo": ($vimeo, $vimeo-invert, $vimeo-light, $vimeo-dark), "youtube": ($youtube, $youtube-invert, $youtube-light, $youtube-dark)), $custom-colors) !default
