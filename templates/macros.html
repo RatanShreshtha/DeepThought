@@ -103,6 +103,22 @@
   </a>
   {% endif %}
 
+  {% if social_config.codeforces %}
+  <a class="has-text-codeforces" href="https://codeforces.com/{{ social_config.codeforces }}" target="_blank">
+    <span class="icon is-large" title="CodeForces">
+      <i class="fa-solid fa-chart-simple"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.pinterest %}
+  <a class="has-text-pinterest" href="https://pinterest.com/{{ social_config.pinterest }}" target="_blank">
+    <span class="icon is-large" title="Pinterest">
+      <i class="fab fa-pinterest fa-lg"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.behance %}
   <a class="has-text-behance" href="https://www.behance.net/{{ social_config.behance }}" target="_blank">
     <span class="icon is-large" title="Behance">
