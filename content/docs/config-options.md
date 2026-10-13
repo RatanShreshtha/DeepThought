@@ -85,7 +85,7 @@ disqus = "<your_disqus>"
 
 ### Mermaid, Chart and Galleria
 
-To gain the features displayed in [Extended Components](/docs/extended-shortcodes),
+To gain the features displayed in [Extended Components](/docs/extended-components),
 enable the libraries you want to use in the `[extra]` section of `config.toml`.
 
 ```toml

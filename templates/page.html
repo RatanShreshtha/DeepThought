@@ -202,7 +202,7 @@
 <script>
   var disqus_config = function () {
     this.page.url = "{{config.base_url | safe}}";
-    this.page.identifier = "{{ current_path | safe}}";
+    this.page.identifier = "{{ (page.extra.disqus_identifier or current_path) | safe }}";
   };
 
   (function () {
