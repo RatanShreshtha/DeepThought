@@ -2,6 +2,7 @@
 title = "Extended Components"
 description = "Few more components provided by DeepThought."
 date = 2020-08-29
+aliases = ["/docs/extended-shortcodes/"]
 
 [taxonomies]
 categories = ["Documentation"]
@@ -10,6 +11,8 @@ tags = ["theme", "zola"]
 [extra]
 toc = true
 comments = true
+# Keeps the Disqus thread of the page's previous URL
+disqus_identifier = "/docs/extended-shortcodes/"
 +++
 
 DeepThought theme provides multiple components that you can use directly in your content.
