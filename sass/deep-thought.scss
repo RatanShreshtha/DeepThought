@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+@use "sass:color";
+@use "bulma" with (
+  $family-sans-serif: ("Jost", sans-serif),
+  $footer-padding: 1rem 2.5rem,
+  // Keep the link colour used before Bulma 1.0
+  $link: hsl(229, 53%, 53%),
+  // Bulma 1.0 made titles and content headings extrabold; keep semibold
+  $title-weight: 600,
+  $content-heading-weight: 600
+);
+
+// Import a Google Font
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body[theme="dark"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+section {
+  flex: 1;
+}
+
+// Bulma 1.0 darkens link text for contrast; keep the old shade
+:root {
+  --bulma-link-on-scheme-l: 53%;
+}
+
+// Bulma 1.0 colours the navbar burger with the link colour; keep it neutral
+.navbar {
+  --bulma-navbar-burger-color: rgba(0, 0, 0, 0.7);
+}
+
+// Outlined buttons (e.g. the previous/next post links) filled in on hover before Bulma 1.0 only thickened the border
+.button.is-outlined:hover,
+.button.is-outlined:focus-visible {
+  --bulma-button-border-width: max(1px, 0.0625em);
+  background-color: hsl(var(--bulma-button-h), var(--bulma-button-s), var(--bulma-button-l));
+  color: hsl(var(--bulma-button-h), var(--bulma-button-s), var(--bulma-button-color-l));
+}
+
+// Link hover colours that Bulma 1.0 dropped
+a:not([class*="has-text-"]):not(.navbar-item):not(.button):not(.toc):not(.pagination-link):not(.pagination-next):not(.pagination-previous):hover {
+  color: #363636;
+}
+
+a.has-text-info-dark:hover,
+a.has-text-info-dark:focus {
+  color: color.adjust(#296fa8, $lightness: 10%) !important;
+}
+
+a.has-text-danger-dark:hover,
+a.has-text-danger-dark:focus {
+  color: color.adjust(#cc0f35, $lightness: 10%) !important;
+}
+
+// Tag and category chips keep their pre-Bulma 1.0 colour
+.has-text-info-dark {
+  color: #296fa8 !important;
+}
+
+// Bulma 1.0 changed the dark-red shade used by 'Read More' links
+.has-text-danger-dark {
+  color: #cc0f35 !important;
+}
+
+// The active and hovered navbar item used to be a visible grey; in 1.0 it blends into the navbar
+.navbar.is-light .navbar-item.is-active,
+.navbar.is-light a.navbar-item:hover {
+  background-color: #e8e8e8;
+}
+
+// Removed in Bulma 1.0
+.heading {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+img[theme="dark"],
+picture[theme="dark"],
+video[theme="dark"],
+pre[theme="dark"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+// Colours for the social links; they darken on hover, as before Bulma 1.0
+$social-colors: (
+  bitbucket: hsl(210, 60%, 31%),
+  behance: hsl(220, 100%, 50%),
+  dev: hsl(262, 82%, 11%),
+  discord: hsl(226.7, 58.4%, 65.1%),
+  facebook: hsl(213.9, 89.3%, 52.2%),
+  github: hsl(210, 12.2%, 16.1%),
+  gitlab: hsl(13.6, 79.2%, 52.9%),
+  googlescholar: hsl(217, 82%, 59%),
+  instagram: hsl(353.8, 82.1%, 62.7%),
+  keybase: hsl(208, 93%, 58%),
+  linkedin: hsl(210, 90.2%, 40%),
+  mastodon: hsl(247, 69%, 58%),
+  medium: hsl(0, 0%, 0%),
+  orcid: hsl(76, 60%, 51%),
+  reddit: hsl(16.2, 100%, 50%),
+  rss: hsl(27, 83%, 51%),
+  soundcloud: hsl(20, 100%, 50%),
+  stackoverflow: hsl(27, 90%, 50%),
+  twitch: hsl(264, 100%, 64%),
+  tumblr: hsl(209.5, 36.2%, 32%),
+  twitter: hsl(202.8, 89.1%, 53.1%),
+  vimeo: hsl(196.6, 100%, 46.9%),
+  youtube: hsl(360, 100%, 50%)
+);
+
+@each $name, $c in $social-colors {
+  .has-text-#{$name} {
+    color: $c;
+  }
+
+  a.has-text-#{$name}:hover,
+  a.has-text-#{$name}:focus {
+    color: color.adjust($c, $lightness: -10%);
+  }
+}
