@@ -1,0 +1,7 @@
+@use "../utilities/initial-variables" as iv;
+@use "../utilities/extends";
+@use "../utilities/mixins";
+
+.#{iv.$class-prefix}block {
+  @include mixins.block;
+}

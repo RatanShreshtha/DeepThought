@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+@use "bulma" with (
+  $family-sans-serif: ("Jost", sans-serif),
+  $footer-padding: 1rem 2.5rem,
+  // Keep the link colour used before Bulma 1.0
+  $link: hsl(229, 53%, 53%),
+  // Bulma 1.0 made titles and content headings extrabold; keep semibold
+  $title-weight: 600,
+  $content-heading-weight: 600
+);
+
+// Import a Google Font
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body[theme="dark"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+section {
+  flex: 1;
+}
+
+// Bulma 1.0 darkens link text for contrast; keep the old shade
+:root {
+  --bulma-link-on-scheme-l: 53%;
+}
+
+// Bulma 1.0 colours the navbar burger with the link colour; keep it neutral
+.navbar {
+  --bulma-navbar-burger-color: rgba(0, 0, 0, 0.7);
+}
+
+// Tag and category chips keep their pre-Bulma 1.0 colour
+.has-text-info-dark {
+  color: #296fa8 !important;
+}
+
+// Bulma 1.0 changed the dark-red shade used by 'Read More' links
+.has-text-danger-dark {
+  color: #cc0f35 !important;
+}
+
+// The active and hovered navbar item used to be a visible grey; in 1.0 it blends into the navbar
+.navbar.is-light .navbar-item.is-active,
+.navbar.is-light a.navbar-item:hover {
+  background-color: #e8e8e8;
+}
+
+// Removed in Bulma 1.0
+.heading {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+img[theme="dark"],
+picture[theme="dark"],
+video[theme="dark"],
+pre[theme="dark"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+// Colours for the social links
+.has-text-bitbucket { color: hsl(210, 60%, 31%); }
+.has-text-behance { color: hsl(220, 100%, 50%); }
+.has-text-dev { color: hsl(262, 82%, 11%); }
+.has-text-discord { color: hsl(226.7, 58.4%, 65.1%); }
+.has-text-facebook { color: hsl(213.9, 89.3%, 52.2%); }
+.has-text-github { color: hsl(210, 12.2%, 16.1%); }
+.has-text-gitlab { color: hsl(13.6, 79.2%, 52.9%); }
+.has-text-googlescholar { color: hsl(217, 82%, 59%); }
+.has-text-instagram { color: hsl(353.8, 82.1%, 62.7%); }
+.has-text-keybase { color: hsl(208, 93%, 58%); }
+.has-text-linkedin { color: hsl(210, 90.2%, 40%); }
+.has-text-mastodon { color: hsl(247, 69%, 58%); }
+.has-text-medium { color: hsl(0, 0%, 0%); }
+.has-text-orcid { color: hsl(76, 60%, 51%); }
+.has-text-reddit { color: hsl(16.2, 100%, 50%); }
+.has-text-rss { color: hsl(27, 83%, 51%); }
+.has-text-soundcloud { color: hsl(20, 100%, 50%); }
+.has-text-stackoverflow { color: hsl(27, 90%, 50%); }
+.has-text-twitch { color: hsl(264, 100%, 64%); }
+.has-text-tumblr { color: hsl(209.5, 36.2%, 32%); }
+.has-text-twitter { color: hsl(202.8, 89.1%, 53.1%); }
+.has-text-vimeo { color: hsl(196.6, 100%, 46.9%); }
+.has-text-youtube { color: hsl(360, 100%, 50%); }
