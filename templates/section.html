@@ -32,10 +32,10 @@
           <p class="subtitle">{{ page.description }}</p>
           <div class="columns is-multiline is-gapless">
             <div class="column is-8">
-              {{ macros::page_publish_metadata(page=page) }}
+              {{<dt.page_publish_metadata page={page} author={config.extra.author.name} />}}
             </div>
             <div class="column is-4 has-text-right-desktop">
-              {{ macros::page_content_metadata(page=page) }}
+              {{<dt.page_content_metadata page={page} />}}
             </div>
           </div>
           <div class="content mt-2">
@@ -50,12 +50,12 @@
           <div class="columns">
             <div class="column">
               {% if page.taxonomies.categories %}
-              {{ macros::render_categories(categories=page.taxonomies.categories) }}
+              {{<dt.render_categories categories={page.taxonomies.categories} />}}
               {% endif %}
             </div>
             <div class="column has-text-right-desktop">
               {% if page.taxonomies.tags %}
-              {{ macros::render_tags(tags=page.taxonomies.tags) }}
+              {{<dt.render_tags tags={page.taxonomies.tags} />}}
               {% endif %}
             </div>
           </div>

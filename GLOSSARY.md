@@ -40,12 +40,12 @@ _Avoid_: Label, keyword
 
 ### Embedded content
 
-**Shortcode**:
+**Component**:
 A snippet an author writes in Markdown to embed rich content such as a chart, diagram, map, gallery, math, or video.
-_Avoid_: Embed, widget, component
+_Avoid_: Shortcode (the Zola feature it replaced), embed, widget
 
 **Extension**:
-A Shortcode capability that a Site must switch on before its supporting assets are loaded.
+A Component capability that a Site must switch on before its supporting assets are loaded.
 _Avoid_: Plugin, module
 
 ### Site identity

@@ -1,4 +1,3 @@
-{% import 'macros.html' as macros %}
 
 <!DOCTYPE html>
 <html lang="{{lang}}">
@@ -30,6 +29,7 @@
   {% endif %}
 
   {% if config.extra.mapbox.enabled %}
+  <meta name="mapbox-access-token" content="{{ config.extra.mapbox.access_token }}" />
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" integrity="sha384-oGm59HWAkwO32h2w8u0B98wKBZJwd6MbWtAJwQKCTffZjOXHXrnyv9Syjovgc+UV" crossorigin="anonymous">
   {% endif %}
 
@@ -137,7 +137,7 @@
 
 
   {% block pagination %}
-  {% if paginator.previous or paginator.next %}
+  {% if paginator?.previous or paginator?.next %}
   <section class="section">
     <div class="container">
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">

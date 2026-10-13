@@ -54,12 +54,13 @@
   - [:toolbox: Getting Started](#toolbox-getting-started)
     - [:bangbang: Prerequisites](#bangbang-prerequisites)
     - [:gear: Installation](#gear-installation)
+      - [Upgrading from an earlier version](#upgrading-from-an-earlier-version)
     - [:running: Run Locally](#running-run-locally)
     - [:triangular_flag_on_post: Deployment](#triangular_flag_on_post-deployment)
   - [:eyes: Usage](#eyes-usage)
       - [Multilingual Navbar](#multilingual-navbar)
     - [KaTeX math formula support](#katex-math-formula-support)
-      - [Automatic rendering without short codes](#automatic-rendering-without-short-codes)
+      - [Automatic rendering without components](#automatic-rendering-without-components)
     - [Elasticlunr search in other language](#elasticlunr-search-in-other-language)
   - [:wave: Contributing](#wave-contributing)
   - [:warning: License](#warning-license)
@@ -118,8 +119,40 @@ You need static site generator (SSG) [Zola](https://www.getzola.org/documentatio
 Follow zola's guide on [installing a theme](https://www.getzola.org/documentation/themes/installing-and-using-themes/).
 Make sure to add `theme = "DeepThought"` to your `config.toml`
 
-**Check zola version (only 0.9.0+)**
-Just to double-check to make sure you have the right version. It is not supported to use this theme with a version under 0.14.1.
+**Check zola version (only 0.23.0+)**
+Just to double-check to make sure you have the right version. It is not supported to use this theme with a version under 0.23.0.
+
+#### Upgrading from an earlier version
+
+Version 0.23 of Zola changed its template engine (Tera 2) and **removed shortcodes**, so sites using an earlier version of this theme need a few changes when they move to Zola 0.23+.
+
+**`config.toml`**
+
+| Before | Now |
+| ------ | --- |
+| `generate_feed = true` | `generate_feeds = true` |
+| `feed_filename = "rss.xml"` | `feed_filenames = ["rss.xml"]` |
+| `highlight_code`, `highlight_theme`, `extra_syntaxes` in `[markdown]` | `theme = "..."` in `[markdown.highlighting]` (theme names changed, e.g. `one-dark` is now `one-dark-pro`) |
+| `languages = [{code = "fr"}]` | `[languages.fr]` tables (see [Multilingual Navbar](#multilingual-navbar)) |
+
+**Content:** the theme's shortcodes are now components, written with the same tags as HTML:
+
+| Before | Now |
+| ------ | --- |
+| `{% mermaid() %}…{% end %}` | `{% <mermaid> %}…{% </mermaid> %}` |
+| `{% chart() %}…{% end %}` | `{% <chart> %}…{% </chart> %}` |
+| `{% galleria() %}…{% end %}` | `{% <galleria> %}…{% </galleria> %}` |
+| `{% mapbox(zoom=6) %}…{% end %}` | `{% <mapbox zoom={6}> %}…{% </mapbox> %}` |
+| `{% katex(block=true) %}…{% end %}` | `{% <katex block={true}> %}…{% </katex> %}` |
+| `{{ katex(body="…") }}` | `{% <katex> %}…{% </katex> %}` |
+| `{{ youtube(id="…") }}` | `{{ <youtube id="…" /> }}` |
+| `{{ vimeo(id="…") }}` | `{{ <vimeo id="…" /> }}` |
+
+Any other Tera syntax in your Markdown must be wrapped in `{% raw %}…{% endraw %}`, for example when showing the snippets above in a code block.
+
+**Templates:** if you override DeepThought templates, macros no longer exist. Call the theme's components instead, for example `{{<dt.render_tags tags={page.taxonomies.tags} />}}` in place of `{{ macros::render_tags(tags=page.taxonomies.tags) }}`, and replace your own macros with [components](https://github.com/Keats/tera2/blob/master/MIGRATION.md#components). Tera 2 also errors on undefined variables, so use `a?.b` or `a or b` where a value may be missing.
+
+See the [Zola 0.23 changelog](https://github.com/getzola/zola/blob/master/CHANGELOG.md) and the [Tera 2 migration guide](https://github.com/Keats/tera2/blob/master/MIGRATION.md) for everything else.
 
 <!-- Run Locally -->
 ### :running: Run Locally
@@ -205,15 +238,16 @@ access_token = "<your_access_token>"
 
 #### Multilingual Navbar
 
-If you want to have a multilingual navbar on your blog, you must add your new code language in the [languages](https://www.getzola.org/documentation/content/multilingual/#configuration) array in the `config.toml` file.
+If you want to have a multilingual navbar on your blog, you must add each new language as a [languages](https://www.getzola.org/documentation/content/multilingual/#configuration) table in the `config.toml` file.
 
-**NOTE**: Don't add you default language to this array
+**NOTE**: Don't add your default language here. Set `build_search_index = true` on each language so search also works on its pages.
 
 ```toml
-languages = [
-    {code = "fr"},
-    {code = "es"},
-]
+[languages.fr]
+build_search_index = true
+
+[languages.es]
+build_search_index = true
 ```
 
 And then create and array of nav item for each language:
@@ -257,14 +291,14 @@ This theme contains math formula support using [KaTeX](https://katex.org/),
 which can be enabled by setting `katex.enabled = true` in the `extra` section
 of `config.toml`.
 
-After enabling this extension, the `katex` short code can be used in documents:
+After enabling this extension, the `katex` component can be used in documents:
 
-- `{{ katex(body="\KaTeX") }}` to typeset a math formula inlined into a text,
+- `{% <katex> %}\KaTeX{% </katex> %}` to typeset a math formula inlined into a text,
   similar to `$...$` in LaTeX
-- `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
+- `{% <katex block={true}> %}\KaTeX{% </katex> %}` to typeset a block of math formulas,
   similar to `$$...$$` in LaTeX
 
-#### Automatic rendering without short codes
+#### Automatic rendering without components
 
 Optionally, `\\( \KaTeX \\)` / `$ \KaTeX $` inline and `\\[ \KaTeX \\]` / `$$ \KaTeX $$`
 block-style automatic rendering is also supported, if enabled in the config
