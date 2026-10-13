@@ -1,4 +1,4 @@
-{% macro social_links(social_config) %}
+{% component dt.social_links(social_config, feed_url = "") %}
 <p>
   {% if social_config.facebook %}
   <a class="has-text-facebook" href="https://facebook.com/{{ social_config.facebook }}" target="_blank">
@@ -191,30 +191,30 @@
   </a>
   {% endif %}
 
-  {% if config.generate_feed %}
-  <a class="has-text-rss" href="{{ config.base_url }}/{{ config.feed_filename }}" target="_blank">
+  {% if feed_url %}
+  <a class="has-text-rss" href="{{ feed_url }}" target="_blank">
     <span class="icon is-large" title="RSS Feed">
       <i class="fas fa-rss fa-lg"></i>
     </span>
   </a>
   {% endif %}
 </p>
-{% endmacro %}
+{% endcomponent dt.social_links %}
 
-{% macro page_publish_metadata(page) %}
+{% component dt.page_publish_metadata(page, author) %}
 <span class="icon-text has-text-grey">
   <span class="icon">
     <i class="fas fa-user"></i>
   </span>
-  <span>{{ config.extra.author.name }} published on</span>
+  <span>{{ author }} published on</span>
   <span class="icon">
     <i class="far fa-calendar-alt"></i>
   </span>
   <span><time datetime="{{ page.date }}">{{ page.date | date(format='%B %d, %Y') }}</time></span>
 </span>
-{% endmacro %}
+{% endcomponent dt.page_publish_metadata %}
 
-{% macro page_content_metadata(page) %}
+{% component dt.page_content_metadata(page) %}
 <span class="icon-text has-text-grey">
   <span class="icon">
     <i class="far fa-clock"></i>
@@ -225,9 +225,9 @@
   </span>
   <span>{{ page.word_count }} words</span>
 </span>
-{% endmacro %}
+{% endcomponent dt.page_content_metadata %}
 
-{% macro render_categories(categories) %}
+{% component dt.render_categories(categories) %}
 <p>
   Categories:
   {% for category in categories %}
@@ -241,9 +241,9 @@
   </a>
   {% endfor %}
 </p>
-{% endmacro %}
+{% endcomponent dt.render_categories %}
 
-{% macro render_tags(tags) %}
+{% component dt.render_tags(tags) %}
 <p>
   Tags:
   {% for tag in tags %}
@@ -257,4 +257,4 @@
   </a>
   {% endfor %}
 </p>
-{% endmacro %}
+{% endcomponent dt.render_tags %}

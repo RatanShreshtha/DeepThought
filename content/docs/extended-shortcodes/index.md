@@ -1,6 +1,6 @@
 +++
-title = "Extended Shortcodes"
-description = "Few more shortcodes provided by DeepThought."
+title = "Extended Components"
+description = "Few more components provided by DeepThought."
 date = 2020-08-29
 
 [taxonomies]
@@ -12,7 +12,7 @@ toc = true
 comments = true
 +++
 
-DeepThought theme provides multiple shortcodes on top of built-in ones in Zola.
+DeepThought theme provides multiple components that you can use directly in your content.
 Please, have a look at the [Config Options](/docs/config-options#external-libraries)
 that explain how to enable them.
 
@@ -29,23 +29,23 @@ To put a flowchart in your post use below snippet
 **Code**
 
 ```
-{%/* mermaid() */%}
+{% raw %}{% <mermaid> %}{% endraw %}
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D;
-{%/* end */%}
+{% raw %}{% </mermaid> %}{% endraw %}
 ```
 
 **Output**
-{% mermaid() %}
+{% <mermaid> %}
 graph TD;
 A-->B;
 A-->C;
 B-->D;
 C-->D;
-{% end %}
+{% </mermaid> %}
 
 ## Sequence Diagram
 
@@ -54,7 +54,7 @@ To put a sequence diagram in your post use below snippet
 **Code**
 
 ```
-{%/* mermaid() */%}
+{% raw %}{% <mermaid> %}{% endraw %}
 sequenceDiagram
   participant Alice
   participant Bob
@@ -66,11 +66,11 @@ sequenceDiagram
   John-->>Alice: Great!
   John->>Bob: How about you?
   Bob-->>John: Jolly good!
-{%/* end */%}
+{% raw %}{% </mermaid> %}{% endraw %}
 ```
 
 **Output**
-{% mermaid() %}
+{% <mermaid> %}
 sequenceDiagram
   participant Alice
   participant Bob
@@ -82,7 +82,7 @@ sequenceDiagram
   John-->>Alice: Great!
   John->>Bob: How about you?
   Bob-->>John: Jolly good!
-{% end %}
+{% </mermaid> %}
 
 ## Gantt diagram
 
@@ -91,7 +91,7 @@ To put a gantt diagram in your post use below snippet
 **Code**
 
 ```
-{%/* mermaid() */%}
+{% raw %}{% <mermaid> %}{% endraw %}
 gantt
   dateFormat YYYY-MM-DD
   title Adding GANTT diagram to mermaid
@@ -102,12 +102,12 @@ gantt
   Active task :active, des2, 2014-01-09, 3d
   Future task : des3, after des2, 5d
   Future task2 : des4, after des3, 5d
-{%/* end */%}
+{% raw %}{% </mermaid> %}{% endraw %}
 ```
 
 **Output**
 
-{% mermaid() %}
+{% <mermaid> %}
 gantt
   dateFormat YYYY-MM-DD
   title Adding GANTT diagram to mermaid
@@ -118,7 +118,7 @@ gantt
   Active task :active, des2, 2014-01-09, 3d
   Future task : des3, after des2, 5d
   Future task2 : des4, after des3, 5d
-{% end %}
+{% </mermaid> %}
 
 ## Class diagram - experimental
 
@@ -127,7 +127,7 @@ To put a class diagram in your post use below snippet
 **Code**
 
 ```
-{%/* mermaid() */%}
+{% raw %}{% <mermaid> %}{% endraw %}
 classDiagram
   Class01 <|-- AveryLongClass : Cool
   Class03 _-- Class04
@@ -142,11 +142,11 @@ classDiagram
   Class01 : int chimp
   Class01 : int gorilla
   Class08 <--> C2: Cool label
-{%/* end */%}
+{% raw %}{% </mermaid> %}{% endraw %}
 ```
 
 **Output**
-{% mermaid() %}
+{% <mermaid> %}
 classDiagram
   Class01 <|-- AveryLongClass : Cool
   Class03 _-- Class04
@@ -161,7 +161,7 @@ classDiagram
   Class01 : int chimp
   Class01 : int gorilla
   Class08 <--> C2: Cool label
-{% end %}
+{% </mermaid> %}
 
 ## Entity Relationship Diagram - experimental
 
@@ -169,21 +169,21 @@ To put an ER diagram in your post use below snippet
 **Code**
 
 ```
-{%/* mermaid() */%}
+{% raw %}{% <mermaid> %}{% endraw %}
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-{%/* end */%}
+{% raw %}{% </mermaid> %}{% endraw %}
 ```
 
 **Output**
-{% mermaid() %}
+{% <mermaid> %}
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     ORDER ||--|{ LINE-ITEM : contains
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-{% end %}
+{% </mermaid> %}
 
 ## User Journey Diagram
 
@@ -191,7 +191,7 @@ To put an user journey diagram in your post use below snippet
 **Code**
 
 ```
-{%/* mermaid() */%}
+{% raw %}{% <mermaid> %}{% endraw %}
   journey
   title My working day
   section Go to work
@@ -201,11 +201,11 @@ To put an user journey diagram in your post use below snippet
   section Go home
   Go downstairs: 5: Me
   Sit down: 5: Me
-{%/* end */%}
+{% raw %}{% </mermaid> %}{% endraw %}
 ```
 
 **Output**
-{% mermaid () %}
+{% <mermaid> %}
 journey
   title My working day
   section Go to work
@@ -215,7 +215,7 @@ journey
   section Go home
   Go downstairs: 5: Me
   Sit down: 5: Me
-{% end %}
+{% </mermaid> %}
 
 # Mapbox
 
@@ -224,7 +224,7 @@ journey
 **Code**
 
 ```
-{%/* mapbox(zoom=6) */%}
+{% raw %}{% <mapbox zoom={6}> %}{% endraw %}
 {
   "type": "FeatureCollection",
   "features": [
@@ -252,11 +252,11 @@ journey
     }
   ]
 }
-{%/* end */%}
+{% raw %}{% </mapbox> %}{% endraw %}
 ```
 
 **Output**
-{% mapbox(zoom=6) %}
+{% <mapbox zoom={6}> %}
 {
   "type": "FeatureCollection",
   "features": [
@@ -284,7 +284,7 @@ journey
     }
   ]
 }
-{% end %}
+{% </mapbox> %}
 
 # Chart
 
@@ -297,7 +297,7 @@ Line chart displays series of data points in the form of lines. It can be used t
 **Code**
 
 ```
-{%/* chart() */%}
+{% raw %}{% <chart> %}{% endraw %}
 {
   "type": "Line",
   "title": "Monthly income of an indie developer",
@@ -317,12 +317,12 @@ Line chart displays series of data points in the form of lines. It can be used t
     ]
   }
 }
-{%/* end */%}
+{% raw %}{% </chart> %}{% endraw %}
 ```
 
 **Output**
 
-{% chart() %}
+{% <chart> %}
 {
   "type": "Line",
   "title": "Monthly income of an indie developer",
@@ -342,7 +342,7 @@ Line chart displays series of data points in the form of lines. It can be used t
     ]
   }
 }
-{% end %}
+{% </chart> %}
 
 
 ## XY chart
@@ -352,7 +352,7 @@ XY chart is used to plot points by specifying their XY coordinates.
 **Code**
 
 ```
-{%/* chart() */%}
+{% raw %}{% <chart> %}{% endraw %}
 {
   "type": "XY",
   "title": "Pokemon farms",
@@ -412,12 +412,12 @@ XY chart is used to plot points by specifying their XY coordinates.
     "dotSize": 1
   }
 }
-{%/* end */%}
+{% raw %}{% </chart> %}{% endraw %}
 ```
 
 **Output**
 
-{% chart() %}
+{% <chart> %}
 {
   "type": "XY",
   "title": "Pokemon farms",
@@ -477,7 +477,7 @@ XY chart is used to plot points by specifying their XY coordinates.
     "dotSize": 1
   }
 }
-{% end %}
+{% </chart> %}
 
 
 
@@ -488,7 +488,7 @@ A bar chart provides a way of showing data values represented as vertical bars
 **Code**
 
 ```
-{%/* chart() */%}
+{% raw %}{% <chart> %}{% endraw %}
 {
   "type": "Bar",
   "title": "How to feel powerful ?",
@@ -507,12 +507,12 @@ A bar chart provides a way of showing data values represented as vertical bars
     "dataColors": ["Red", "Green", "Blue"]
   }
 }
-{%/* end */%}
+{% raw %}{% </chart> %}{% endraw %}
 ```
 
 **Output**
 
-{% chart() %}
+{% <chart> %}
 {
   "type": "Bar",
   "title": "How to feel powerful ?",
@@ -531,7 +531,7 @@ A bar chart provides a way of showing data values represented as vertical bars
     "dataColors": ["Red", "Green", "Blue"]
   }
 }
-{% end %}
+{% </chart> %}
 
 
 
@@ -542,7 +542,7 @@ A stacked bar chart provides a way of showing data values represented as vertica
 **Code**
 
 ```
-{%/* chart() */%}
+{% raw %}{% <chart> %}{% endraw %}
 {
   "type": "StackedBar",
   "title": "Issues and PR Submissions",
@@ -566,12 +566,12 @@ A stacked bar chart provides a way of showing data values represented as vertica
     ]
   }
 }
-{%/* end */%}
+{% raw %}{% </chart> %}{% endraw %}
 ```
 
 **Output**
 
-{% chart() %}
+{% <chart> %}
 {
   "type": "StackedBar",
   "title": "Issues and PR Submissions",
@@ -595,7 +595,7 @@ A stacked bar chart provides a way of showing data values represented as vertica
     ]
   }
 }
-{% end %}
+{% </chart> %}
 
 
 
@@ -606,7 +606,7 @@ A pie/doughnut chart provides a way of illustrating numerical proportion.
 **Code**
 
 ```
-{%/* chart() */%}
+{% raw %}{% <chart> %}{% endraw %}
 {
   "type": "Pie",
   "title": "What Tim is made of",
@@ -619,12 +619,12 @@ A pie/doughnut chart provides a way of illustrating numerical proportion.
     ]
   }
 }
-{%/* end */%}
+{% raw %}{% </chart> %}{% endraw %}
 ```
 
 **Output**
 
-{% chart() %}
+{% <chart> %}
 {
   "type": "Pie",
   "title": "What Tim is made of",
@@ -637,7 +637,7 @@ A pie/doughnut chart provides a way of illustrating numerical proportion.
     ]
   }
 }
-{% end %}
+{% </chart> %}
 
 ## Radar chart
 
@@ -646,7 +646,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
 **Code**
 
 ```
-{%/* chart() */%}
+{% raw %}{% <chart> %}{% endraw %}
 {
   "type": "Radar",
   "title": "Letters in random words",
@@ -668,12 +668,12 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
     "showLabels": true
   }
 }
-{%/* end */%}
+{% raw %}{% </chart> %}{% endraw %}
 ```
 
 **Output**
 
-{% chart() %}
+{% <chart> %}
 {
   "type": "Radar",
   "title": "Letters in random words",
@@ -695,7 +695,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
     "showLabels": true
   }
 }
-{% end %}
+{% </chart> %}
 
 # Galleria
 
@@ -704,7 +704,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
 **Code**
 
 ```
-{%/* galleria() */%}
+{% raw %}{% <galleria> %}{% endraw %}
 {
   "images": [
     {
@@ -749,12 +749,12 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
     }
   ]
 }
-{%/* end */%}
+{% raw %}{% </galleria> %}{% endraw %}
 ```
 
 **Output**
 
-{% galleria() %}
+{% <galleria> %}
 {
   "images": [
     {
@@ -799,7 +799,7 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
     }
   ]
 }
-{% end %}
+{% </galleria> %}
 
 # KaTeX
 [KaTeX](https://katex.org/) is a math typesetting library based on TeX.
@@ -807,16 +807,16 @@ A radar chart provides a way of displaying multivariate data in the form of a tw
 **Code**
 
 ```
-{%/* katex(block=true) */%}
+{% raw %}{% <katex block={true}> %}{% endraw %}
 \KaTeX
-{%/* end */%}
+{% raw %}{% </katex> %}{% endraw %}
 ```
 
 **Output**
 
-{% katex(block=true) %}
+{% <katex block={true}> %}
 \KaTeX
-{% end %}
+{% </katex> %}
 
 **Photo By:**
 - [ALEXANDRE DINAUT](https://unsplash.com/@alexdinaut?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@alexdinaut?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)

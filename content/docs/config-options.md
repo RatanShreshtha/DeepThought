@@ -85,7 +85,7 @@ disqus = "<your_disqus>"
 
 ### Mermaid, Chart and Galleria
 
-To gain the features displayed in [Extended Shortcodes](/docs/extended-shortcodes),
+To gain the features displayed in [Extended Components](/docs/extended-shortcodes),
 enable the libraries you want to use in the `[extra]` section of `config.toml`.
 
 ```toml
@@ -112,7 +112,7 @@ To enable KaTeX in your project, set the following in the `[extra]` section of `
 ```toml
 [extra]
 katex.enabled = true
-katex.auto_render = true    # automatic rendering without shortcodes
+katex.auto_render = true    # automatic rendering without components
 ```
 
 # Section Configurations

@@ -11,7 +11,7 @@ comments = false
 +++
 
 This is a small example post of stuff you can do with the `DeepThought` theme.
-We'll try to represent all possible markdown and shortcode combinations here
+We'll try to represent all possible markdown and component combinations here
 so you can develop easily.
 
 <!-- more -->
@@ -85,12 +85,12 @@ We have them!
 
 ## Youtube
 
-with `youtube(id="the_id_here")`
-{{ youtube(id="dNRDvLACg5Q") }}
+with `<youtube id="the_id_here" />`
+{{ <youtube id="dNRDvLACg5Q" /> }}
 
 ## Vimeo
-with `vimeo(id="id_here")`
-{{ vimeo(id="115189988") }}
+with `<vimeo id="id_here" />`
+{{ <vimeo id="115189988" /> }}
 
 ## Links
 

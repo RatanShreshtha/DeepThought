@@ -269,7 +269,7 @@ function documentReadyCallback() {
     document.querySelectorAll(".map").forEach((el, i) => {
       el.setAttribute("id", `map-${i}`);
 
-      mapboxgl.accessToken = el.querySelector(".mapbox-access-token").textContent.trim();
+      mapboxgl.accessToken = document.querySelector("meta[name=mapbox-access-token]").content;
       let zoom = el.querySelector(".mapbox-zoom").textContent.trim();
 
       let map = new mapboxgl.Map({

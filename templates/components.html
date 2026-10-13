@@ -1,0 +1,28 @@
+{#- Component output is injected into Markdown, so keep it free of blank lines and indentation or the HTML block ends early. -#}
+{% component chart() -%}
+<svg class="chart">{{ body | safe }}</svg>
+{%- endcomponent chart %}
+
+{% component galleria() -%}
+<div class="galleria mb-6" style="height: 450px">{{ body | safe }}</div>
+{%- endcomponent galleria %}
+
+{% component katex(block = false) -%}
+<script type="math/tex{% if block %};mode=display{% endif %}">{{ body | trim }}</script>
+{%- endcomponent katex %}
+
+{% component mapbox(zoom) -%}
+<div class="map mb-6" style="height: 450px;"><div class="mapbox-zoom">{{ zoom }}</div><div class="mapbox-geojson">{{ body | trim }}</div></div>
+{%- endcomponent mapbox %}
+
+{% component mermaid() -%}
+<div class="mermaid is-flex is-justify-content-center is-align-items-center">{{ body }}</div>
+{%- endcomponent mermaid %}
+
+{% component vimeo(id) -%}
+<div class="vimeo is-flex is-justify-content-center is-align-items-center"><iframe width="848" height="510" title="vimeo-player" src="https://player.vimeo.com/video/{{ id }}" frameborder="0" allowfullscreen></iframe></div>
+{%- endcomponent vimeo %}
+
+{% component youtube(id) -%}
+<div class="youtube is-flex is-justify-content-center is-align-items-center"><iframe width="848" height="510" src="https://www.youtube.com/embed/{{ id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+{%- endcomponent youtube %}
