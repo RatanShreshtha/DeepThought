@@ -10,9 +10,7 @@
         It seems you are looking for something that I don't have.
       </p>
       {% if config.extra.author.avatar %}
-      <figure class="image is-flex is-justify-content-center is-align-items-center">
-        <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 192px" />
-      </figure>
+        {% include 'author_avatar.html' %}
       {% endif %}
       {{<dt.social_links social_config={config.extra.social} feed_url={get_url(path=config.feed_filenames[0]) if config.generate_feeds else ""} />}}
       <p class="my-6">
